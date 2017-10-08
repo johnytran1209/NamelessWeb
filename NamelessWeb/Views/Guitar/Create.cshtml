@@ -1,0 +1,165 @@
+﻿@model NamelessWeb.Views.ViewModels.GuitarViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="form-group">
+    <div style="left:auto", class="form-group">
+        @Html.Label("Guitar Id:")
+        @Html.Label("xxx")
+    </div>
+    <div style="left:auto", class="form-group">
+        @Html.Label("Model:")
+        @Html.TextBoxFor(m => m.GuitarModel, new { @class ="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.Label("Brand:")
+        @Html.DropDownListFor(m=>m.BrandId,new SelectList(Model.BrandId, "BrandId","BrandName"),"", new { @class = "form-control" })
+    </div>
+    <div style="left:auto", class="form-group">
+        @Html.LabelFor(m =>m.TypeId)
+        @Html.DropDownListFor(m => m.TypeId, new SelectList(Model.TypeId, "TypeId", "TypeName"), new { @class = "form-control" })
+        <!-- Trigger/Open The Modal -->
+        <button id="typeBtn">New Type</button>
+
+    </div>
+    <div style="left:auto" , class="form-group">
+        @Html.LabelFor(m => m.Top)
+        @Html.DropDownListFor(m => m.Top, new SelectList(Model.Top, "TopId", "TopName"), new { @class = "form-control" })
+        <!-- Trigger/Open The Modal -->
+        <button id="topBtn">New Top</button>
+    </div>
+    <div style="right:auto" , class="form-group">
+        @Html.LabelFor(m => m.Side)
+        @Html.DropDownListFor(m => m.Side, new SelectList(Model.Side, "SideId", "SideName"), new { @class = "form-control" })
+        <!-- Trigger/Open The Modal -->
+        <button id="SideBtn">New Side</button>
+    </div>
+    <div style="right:auto" , class="form-group">
+        @Html.LabelFor(m => m.Neck)
+        @Html.DropDownListFor(m => m.Neck, new SelectList(Model.Neck, "NeckId", "NeckName"), new { @class = "form-control" })
+        <!-- Trigger/Open The Modal -->
+        <button id="NeckBtn">New Neck</button>
+    </div>
+    <div style="right:auto" , class="form-group">
+        @Html.LabelFor(m => m.Fing)
+        @Html.DropDownListFor(m => m.Fing, new SelectList(Model.Fing, "FingId", "FingName"), new { @class = "form-control" })
+        <!-- Trigger/Open The Modal -->
+        <button id="FingBtn">New Fing</button>
+    </div>
+    <div style="left:auto" , class="form-group">
+        @Html.Label("MSRP:")
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+    </div>
+    <div style="left:auto" , class="form-group">
+        @Html.Label("Warranty:")
+        @Html.DropDownListFor(m => m.Insurance, new SelectList(Model.Insurance, "WarrId", "WarrLength"), new { @class = "form-control" })
+    </div>
+    <div style="left:auto" , class="form-group">
+        @Html.Label("Electric equiped:")
+        @Html.RadioButtonFor(m=>m.Electricfied, new {@class = "form-control"}) yes
+        @Html.RadioButtonFor(m=>m.Electricfied, new { @class = "form-control" }) no
+    </div>
+</div>
+    
+    <!-- The Modal -->
+    <div id="typeBtn" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="form-group">
+                <!-- For ID input -->
+                <div>
+                    @Html.Label("New Type ID:")
+                    @Html.TextBoxFor(m => m.TypeId, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TypeId)
+                </div>
+                <!-- For Name Input -->
+                <div>
+                    @Html.Label("New Type Name:")
+                    @Html.TextBoxFor(m => m.TypeId, "", new { @class = "form-control" })
+                </div>
+                <button>save</button>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
+

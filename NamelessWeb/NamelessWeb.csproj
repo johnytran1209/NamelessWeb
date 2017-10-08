@@ -199,16 +199,81 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GuitarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710070554329_update db name.cs" />
+    <Compile Include="Migrations\201710070554329_update db name.Designer.cs">
+      <DependentUpon>201710070554329_update db name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710070606019_add-guitarmodel.cs" />
+    <Compile Include="Migrations\201710070606019_add-guitarmodel.Designer.cs">
+      <DependentUpon>201710070606019_add-guitarmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710070726084_add-guitarspecs.cs" />
+    <Compile Include="Migrations\201710070726084_add-guitarspecs.Designer.cs">
+      <DependentUpon>201710070726084_add-guitarspecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710070815349_woodtypes.cs" />
+    <Compile Include="Migrations\201710070815349_woodtypes.Designer.cs">
+      <DependentUpon>201710070815349_woodtypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710070827410_companyclasses.cs" />
+    <Compile Include="Migrations\201710070827410_companyclasses.Designer.cs">
+      <DependentUpon>201710070827410_companyclasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071113081_addbills.cs" />
+    <Compile Include="Migrations\201710071113081_addbills.Designer.cs">
+      <DependentUpon>201710071113081_addbills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071131018_add-Systemtables.cs" />
+    <Compile Include="Migrations\201710071131018_add-Systemtables.Designer.cs">
+      <DependentUpon>201710071131018_add-Systemtables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071600091_add-type.cs" />
+    <Compile Include="Migrations\201710071600091_add-type.Designer.cs">
+      <DependentUpon>201710071600091_add-type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710072009423_add BH.cs" />
+    <Compile Include="Migrations\201710072009423_add BH.Designer.cs">
+      <DependentUpon>201710072009423_add BH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710072013540_add BH1.cs" />
+    <Compile Include="Migrations\201710072013540_add BH1.Designer.cs">
+      <DependentUpon>201710072013540_add BH1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
+    <Compile Include="Models\Bills\Exports\ExportBill.cs" />
+    <Compile Include="Models\Bills\Imports\ImpBillDetail.cs" />
+    <Compile Include="Models\Bills\Imports\ImportBill.cs" />
+    <Compile Include="Models\Bills\Orders\OrdBillDetail.cs" />
+    <Compile Include="Models\Bills\Orders\OrderBill.cs" />
+    <Compile Include="Models\ClassApplicationDbContext.cs" />
+    <Compile Include="Models\Company\Brand.cs" />
+    <Compile Include="Models\Company\Supplier.cs" />
+    <Compile Include="Models\Guitar\Guitar.cs" />
+    <Compile Include="Models\Guitar\GuitarSpec.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Guitar\GuitarType.cs" />
+    <Compile Include="Models\Guitar\Warranties.cs" />
+    <Compile Include="Models\Guitar\Wood\GoBack.cs" />
+    <Compile Include="Models\Guitar\Wood\GoFing.cs" />
+    <Compile Include="Models\Guitar\Wood\GoNeck.cs" />
+    <Compile Include="Models\Guitar\Wood\GoSide.cs" />
+    <Compile Include="Models\Guitar\Wood\GoTop.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\WebSystem\GuitarRating.cs" />
+    <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
+    <Compile Include="Views\ViewModels\TypeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -267,9 +332,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Guitar\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Guitar\All\" />
+    <Folder Include="Views\Guitar\Brand\" />
+    <Folder Include="Views\Guitar\Editoral\" />
+    <Folder Include="Views\Guitar\Single\" />
+    <Folder Include="Views\Type\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -285,6 +356,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710070554329_update db name.resx">
+      <DependentUpon>201710070554329_update db name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070606019_add-guitarmodel.resx">
+      <DependentUpon>201710070606019_add-guitarmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070726084_add-guitarspecs.resx">
+      <DependentUpon>201710070726084_add-guitarspecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070815349_woodtypes.resx">
+      <DependentUpon>201710070815349_woodtypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070827410_companyclasses.resx">
+      <DependentUpon>201710070827410_companyclasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071113081_addbills.resx">
+      <DependentUpon>201710071113081_addbills.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071131018_add-Systemtables.resx">
+      <DependentUpon>201710071131018_add-Systemtables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071600091_add-type.resx">
+      <DependentUpon>201710071600091_add-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710072009423_add BH.resx">
+      <DependentUpon>201710072009423_add BH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710072013540_add BH1.resx">
+      <DependentUpon>201710072013540_add BH1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
