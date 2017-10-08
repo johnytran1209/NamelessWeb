@@ -65,17 +65,12 @@ namespace NamelessWeb.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Username")]
-        public string UserName { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
         [EmailAddress]
-        [Compare("Email",ErrorMessage = "The email and confirmation email do not match")]
         [Display(Name = "Confirm Email")]
         public string ConfirmEmail { get; set; }
 
@@ -97,21 +92,8 @@ namespace NamelessWeb.Models
         public string PhoneNumber { get; set; }
 
         [Required]
-        [Phone]
         [Display(Name = "Confirm Phone number")]
         public string ConfirmPhoneNumber { get; set; }
-
-        [Required]
-        [Display(Name = "Address")]
-        public string Address { get; set; }
-
-        [Required]
-        [Display(Name = "Question")]
-        public string Question { get; set; }
-
-        [Required]
-        [Display(Name = "Answer")]
-        public string Answer { get; set; }
     }
 
     public class ResetPasswordViewModel
