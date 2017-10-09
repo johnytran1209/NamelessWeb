@@ -151,7 +151,11 @@ namespace NamelessWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
+=======
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
+>>>>>>> 2be53b9ca8c7a02bb539b531d2031650f8054321
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

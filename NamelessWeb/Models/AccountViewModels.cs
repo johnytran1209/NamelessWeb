@@ -99,6 +99,10 @@ namespace NamelessWeb.Models
         [Required]
         [Phone]
         [Display(Name = "Confirm Phone number")]
+<<<<<<< HEAD
+=======
+        [Compare("PhoneNumber",ErrorMessage = "The phone number and confirmation number do not match")]
+>>>>>>> 2be53b9ca8c7a02bb539b531d2031650f8054321
         public string ConfirmPhoneNumber { get; set; }
 
         [Required]
