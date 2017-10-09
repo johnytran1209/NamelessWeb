@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -246,6 +247,10 @@
     <Compile Include="Migrations\201710072013540_add BH1.Designer.cs">
       <DependentUpon>201710072013540_add BH1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710081454028_AddColumnToUser.cs" />
+    <Compile Include="Migrations\201710081454028_AddColumnToUser.Designer.cs">
+      <DependentUpon>201710081454028_AddColumnToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -388,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710072013540_add BH1.resx">
       <DependentUpon>201710072013540_add BH1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710081454028_AddColumnToUser.resx">
+      <DependentUpon>201710081454028_AddColumnToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -65,20 +65,54 @@ namespace NamelessWeb.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Compare("Email",ErrorMessage = "The email and confirmation email do not match")]
+        [Display(Name = "Confirm Email")]
+        public string ConfirmEmail { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
+        
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Confirm Phone number")]
+        [Compare("PhoneNumber",ErrorMessage = "The phone number and confirmation number do not match")]
+        public string ConfirmPhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Question")]
+        public string Question { get; set; }
+
+        [Required]
+        [Display(Name = "Answer")]
+        public string Answer { get; set; }
     }
 
     public class ResetPasswordViewModel
