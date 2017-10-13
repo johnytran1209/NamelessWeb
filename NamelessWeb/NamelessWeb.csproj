@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201710081454028_AddColumnToUser.Designer.cs">
       <DependentUpon>201710081454028_AddColumnToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710131822424_new ques and ans.cs" />
+    <Compile Include="Migrations\201710131822424_new ques and ans.Designer.cs">
+      <DependentUpon>201710131822424_new ques and ans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -294,10 +298,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Img\slides\hummingbird.jpg" />
-    <Content Include="Content\Img\slides\slide2.jpeg" />
-    <Content Include="Content\Img\slides\slide2.jpg" />
-    <Content Include="Content\SlideShow.css" />
+    <Content Include="Content\Img\nameless brand.png" />
+    <Content Include="Content\Img\slides\fg151.jpg" />
+    <Content Include="Content\Img\slides\fg200j.jpg" />
+    <Content Include="Content\Img\slides\morrisDove.jpg" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -308,6 +313,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\SlideShow.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -319,7 +325,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\SlideShow.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -358,10 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Guitar\All\" />
-    <Folder Include="Views\Guitar\Brand\" />
-    <Folder Include="Views\Guitar\Editoral\" />
-    <Folder Include="Views\Guitar\Single\" />
     <Folder Include="Views\Type\" />
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710081454028_AddColumnToUser.resx">
       <DependentUpon>201710081454028_AddColumnToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131822424_new ques and ans.resx">
+      <DependentUpon>201710131822424_new ques and ans.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
