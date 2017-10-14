@@ -150,8 +150,14 @@ namespace NamelessWeb.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
+<<<<<<< HEAD
             { 
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
+=======
+            {
+
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber, Question=model.Question, Answer=model.Answer};
+>>>>>>> e7e5e0960b1882dc8b46770e231d72ccd3fa7c0e
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
