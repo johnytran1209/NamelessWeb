@@ -1,0 +1,24 @@
+﻿@model NamelessWeb.Models.NewTypes.Back
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Back</h2>
+<body>
+@using (Html.BeginForm("NewBack", "NewTypes"))
+{
+    <div class="form-group">
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Back Id:")
+            @Html.TextBoxFor(m=>m.BackId, new {@class = "form-control"})
+        </div>
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Back:")
+            @Html.TextBoxFor(m => m.BackName, new {@class = "form-control"})
+        </div>
+        <button type="submit" value="Save" class="btn btn-primary">Save</button>
+    </div>
+}
+</body>
+

@@ -1,0 +1,25 @@
+﻿@model NamelessWeb.Models.NewTypes.Side
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>New Side</h2>
+<body>
+@using (Html.BeginForm("NewSide", "NewTypes"))
+{
+    <div class="form-group">
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Side Id:")
+            @Html.TextBoxFor(m => m.SideId, new { @class = "form-control" })
+        </div>
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Side:")
+            @Html.TextBoxFor(m => m.SideName, new {@class = "form-control"})
+        </div>
+        <button type="submit" value="Save" class="btn btn-primary">Save</button>
+    </div>
+}
+</body>
+

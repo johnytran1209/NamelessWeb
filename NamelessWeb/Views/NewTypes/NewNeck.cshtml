@@ -1,0 +1,24 @@
+﻿@model NamelessWeb.Models.NewTypes.Neck
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Neck</h2>
+<body>
+@using (Html.BeginForm("NewNeck", "NewTypes"))
+{
+    <div class="form-group">
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Neck Id:")
+            @Html.TextBoxFor(m => m.NeckId, new { @class = "form-control" })
+        </div>
+        <div style="left: auto" , class="form-group">
+            @Html.Label("Neck:")
+            @Html.TextBoxFor(m => m.NeckName, new {@class = "form-control"})
+        </div>
+        <button type="submit" value="Save" class="btn btn-primary">Save</button>
+    </div>
+}
+</body>
+

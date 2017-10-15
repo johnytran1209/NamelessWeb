@@ -45,6 +45,15 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+/*.indent-1 {
+    float: left;
+}
+
+.indent-1 section {
+    width: 50%;
+    float: left;
+}*/
 </style>
 </head>
 <body>
@@ -53,77 +62,81 @@
         @Html.Label("Guitar Id:")
         @Html.Label("xxx")
     </div>
-    <div style="left:auto", class="form-group">
-        @Html.Label("Model:")
-        @Html.TextBoxFor(m => m.GuitarModel, new { @class ="form-control"})
-    </div>
-    <div class="form-group">
-        @Html.Label("Brand:")
-        @Html.DropDownListFor(m=>m.BrandId,new SelectList(Model.BrandId, "BrandId","BrandName"),"", new { @class = "form-control" })
-    </div>
-    <div style="left:auto", class="form-group">
-        @Html.LabelFor(m =>m.TypeId)
-        @Html.DropDownListFor(m => m.TypeId, new SelectList(Model.TypeId, "TypeId", "TypeName"), new { @class = "form-control" })
-        <!-- Trigger/Open The Modal -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    @*<section class="indent-1">*@
+        <div style="left:auto" , class="form-group">
+            @Html.Label("Model:")
+            @Html.TextBoxFor(m => m.GuitarModel, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Brand:")
+            @Html.DropDownListFor(m => m.BrandId, new SelectList(Model.BrandId, "BrandId", "BrandName"), "", new { @class = "form-control" })
+        </div>
+        <div style="left:auto" , class="form-group">
+            @Html.Label("Type:")
+            @Html.DropDownListFor(m => m.TypeId, new SelectList(Model.TypeId, "TypeId", "TypeName"), new { @class = "form-control" })
+            <!-- Trigger/Open The Modal -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Some text in the modal.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div style="left:auto" , class="form-group">
-        @Html.LabelFor(m => m.Top)
-        @Html.DropDownListFor(m => m.Top, new SelectList(Model.Top, "TopId", "TopName"), new { @class = "form-control" })
-        <!-- Trigger/Open The Modal -->
-        <button id="topBtn">New Top</button>
-    </div>
-    <div style="right:auto" , class="form-group">
-        @Html.LabelFor(m => m.Side)
-        @Html.DropDownListFor(m => m.Side, new SelectList(Model.Side, "SideId", "SideName"), new { @class = "form-control" })
-        <!-- Trigger/Open The Modal -->
-        <button id="SideBtn">New Side</button>
-    </div>
-    <div style="right:auto" , class="form-group">
-        @Html.LabelFor(m => m.Neck)
-        @Html.DropDownListFor(m => m.Neck, new SelectList(Model.Neck, "NeckId", "NeckName"), new { @class = "form-control" })
-        <!-- Trigger/Open The Modal -->
-        <button id="NeckBtn">New Neck</button>
-    </div>
-    <div style="right:auto" , class="form-group">
-        @Html.LabelFor(m => m.Fing)
-        @Html.DropDownListFor(m => m.Fing, new SelectList(Model.Fing, "FingId", "FingName"), new { @class = "form-control" })
-        <!-- Trigger/Open The Modal -->
-        <button id="FingBtn">New Fing</button>
-    </div>
-    <div style="left:auto" , class="form-group">
-        @Html.Label("MSRP:")
-        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
-    </div>
-    <div style="left:auto" , class="form-group">
-        @Html.Label("Warranty:")
-        @Html.DropDownListFor(m => m.Insurance, new SelectList(Model.Insurance, "WarrId", "WarrLength"), new { @class = "form-control" })
-    </div>
-    <div style="left:auto" , class="form-group">
-        @Html.Label("Electric equiped:")
-        @Html.RadioButtonFor(m=>m.Electricfied, new {@class = "form-control"}) yes
-        @Html.RadioButtonFor(m=>m.Electricfied, new { @class = "form-control" }) no
-    </div>
+    @*</section>
+    <section>*@
+        <div style="left:auto" , class="form-group">
+            @Html.LabelFor(m => m.Top)
+            @Html.DropDownListFor(m => m.Top, new SelectList(Model.Top, "TopId", "TopName"), new { @class = "form-control" })
+            <!-- Trigger/Open The Modal -->
+            <button id="topBtn">New Top</button>
+        </div>
+        <div style="right:auto" , class="form-group">
+            @Html.LabelFor(m => m.Side)
+            @Html.DropDownListFor(m => m.Side, new SelectList(Model.Side, "SideId", "SideName"), new { @class = "form-control" })
+            <!-- Trigger/Open The Modal -->
+            <button id="SideBtn">New Side</button>
+        </div>
+        <div style="right:auto" , class="form-group">
+            @Html.LabelFor(m => m.Neck)
+            @Html.DropDownListFor(m => m.Neck, new SelectList(Model.Neck, "NeckId", "NeckName"), new { @class = "form-control" })
+            <!-- Trigger/Open The Modal -->
+            <button id="NeckBtn">New Neck</button>
+        </div>
+        <div style="right:auto" , class="form-group">
+            @Html.LabelFor(m => m.Fing)
+            @Html.DropDownListFor(m => m.Fing, new SelectList(Model.Fing, "FingId", "FingName"), new { @class = "form-control" })
+            <!-- Trigger/Open The Modal -->
+            <button id="FingBtn">New Fing</button>
+        </div>
+        <div style="left:auto" , class="form-group">
+            @Html.Label("MSRP:")
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        </div>
+        <div style="left:auto" , class="form-group">
+            @Html.Label("Warranty:")
+            @Html.DropDownListFor(m => m.Insurance, new SelectList(Model.Insurance, "WarrId", "WarrLength"), new { @class = "form-control" })
+        </div>
+        <div style="left:auto" , class="form-group">
+            @Html.Label("Electric equiped:")
+            @Html.RadioButtonFor(m => m.Electricfied, new { @class = "form-control" }) yes
+            @Html.RadioButtonFor(m => m.Electricfied, new { @class = "form-control" }) no
+        </div>
+    @*</section>*@
 </div>
+
 </body>
 </html>
 
