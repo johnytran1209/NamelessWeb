@@ -299,6 +299,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
     <Compile Include="Views\ViewModels\TypeViewModel.cs" />
+    <Compile Include="Views\ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NamelessWeb.mdf" />

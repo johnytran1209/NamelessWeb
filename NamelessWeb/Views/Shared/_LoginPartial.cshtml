@@ -1,68 +1,156 @@
 ﻿@using Microsoft.AspNet.Identity
+@using NamelessWeb.Models
+@model NamelessWeb.Views.ViewModels.UserViewModel
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
     <ul class="nav navbar-nav navbar-right">
-        <li style="padding-top:20px;"><button class="btn" style=" padding-right:20px">
-    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-</button></li>
+        <li style="padding-top:20px;">
+            <button class="btn" style=" padding-right:20px">
+             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </button>
+        </li>
         <li style="padding-top:20px;"><button class="btn" style=";padding-right:20px;"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></button></li>
     </ul>
     }
 }
 else
-{
+{   
     <ul class="nav navbar-nav navbar-right" style="padding-top: 20px">
-        <li><button class="btn" style="padding-right:20px;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </button ></li >
+        <li>
+            <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+                 <div id="id02" class="modal">
+                      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
+                          <section id="RegisterForm">
+                               @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "modal-content animate", role = "form" }))
+                               {
+                                   <div class="container">
+                                       @Html.AntiForgeryToken()
+                                       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                       <h4>Create a new account.</h4>
+                                       <hr />
+                                       <div class="form-group" >
+                                           @Html.LabelFor(m => m.RegisterViewModel.Email, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.Email, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.ConfirmEmail, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.ConfirmEmail, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.Password, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.PhoneNumber, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.PhoneNumber, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.ConfirmPhoneNumber, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.ConfirmPhoneNumber, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.Address, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.Address, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.Question, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.Question, new { @class = "form-control" })
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           @Html.LabelFor(m => m.RegisterViewModel.Answer, new { @class = "col-md-2 control-label" })
+                                           <div class="col-md-10">
+                                               @Html.TextBoxFor(m => m.RegisterViewModel.Answer, new { @class = "form-control" })
+                                           </div>
+                                       </div>                               
+                                        <div class="form-group">                                  
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                                                <input type="submit" class="btn btn-default" value="Register" style="color:black;width: auto;padding: 10px 18px; background-color: lawngreen;" />
+                                            </div>
+                                        </div>
+                                   </div>      
+                                }
+                    </section>
+            </div>
+
+            <script>
+                // Get the modal
+                var modal = document.getElementById('id02');
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+        </li >
         <li>
             <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
             <div id="id01" class="modal">
-                <section id="loginForm">
-                    @using NamelessWeb.Models
-                    @model LoginViewModel
+                <section id="loginForm">            
                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "modal-content animate", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                @Html.LabelFor(m => m.LoginViewModel.Email, new { @class = "col-md-2 control-label" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(m => m.LoginViewModel.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.LoginViewModel.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                                                <div class="form-group">
-                                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                                                    <div class="col-md-10">
-                                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-offset-2 col-md-10">
-                                                        <div class="checkbox">
-                                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                                            @Html.LabelFor(m => m.RememberMe)
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-offset-2 col-md-10">
-                                                        <input type="submit" value="Log in" class="btn btn-default" />
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LoginViewModel.Password, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.LoginViewModel.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.LoginViewModel.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <div class="checkbox">
+                                        @Html.CheckBoxFor(m => m.LoginViewModel.RememberMe)
+                                        @Html.LabelFor(m => m.LoginViewModel.RememberMe)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Log in" class="btn btn-default" />
 
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    @Html.ActionLink("Register as a new user", "Register")
-                                                </p>
-                                                @* Enable this once you have account confirmation enabled for password reset functionality
-                                    <p>
-                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                    </p>*@
+                                </div>
+                            </div>
+                            <p>
+                                @Html.ActionLink("Register as a new user", "Register")
+                            </p>
+                                        @* Enable this once you have account confirmation enabled for password reset functionality
+                            <p>
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                            </p>*@
                         }
                 </section>
             </div>
@@ -80,3 +168,7 @@ else
 </li>
     </ul>
 }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

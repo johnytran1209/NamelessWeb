@@ -51,7 +51,11 @@ namespace NamelessWeb.Controllers
                 _userManager = value;
             }
         }
-
+        public ActionResult Details()
+        {
+            var tuple = new Tuple<LoginViewModel, RegisterViewModel>(new LoginViewModel(), new RegisterViewModel());
+            return View(tuple);
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
