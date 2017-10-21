@@ -9,8 +9,8 @@ namespace NamelessWeb.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Guitar.Guitar> Guitars { get; set; }
-        public DbSet<Guitar.GuitarSpec> GuitarSpecs { get; set; }
+        public DbSet<Guitar.Guitars> Guitars { get; set; }
+        public DbSet<Guitar.GuitarSpecs> GuitarSpecs { get; set; }
         public DbSet<Guitar.Wood.GoBack> GoBack { get; set; }
         public DbSet<Guitar.Wood.GoTop> GoTop { get; set; }
         public DbSet<Guitar.Wood.GoSide> GoSide { get; set; }
@@ -26,7 +26,7 @@ namespace NamelessWeb.Models
         public DbSet<Bills.Imports.ImpBillDetail> ImpBillDetail { get; set; }
         public DbSet<WebSystem.GuitarRating> GuitarRating { get; set; }
         public DbSet<WebSystem.Note> Note { get; set; }
-        public DbSet<Guitar.GuitarType> GuitarType { get; set; }
+        public DbSet<Guitar.GuitarTypes> GuitarType { get; set; }
         public DbSet<Guitar.Warranties> Warranty { get; set; } 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
