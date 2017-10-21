@@ -49,10 +49,10 @@ namespace NamelessWeb.Controllers
                 viewModel.Insurances = _DbContext.Warranty.ToList();
                 //return View(viewModel);
             }
-            
+            int x = viewModel.GuitarId;
             var guitar = new Guitars
             {
-                GuitarId = viewModel.GuitarId,
+                GuitarId = x,
                 MDL = viewModel.GuitarModel,
                 BrandId = viewModel.BrandId,
                 TypeId = viewModel.TypeId,
@@ -61,11 +61,9 @@ namespace NamelessWeb.Controllers
                 WarrId = viewModel.Insurance,
                 ImageLink = viewModel.ImageLink
             };
-            _DbContext.Guitars.Add(guitar);
-            _DbContext.SaveChanges();
             var guitarSpecs = new GuitarSpecs
             {
-                GuitarId = viewModel.GuitarId,
+                GuitarId = x,
                 TopId = viewModel.Top,
                 SideId = viewModel.Side,
                 BackId = viewModel.Back,
@@ -73,7 +71,7 @@ namespace NamelessWeb.Controllers
                 FingId = viewModel.Fing,
                 Descript = viewModel.Description
             };
-            
+            _DbContext.Guitars.Add(guitar);
             _DbContext.GuitarSpecs.Add(guitarSpecs);
             _DbContext.SaveChanges();
             return RedirectToAction("Index","Home");

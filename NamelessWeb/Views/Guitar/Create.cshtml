@@ -78,8 +78,7 @@
         <div class="form-group">
             <div style="left: auto" , class="form-group">
                 @Html.Label("GuitarID:")
-                @Html.TextBoxFor(m => m.GuitarId, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.GuitarId)
+                @Html.LabelFor(m => m.GuitarId, new {@class="form-control"})
             </div>
             @*<section class="indent-1">*@
             <div style="left: auto" , class="form-group">

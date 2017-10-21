@@ -12,7 +12,7 @@ namespace NamelessWeb.Views.ViewModels
     {
 
         //public byte Choice { get; set; }
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GuitarId { get; set; }
         [Required]
         public string GuitarModel { get; set; }

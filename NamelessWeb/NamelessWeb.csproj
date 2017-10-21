@@ -291,14 +291,6 @@
     <Compile Include="Migrations\201710210845587_method id auto gen.Designer.cs">
       <DependentUpon>201710210845587_method id auto gen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710210908234_identity guitarid.cs" />
-    <Compile Include="Migrations\201710210908234_identity guitarid.Designer.cs">
-      <DependentUpon>201710210908234_identity guitarid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710210926244_self typing id.cs" />
-    <Compile Include="Migrations\201710210926244_self typing id.Designer.cs">
-      <DependentUpon>201710210926244_self typing id.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -474,12 +466,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710210845587_method id auto gen.resx">
       <DependentUpon>201710210845587_method id auto gen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710210908234_identity guitarid.resx">
-      <DependentUpon>201710210908234_identity guitarid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710210926244_self typing id.resx">
-      <DependentUpon>201710210926244_self typing id.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
