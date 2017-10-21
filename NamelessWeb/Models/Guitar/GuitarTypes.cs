@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NamelessWeb.Models.Guitar
 {
-    public class GuitarType
+    public class GuitarTypes
     {
         [Key]
         [Required]
