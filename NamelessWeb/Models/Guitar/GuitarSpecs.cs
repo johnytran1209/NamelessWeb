@@ -10,8 +10,6 @@ namespace NamelessWeb.Models.Guitar
     public class GuitarSpecs
     {
         [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GuitarId { get; set; }
         [Required]
         [StringLength(3)]
