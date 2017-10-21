@@ -11,7 +11,6 @@ namespace NamelessWeb.Models.Guitar
     {
         [Key]
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GuitarId { get; set; }
         [Required]
         [StringLength(3)]

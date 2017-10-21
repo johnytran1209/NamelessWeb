@@ -291,6 +291,10 @@
     <Compile Include="Migrations\201710210845587_method id auto gen.Designer.cs">
       <DependentUpon>201710210845587_method id auto gen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710211444157_idid.cs" />
+    <Compile Include="Migrations\201710211444157_idid.Designer.cs">
+      <DependentUpon>201710211444157_idid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -393,6 +397,7 @@
     <Content Include="Views\NewTypes\NewBack.cshtml" />
     <Content Include="Views\NewTypes\NewFing.cshtml" />
     <Content Include="Views\NewTypes\NewSide.cshtml" />
+    <Content Include="Views\Guitar\newitem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Type\" />
@@ -466,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710210845587_method id auto gen.resx">
       <DependentUpon>201710210845587_method id auto gen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211444157_idid.resx">
+      <DependentUpon>201710211444157_idid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

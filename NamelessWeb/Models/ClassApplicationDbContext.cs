@@ -28,6 +28,7 @@ namespace NamelessWeb.Models
         public DbSet<WebSystem.Note> Note { get; set; }
         public DbSet<Guitar.GuitarTypes> GuitarType { get; set; }
         public DbSet<Guitar.Warranties> Warranty { get; set; } 
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
