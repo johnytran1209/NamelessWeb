@@ -26,7 +26,7 @@ namespace NamelessWeb.Models.Guitar
         [Required]
         public int WarrId { get; set; }
         [Required]
-        public byte ELE { get; set; }
+        public bool ELE { get; set; }
         //[Required]
         public string ImageLink { get; set; }
        }

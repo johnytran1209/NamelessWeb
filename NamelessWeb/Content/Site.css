@@ -176,8 +176,6 @@ body {
     .prev, .next, .text {
         font-size: 11px
     }
-<<<<<<< HEAD
-=======
 }
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -307,5 +305,5 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
->>>>>>> nigga_creates
 }
+

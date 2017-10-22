@@ -295,6 +295,10 @@
     <Compile Include="Migrations\201710211444157_idid.Designer.cs">
       <DependentUpon>201710211444157_idid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710221619525_ChangeELE.cs" />
+    <Compile Include="Migrations\201710221619525_ChangeELE.Designer.cs">
+      <DependentUpon>201710221619525_ChangeELE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -401,7 +405,8 @@
     <Content Include="Views\NewTypes\NewBack.cshtml" />
     <Content Include="Views\NewTypes\NewFing.cshtml" />
     <Content Include="Views\NewTypes\NewSide.cshtml" />
-    <Content Include="Views\Guitar\newitem.cshtml" />
+    <Content Include="Views\Guitar\List.cshtml" />
+    <Content Include="Views\Guitar\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Type\" />
@@ -478,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710211444157_idid.resx">
       <DependentUpon>201710211444157_idid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710221619525_ChangeELE.resx">
+      <DependentUpon>201710221619525_ChangeELE.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
