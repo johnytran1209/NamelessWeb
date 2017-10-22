@@ -5,39 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br/>
-<h2>Details</h2>
+<h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
+    </h2>
 
 <div>
-    <h4>Guitars</h4>
+    
     <hr />
-    <img src="@Url.Content("~/Content/Img/slides/" + Model.ImageLink)" style="max-height: 100px">
-    <dl class="dl-horizontal">
+    <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
+    <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
+
         <dt>
-            @Html.DisplayNameFor(model => model.GuitarModel)
+            Body Type:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GuitarModel)
+            @Html.DisplayFor(model => model.TypeName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            Price:
         </dt>
 
         <dd>
@@ -45,68 +31,74 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Insurance)
+            Warranty:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Insurance)
+            @Html.DisplayFor(model => model.InsuranceName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Electricfied)
+            Electrified:
         </dt>
 
         <dd>
             @(Model.Electricfied ? "Yes" : "No")
         </dd>
-
+        <hr />
         <dt>
-            @Html.DisplayNameFor(model => model.Top)
+            Specification
+        </dt>
+        <dd>        
+        </dd>
+        <dt>
+           Top wood:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Top)
+            @Html.DisplayFor(model => model.TopName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Side)
+            Side Wood:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Side)
+            @Html.DisplayFor(model => model.SideName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Back)
+            Back Wood:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Back)
+            @Html.DisplayFor(model => model.BackName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Neck)
+            Neck Wood:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Neck)
+            @Html.DisplayFor(model => model.NeckName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fing)
+            FretBoard:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fing)
+            @Html.DisplayFor(model => model.FingsName)
         </dd>
         
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayTextFor(model => model.Description)
         </dd>
+       
+       
     </dl>
 </div>
 @*<p>

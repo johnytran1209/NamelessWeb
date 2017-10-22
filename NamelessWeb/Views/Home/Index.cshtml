@@ -68,7 +68,7 @@
         }
     </script>
     <hr />
-    <div style="color:aliceblue; font-style:oblique;">Inventory</div>
+    <div style="color:aliceblue; font-size:25px">Inventory</div>
     <hr />
 @*<a style="color:aliceblue">Morris</a>
         <hr />
@@ -82,15 +82,16 @@
                 <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
                     <img src="@Url.Content("~/content/Img/guitar/"+ item.ImageLink)" style="max-width: 200px; max-height: 120px;">
                     @Html.DisplayFor(modelItem=>item.MDL)
-                    @Html.DisplayFor(modelItem => item.MSRP)
+                    
+
                 </a>
             </li>
         }
     </ul>
 
     <hr />
-    <div style="color:aliceblue;">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
-    <div style="color:aliceblue";>Phone: 01228669537-0902840270</div>
+    <div style="color:aliceblue; font-size: 25px;">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
+    <div style="color:aliceblue; font-size: 25px;";>Phone: 01228669537-0902840270</div>
     <div id="map" style="width:100%;height:200px"></div>
 
     <script>
