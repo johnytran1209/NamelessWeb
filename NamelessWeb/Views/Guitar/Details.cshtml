@@ -1,0 +1,115 @@
+﻿@model NamelessWeb.Views.ViewModels.GuitarViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<h2>Details</h2>
+
+<div>
+    <h4>Guitars</h4>
+    <hr />
+    <img src="@Url.Content("~/Content/Img/slides/" + Model.ImageLink)" style="max-height: 100px">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GuitarModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuitarModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Insurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Electricfied)
+        </dt>
+
+        <dd>
+            @(Model.Electricfied ? "Yes" : "No")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Top)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Top)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Side)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Side)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Back)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Back)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Neck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Neck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fing)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GuitarId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
