@@ -3,6 +3,7 @@ using NamelessWeb.Models.Guitar;
 using NamelessWeb.Views.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +15,7 @@ namespace NamelessWeb.Controllers
     public class GuitarController : Controller
     {
         SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        DataTable dt2 = new DataTable();
         private ApplicationDbContext _DbContext;
         public GuitarController()
         {
@@ -125,13 +127,17 @@ namespace NamelessWeb.Controllers
 
         public ActionResult Details(int id)
         {
+            a.Open();
             var guitar = _DbContext.Guitars.Single(c=>c.GuitarId==id);
             var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+            SqlCommand x = new SqlCommand("select BrandName from dbo.Brands where BrandId='"+guitar.BrandId+"'",a);
+            SqlDataReader b = x.ExecuteReader();
+            dt2.Load(b);
             var viewModel = new GuitarViewModel
             {
                 GuitarModel = guitar.MDL,
                 BrandId = guitar.BrandId,
-                //BrandName =  sql,
+                BrandName =  dt2.Rows[0][0].ToString(),
                 TypeId = guitar.TypeId,
                 Price = guitar.MSRP,
                 Electricfied = guitar.ELE,
@@ -144,6 +150,7 @@ namespace NamelessWeb.Controllers
                 Fing = guitarspec.FingId,
                 Description = guitarspec.Descript
             };
+            a.Close();
             return View("Details",viewModel);
         }
     }
