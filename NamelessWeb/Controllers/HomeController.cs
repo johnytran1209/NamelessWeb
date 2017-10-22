@@ -18,7 +18,7 @@ namespace NamelessWeb.Controllers
 
         public ActionResult Index()
         {
-            return View(/*_DbContext.Guitars.ToList()*/);
+            return View(_DbContext.Guitars.ToList());
         }
 
         public ActionResult About()

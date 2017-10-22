@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
 
 namespace NamelessWeb.Views.ViewModels
 {
     public class GuitarViewModel
     {
-
-        //public byte Choice { get; set; }
+        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         [Required]
         public int GuitarId { get; set; }
         [Required]

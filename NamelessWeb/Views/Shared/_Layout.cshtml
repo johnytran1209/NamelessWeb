@@ -21,7 +21,7 @@
                     <div>
                         <ul class="nav navbar-nav" style="padding-top:20px;">
                             <li> <button class="btn" style="padding-right:20px;">@Html.ActionLink("Home", "Index", "Home") </button></li>
-                            <li>
+                            @*<li>
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;" >
                                         Guitar<span class="caret"></span>
@@ -33,10 +33,10 @@
                                         <li>Others</li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>*@
                             <li> <button class="btn" style="padding-right:20px;">@Html.ActionLink("About", "About", "Home")</button></li>
                             <li> <button class="btn"style="padding-right:20px;">@Html.ActionLink("Contact", "Contact", "Home")</button></li>
-                            <li>
+                            @*<li>
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;">
                                         New Types<span class="caret"></span>
@@ -49,7 +49,7 @@
                                         <li>@Html.ActionLink("New Fing", "NewFing", "NewTypes")</li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li>*@
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>

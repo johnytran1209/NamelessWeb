@@ -10,6 +10,7 @@
     ul.products li {
         width: 200px;
         display: inline-block;
+        vertical-align:top;
     }
 </style>
 </head>
@@ -67,20 +68,19 @@
         }
     </script>
     <hr />
-<<<<<<< HEAD
+    <div style="color:aliceblue; font-style:oblique;">Inventory</div>
     <hr />
-=======
 @*<a style="color:aliceblue">Morris</a>
         <hr />
         <a style="color:aliceblue">Yamaha</a>
         <hr />
         <a style="color:aliceblue">Others</a>*@
-    <ul class="products">
+    <ul class="products"> 
         @foreach (var item in Model)
         {
             <li>
-                <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})">
-                    <img src="@Url.Content("~/Content/Img/slides/" + item.ImageLink)" style="max-height: 100px">
+                <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
+                    <img src="@Url.Content("~/content/Img/guitar/"+ item.ImageLink)" style="max-width: 200px; max-height: 120px;">
                     @Html.DisplayFor(modelItem=>item.MDL)
                     @Html.DisplayFor(modelItem => item.MSRP)
                 </a>
@@ -88,10 +88,9 @@
         }
     </ul>
 
->>>>>>> 855d543a63518986f57dadd5b99fa20fcd84871b
     <hr />
-    <div style="color:aliceblue">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
-    <div style="color:aliceblue">Phone: 01228669537-0902840270</div>
+    <div style="color:aliceblue;">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
+    <div style="color:aliceblue";>Phone: 01228669537-0902840270</div>
     <div id="map" style="width:100%;height:200px"></div>
 
     <script>
