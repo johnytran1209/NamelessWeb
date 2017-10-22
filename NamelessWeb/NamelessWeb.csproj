@@ -330,6 +330,10 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\14322177_1827252967505330_4313197727578070295_n.jpg" />
+    <Content Include="Content\Img\14324639_1827253130838647_1699345684361355571_o.jpg" />
+    <Content Include="Content\Img\body\16403148_275572682859697_4939494799917269324_o.jpg" />
+    <Content Include="Content\Img\body\16403324_275573829526249_1117596780496553582_o.jpg" />
     <Content Include="Content\Img\nameless brand.png" />
     <Content Include="Content\Img\slides\fg151.jpg" />
     <Content Include="Content\Img\slides\fg200j.jpg" />

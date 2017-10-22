@@ -1,11 +1,14 @@
-﻿header{
-    padding:20px;
+﻿header {
+
 }
 body {
+    background-image: url('Img/body/16403148_275572682859697_4939494799917269324_o.jpg');
+    background-size:100%;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 .navbar-inverse {
+    background-image: url('Img/body/16403324_275573829526249_1117596780496553582_o.jpg');
     background-color: gray;
     border-color: #080808;
 }
@@ -22,6 +25,7 @@ body {
 .dl-horizontal dt {
     white-space: normal;
 }
+
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -142,9 +146,9 @@ body {
 /* Fading animation */
 .fade {
     -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 3.0s;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 3.0s;
 }
 
 @-webkit-keyframes fade {
