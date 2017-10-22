@@ -116,5 +116,35 @@ namespace NamelessWeb.Controllers
 
             return RedirectToAction("Index", "Home");          
         }
+
+        [Authorize]
+        public ActionResult List()
+        {
+            return View(_DbContext.Guitars.ToList());
+        }
+
+        public ActionResult Details(int id)
+        {
+            var guitar = _DbContext.Guitars.Single(c=>c.GuitarId==id);
+            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+            var viewModel = new GuitarViewModel
+            {
+                GuitarModel = guitar.MDL,
+                BrandId = guitar.BrandId,
+                //BrandName =  sql,
+                TypeId = guitar.TypeId,
+                Price = guitar.MSRP,
+                Electricfied = guitar.ELE,
+                Insurance = guitar.WarrId,
+                ImageLink = guitar.ImageLink,
+                Top = guitarspec.TopId,
+                Side = guitarspec.SideId,
+                Back = guitarspec.BackId,
+                Neck = guitarspec.NeckId,
+                Fing = guitarspec.FingId,
+                Description = guitarspec.Descript
+            };
+            return View("Details",viewModel);
+        }
     }
 }

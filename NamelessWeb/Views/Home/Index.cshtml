@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<NamelessWeb.Models.Guitar.Guitars>
+@{
     ViewBag.Title = "Home Page";
 }
 <!DOCTYPE html>
@@ -6,7 +7,10 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
+    ul.products li {
+        width: 200px;
+        display: inline-block;
+    }
 </style>
 </head>
 <body>
@@ -63,11 +67,24 @@
         }
     </script>
     <hr />
-    <a style="color:aliceblue">Morris</a>
-    <hr />
-    <a style="color:aliceblue">Yamaha</a>
-    <hr />
-    <a style="color:aliceblue">Others</a>
+@*<a style="color:aliceblue">Morris</a>
+        <hr />
+        <a style="color:aliceblue">Yamaha</a>
+        <hr />
+        <a style="color:aliceblue">Others</a>*@
+    <ul class="products">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})">
+                    <img src="@Url.Content("~/Content/Img/slides/" + item.ImageLink)" style="max-height: 100px">
+                    @Html.DisplayFor(modelItem=>item.MDL)
+                    @Html.DisplayFor(modelItem => item.MSRP)
+                </a>
+            </li>
+        }
+    </ul>
+
     <hr />
     <div style="color:aliceblue">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
     <div style="color:aliceblue">Phone: 01228669537-0902840270</div>
@@ -78,7 +95,7 @@
         function myMap() {
             var myCenter = new google.maps.LatLng(10.783218, 106.680901);
             var mapCanvas = document.getElementById("map");
-            var mapOptions = { center: myCenter, zoom: 15};
+            var mapOptions = { center: myCenter, zoom: 15 };
             var map = new google.maps.Map(mapCanvas, mapOptions);
             var marker = new google.maps.Marker({ position: myCenter });
             marker.setMap(map);
