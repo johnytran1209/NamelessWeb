@@ -311,6 +311,14 @@
     <Compile Include="Migrations\201710231318053_AddAvailable.Designer.cs">
       <DependentUpon>201710231318053_AddAvailable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710231632426_AddName.cs" />
+    <Compile Include="Migrations\201710231632426_AddName.Designer.cs">
+      <DependentUpon>201710231632426_AddName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710231645110_AddAddress.cs" />
+    <Compile Include="Migrations\201710231645110_AddAddress.Designer.cs">
+      <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -518,6 +526,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710231318053_AddAvailable.resx">
       <DependentUpon>201710231318053_AddAvailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231632426_AddName.resx">
+      <DependentUpon>201710231632426_AddName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231645110_AddAddress.resx">
+      <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

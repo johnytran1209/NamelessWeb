@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,7 +16,6 @@ namespace NamelessWeb.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public ManageController()
         {
         }
@@ -333,7 +333,22 @@ namespace NamelessWeb.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ActionResult ViewProfile(string id)
+        {
+            //var user = _dbContext.AspNetUsers.Single(u => u.Email == id);
+            //var User = new AspNetUser()
+            //{
+            //    Name = user.Name,
+            //    Email = user.Email,
+            //    PhoneNumber = user.PhoneNumber,
+            //    Address = user.Address,
+            //    Question = user.Question,
+            //    Answer = user.Answer
+            //};
+            return View();
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

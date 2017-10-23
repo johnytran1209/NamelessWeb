@@ -17,7 +17,6 @@ namespace NamelessWeb.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public AccountController()
         {
         }
@@ -152,7 +151,7 @@ namespace NamelessWeb.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Question=model.Question, Answer=model.Answer};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, Question=model.Question, Answer=model.Answer,FullName = model.Name,Address = model.Address};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

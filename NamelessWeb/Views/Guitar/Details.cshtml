@@ -7,114 +7,111 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
-
+<head>
+    <%: Html.HiddenFor(model => model.Availability) %>
+</head>
 <br/>
-<<<<<<< HEAD
 
     <h2>Details</h2>
 @using (Html.BeginForm())
 {
     <div id="detailsForm" >
-        <h4>Guitars</h4>
-        <hr />
-        <img src="@Url.Content("~/Content/Img/slides/" + Model.ImageLink)" style="max-height: 100px">
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.GuitarModel)
-            </dt>
+        <h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
+        </h2>
+        
+        <div>
+    
+            <hr />
+            <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
+            <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
 
-            <dd>
-                @Html.DisplayFor(model => model.GuitarModel)
-            </dd>
+                <dt>
+                    Body Type:
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.BrandId)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TypeName)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.BrandName)
-            </dd>
+                <dt>
+                    Price:
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TypeId)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.TypeId)
-            </dd>
+                <dt>
+                    Warranty:
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.InsuranceName)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+                <dt>
+                    Electrified:
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Insurance)
-            </dt>
+                <dd>
+                    @(Model.Electricfied ? "Yes" : "No")
+                </dd>
+                <hr />
+                <dt>
+                    Specification
+                </dt>
+                <dd>        
+                </dd>
+                <dt>
+                    Top wood:
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Insurance)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.TopName)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Electricfied)
-            </dt>
+                <dt>
+                    Side Wood:
+                </dt>
 
-            <dd>
-                @(Model.Electricfied ? "Yes" : "No")
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.SideName)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Top)
-            </dt>
+                <dt>
+                    Back Wood:
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Top)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.BackName)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Side)
-            </dt>
+                <dt>
+                    Neck Wood:
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Side)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NeckName)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Back)
-            </dt>
+                <dt>
+                    FretBoard:
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Back)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Neck)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Neck)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Fing)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Fing)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.FingsName)
+                </dd>
+        
+                <dt>
+                    Description
+                </dt>
+                <dd>
+                    @Html.DisplayTextFor(model => model.Description)
+                </dd>
+       
+       
+            </dl>
+        </div>
         
         <!-- Trigger the modal with a button -->
         <button type="submit" value="Submit" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
@@ -159,104 +156,7 @@
         </div>
     </div>*@
 }
-=======
-<h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
-    </h2>
 
-<div>
-    
-    <hr />
-    <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
-    <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
-
-        <dt>
-            Body Type:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TypeName)
-        </dd>
-
-        <dt>
-            Price:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            Warranty:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InsuranceName)
-        </dd>
-
-        <dt>
-            Electrified:
-        </dt>
-
-        <dd>
-            @(Model.Electricfied ? "Yes" : "No")
-        </dd>
-        <hr />
-        <dt>
-            Specification
-        </dt>
-        <dd>        
-        </dd>
-        <dt>
-           Top wood:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TopName)
-        </dd>
-
-        <dt>
-            Side Wood:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SideName)
-        </dd>
-
-        <dt>
-            Back Wood:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BackName)
-        </dd>
-
-        <dt>
-            Neck Wood:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NeckName)
-        </dd>
-
-        <dt>
-            FretBoard:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FingsName)
-        </dd>
-        
-        <dt>
-            Description
-        </dt>
-        <dd>
-            @Html.DisplayTextFor(model => model.Description)
-        </dd>
-       
-       
-    </dl>
-</div>
->>>>>>> a281543a832c3be96e1b2a1dbe9e09493e4c9553
 @*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.GuitarId }) |
     @Html.ActionLink("Back to List", "Index")
@@ -276,11 +176,11 @@
     //        })
     //    })
     //})
-    //var x =
-    //if () {
+    var x = document.getElementById('Availability').value;
+    var y;
+    if (x==0) {
           
-    //}
-    //openDatabase()
+    }
 </script>
 
 @section scripts
