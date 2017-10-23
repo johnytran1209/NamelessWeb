@@ -131,18 +131,20 @@ namespace NamelessWeb.Controllers
             a.Open();
             var guitar = _DbContext.Guitars.Single(c=>c.GuitarId==id);
             var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-            SqlCommand x = new SqlCommand("select BrandName from dbo.Brands where BrandId='"+guitar.BrandId+"'",a);
+            SqlCommand x = new SqlCommand("" +
+                "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
+                "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
+                "where G.BrandId='"+guitar.BrandId+ "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
             SqlDataReader b = x.ExecuteReader();
             dt2.Load(b);
             var viewModel = new GuitarViewModel
             {
                 GuitarModel = guitar.MDL,
-                BrandId = guitar.BrandId,
-                BrandName =  dt2.Rows[0][0].ToString(),
-                TypeId = guitar.TypeId,
+                BrandName = dt2.Rows[0][0].ToString(),
+                TypeName = dt2.Rows[0][1].ToString(),
                 Price = guitar.MSRP,
                 Electricfied = guitar.ELE,
-                Insurance = guitar.WarrId,
+                InsuranceName = dt2.Rows[0][7].ToString(),
                 ImageLink = guitar.ImageLink,
                 Top = guitarspec.TopId,
                 Side = guitarspec.SideId,
@@ -151,6 +153,12 @@ namespace NamelessWeb.Controllers
                 Fing = guitarspec.FingId,
                 Description = guitarspec.Descript,
                 Availability = guitar.Availability
+                TopName = dt2.Rows[0][2].ToString(),
+                SideName= dt2.Rows[0][3].ToString(),
+                BackName= dt2.Rows[0][4].ToString(),
+                NeckName= dt2.Rows[0][5].ToString(),
+                FingsName= dt2.Rows[0][6].ToString(),
+                Description = guitarspec.Descript
             };
             a.Close();
             return View("Details",viewModel);

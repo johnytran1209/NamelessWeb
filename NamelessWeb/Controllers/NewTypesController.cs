@@ -6,11 +6,17 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using NamelessWeb.Models;
 using NamelessWeb.Models.Guitar.Wood;
+using NamelessWeb.Models.Guitar;
+using NamelessWeb.Models.Company;
+using NamelessWeb.Views.ViewModels;
+using System.Data.SqlClient;
 
 namespace NamelessWeb.Controllers
 {
     public class NewTypesController : Controller
     {
+        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+
         private readonly ApplicationDbContext _dbContext;
 
         public NewTypesController()
@@ -23,7 +29,25 @@ namespace NamelessWeb.Controllers
         {
             return View();
         }
+        [Authorize]
+        public ActionResult NewType()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [Authorize]
+        public ActionResult NewType(GuitarTypes viewModel)
+        {
+            var type = new GuitarTypes
+            {
+                TypeId = viewModel.TypeId,
+                TypeName = viewModel.TypeName
+            };
+            _dbContext.GuitarType.Add(type);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
         [Authorize]
         public ActionResult NewTop()
         {
@@ -125,6 +149,51 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoFing.Add(fing);
             _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public ActionResult NewSupplier()
+        {
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult NewSupplier (Supplier viewModel )
+        {
+            var supp = new Supplier
+            {
+                SuppId = viewModel.SuppId,
+                SuppName = viewModel.SuppName,
+                SuppEmail = viewModel.SuppEmail,
+                SuppPhone = viewModel.SuppPhone,
+                SuppWeb = viewModel.SuppWeb,
+                SuppAddr = viewModel.SuppAddr
+            };
+            _dbContext.Supplier.Add(supp);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public ActionResult NewBrand()
+        {
+            var viewModel = new SupplierViewModel
+            {
+                SuppIds = _dbContext.Supplier.ToList()
+            };
+            return View(viewModel);
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult NewBrand(SupplierViewModel viewModel)
+        {
+            a.Open();
+            string y = string.Format("insert into dbo.Brands values('{0}','{1}','{2}')",
+                viewModel.BrandId,
+                viewModel.BrandName.ToString(),
+                viewModel.SupplierId.ToString());
+            SqlCommand x = new SqlCommand(y, a);
+            x.ExecuteNonQuery();
+            a.Close();
             return RedirectToAction("Index", "Home");
         }
     }

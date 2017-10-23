@@ -339,6 +339,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
+    <Compile Include="Views\ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NamelessWeb.mdf" />
@@ -428,10 +429,11 @@
     <Content Include="Views\NewTypes\NewSide.cshtml" />
     <Content Include="Views\Guitar\List.cshtml" />
     <Content Include="Views\Guitar\Details.cshtml" />
+    <Content Include="Views\NewTypes\NewSupplier.cshtml" />
+    <Content Include="Views\NewTypes\NewBrand.cshtml" />
+    <Content Include="Views\NewTypes\NewType.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Type\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
