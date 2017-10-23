@@ -146,6 +146,7 @@ namespace NamelessWeb.Controllers
                 Electricfied = guitar.ELE,
                 InsuranceName = dt2.Rows[0][7].ToString(),
                 ImageLink = guitar.ImageLink,
+<<<<<<< HEAD
                 Top = guitarspec.TopId,
                 Side = guitarspec.SideId,
                 Back = guitarspec.BackId,
@@ -153,12 +154,14 @@ namespace NamelessWeb.Controllers
                 Fing = guitarspec.FingId,
                 Description = guitarspec.Descript,
                 Availability = guitar.Availability
+=======
                 TopName = dt2.Rows[0][2].ToString(),
                 SideName= dt2.Rows[0][3].ToString(),
                 BackName= dt2.Rows[0][4].ToString(),
                 NeckName= dt2.Rows[0][5].ToString(),
                 FingsName= dt2.Rows[0][6].ToString(),
                 Description = guitarspec.Descript
+>>>>>>> a281543a832c3be96e1b2a1dbe9e09493e4c9553
             };
             a.Close();
             return View("Details",viewModel);
