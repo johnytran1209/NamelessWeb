@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace NamelessWeb.Views.ViewModels
     {
         SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GuitarId { get; set; }
         [Required]
         public string GuitarModel { get; set; }

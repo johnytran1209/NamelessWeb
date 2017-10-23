@@ -1,0 +1,43 @@
+﻿@model NamelessWeb.Models.Company.Supplier
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Supplier</h2>
+<body>
+    @using (Html.BeginForm("NewSupplier", "NewTypes"))
+    {
+        <div class="form-group">
+            <div style="left: auto" , class="form-group">
+                @Html.Label("ID:")
+                @Html.TextBoxFor(m => m.SuppId, new { @class = "form-control" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Name:")
+                @Html.TextBoxFor(m => m.SuppName, new { @class = "form-control" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Email:")
+                @Html.TextBoxFor(m => m.SuppEmail, new { @class = "form-control" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Phone Number:")
+                @Html.TextBoxFor(m => m.SuppPhone, new { @class = "form-control" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Web:")
+                @Html.TextBoxFor(m => m.SuppWeb, new { @class = "form-control" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Address:")
+                @Html.TextBoxFor(m => m.SuppAddr, new { @class = "form-control" })
+            </div>
+            <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        </div>
+    }
+</body>
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval") ;
+}
