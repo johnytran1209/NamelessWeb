@@ -299,6 +299,18 @@
     <Compile Include="Migrations\201710221619525_ChangeELE.Designer.cs">
       <DependentUpon>201710221619525_ChangeELE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710222110218_AddReservation.cs" />
+    <Compile Include="Migrations\201710222110218_AddReservation.Designer.cs">
+      <DependentUpon>201710222110218_AddReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710230929286_ChangeKeyReserve.cs" />
+    <Compile Include="Migrations\201710230929286_ChangeKeyReserve.Designer.cs">
+      <DependentUpon>201710230929286_ChangeKeyReserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710231318053_AddAvailable.cs" />
+    <Compile Include="Migrations\201710231318053_AddAvailable.Designer.cs">
+      <DependentUpon>201710231318053_AddAvailable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -321,6 +333,7 @@
     <Compile Include="Models\Guitar\Wood\GoSide.cs" />
     <Compile Include="Models\Guitar\Wood\GoTop.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Reservations.cs" />
     <Compile Include="Models\WebSystem\GuitarRating.cs" />
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -494,6 +507,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710221619525_ChangeELE.resx">
       <DependentUpon>201710221619525_ChangeELE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710222110218_AddReservation.resx">
+      <DependentUpon>201710222110218_AddReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710230929286_ChangeKeyReserve.resx">
+      <DependentUpon>201710230929286_ChangeKeyReserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231318053_AddAvailable.resx">
+      <DependentUpon>201710231318053_AddAvailable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

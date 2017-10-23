@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -53,5 +54,7 @@ namespace NamelessWeb.Views.ViewModels
         public bool Electricfied { get; set; }
         public string Description { get; set; }
         public string ImageLink { get; set; }
+        [Required]
+        public byte Availability { get; set; }
     }
 }

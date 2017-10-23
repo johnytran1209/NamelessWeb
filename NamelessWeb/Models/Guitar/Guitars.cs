@@ -29,5 +29,7 @@ namespace NamelessWeb.Models.Guitar
         public bool ELE { get; set; }
         //[Required]
         public string ImageLink { get; set; }
+        [Required]
+        public byte Availability { get; set; }
        }
 }

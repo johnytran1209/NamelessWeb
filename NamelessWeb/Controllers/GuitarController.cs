@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
+using Microsoft.AspNet.Identity;
 
 
 namespace NamelessWeb.Controllers
@@ -47,7 +48,7 @@ namespace NamelessWeb.Controllers
             try
             {
                 a.Open();
-                string y = string.Format("insert into dbo.Guitars values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                string y = string.Format("insert into dbo.Guitars values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','0')",
                     viewModel.GuitarId,
                     viewModel.GuitarModel.ToString(),
                     viewModel.BrandId.ToString(),
@@ -148,10 +149,37 @@ namespace NamelessWeb.Controllers
                 Back = guitarspec.BackId,
                 Neck = guitarspec.NeckId,
                 Fing = guitarspec.FingId,
-                Description = guitarspec.Descript
+                Description = guitarspec.Descript,
+                Availability = guitar.Availability
             };
             a.Close();
             return View("Details",viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Details(GuitarViewModel viewModel)
+        {
+            var reserved = _DbContext.Reservation.Single(c => c.GuitarId == viewModel.GuitarId);
+            if (reserved == null)
+            {
+                try
+                {
+                    a.Open();
+                    string z = string.Format("insert into dbo.Reservations values('{0}','{1}'",
+                        User.Identity.GetUserId(),
+                        viewModel.GuitarId);
+                    SqlCommand u = new SqlCommand(z, a);
+                    u.ExecuteNonQuery();
+                    a.Close();
+                }
+                catch (Exception)
+                {
+                    return View("Details", viewModel);
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            return View("Details", viewModel);
         }
     }
 }

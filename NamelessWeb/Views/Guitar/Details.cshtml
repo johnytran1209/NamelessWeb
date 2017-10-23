@@ -4,112 +4,187 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
 <br/>
-<h2>Details</h2>
 
-<div>
-    <h4>Guitars</h4>
-    <hr />
-    <img src="@Url.Content("~/Content/Img/slides/" + Model.ImageLink)" style="max-height: 100px">
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.GuitarModel)
-        </dt>
+    <h2>Details</h2>
+@using (Html.BeginForm())
+{
+    <div id="detailsForm" >
+        <h4>Guitars</h4>
+        <hr />
+        <img src="@Url.Content("~/Content/Img/slides/" + Model.ImageLink)" style="max-height: 100px">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.GuitarModel)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GuitarModel)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.GuitarModel)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.BrandId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BrandName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TypeId)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Insurance)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Insurance)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Insurance)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Insurance)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Electricfied)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Electricfied)
+            </dt>
 
-        <dd>
-            @(Model.Electricfied ? "Yes" : "No")
-        </dd>
+            <dd>
+                @(Model.Electricfied ? "Yes" : "No")
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Top)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Top)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Top)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Top)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Side)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Side)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Side)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Side)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Back)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Back)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Back)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Back)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Neck)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Neck)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Neck)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Neck)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fing)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Fing)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fing)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Fing)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
         
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        <!-- Trigger the modal with a button -->
+        <button type="submit" value="Submit" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-</div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Order Successful</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        @*<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Order</a>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3 class="modal-title">Oder</h3>
+
+                    </div>
+                    <div class="modal-body">
+                        Order Success
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" value="Submit" class="btn btn-success" data-dismiss="modal">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+}
 @*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.GuitarId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>*@
+
+<script>
+    //$(document).ready(function() {
+    //    $("#btnSubmit").click(function() {
+    //        var myformData = $("#detailsForm").serialize();
+    //        $.ajax({
+    //            type: "POST",
+    //            url:"/Guitar/Details",
+    //            data: myformData,
+    //            success: function() {
+    //                $("#myModal").modal("hide");
+    //            }
+    //        })
+    //    })
+    //})
+    //var x =
+    //if () {
+          
+    //}
+    //openDatabase()
+</script>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
+}
