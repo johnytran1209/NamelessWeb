@@ -11,10 +11,7 @@ namespace NamelessWeb.Views.ViewModels
 {
     public class GuitarViewModel
     {
-        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-
-        public int Id { get; set; }
-
+        //SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GuitarId { get; set; }
@@ -60,14 +57,5 @@ namespace NamelessWeb.Views.ViewModels
         public string ImageLink { get; set; }
         [Required]
         public byte Availability { get; set; }
-
-        public string Heading { get; set; }
-        public string Action
-        {
-            get
-            {
-                return (Id != null) ? "Update" : "Create";
-            }
-        }
     }
 }

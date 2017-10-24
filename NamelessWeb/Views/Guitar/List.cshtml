@@ -4,13 +4,17 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2 style="color:aliceblue">List</h2>
+<style>
+    .hyper {
+        color: darkblue;
+    }
+</style>
+<h2>List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table" style="color:aliceblue">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MDL)
@@ -60,12 +64,9 @@
             <img src="@Url.Content("~/Content/Img/guitar/"+item.ImageLink)" style="max-height: 100px"/>
         </td>
         <td>
-            <div class="action" style="color:aliceblue">
-                <a href="@Url.Action("Edit", "Guitar", new { id=item.GuitarId })">Edit</a> |
-            </div>
-            
-            @Html.ActionLink("Details", "Details", new { id=item.GuitarId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GuitarId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.GuitarId },new { @class="hyper"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.GuitarId }, new { @class = "hyper" }) | 
+            @Html.ActionLink("Delete", "Delete", new { id=item.GuitarId }, new { @class = "hyper" })
         </td>
     </tr>
 }
