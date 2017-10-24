@@ -433,7 +433,9 @@
     <Content Include="Views\NewTypes\NewBrand.cshtml" />
     <Content Include="Views\NewTypes\NewType.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
