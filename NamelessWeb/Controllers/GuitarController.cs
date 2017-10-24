@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
+using System.Net;
 using Microsoft.AspNet.Identity;
 
 
@@ -23,7 +24,7 @@ namespace NamelessWeb.Controllers
             _DbContext = new ApplicationDbContext();
         }
         // GET: Guitar
-        [Authorize]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {
             var viewModel = new GuitarViewModel
@@ -40,7 +41,7 @@ namespace NamelessWeb.Controllers
             return View(viewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin, Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GuitarViewModel viewModel)
@@ -188,10 +189,69 @@ namespace NamelessWeb.Controllers
             return View("Details", viewModel);
         }
 
-        [Authorize]
-        public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin, Employee")]
+        public ActionResult Edit(int? id)
         {
             return View();
+        }
+
+        [Authorize(Roles = "Admin, Employee")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            a.Open();
+            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+            SqlCommand x = new SqlCommand("" +
+                                          "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
+                                          "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
+                                          "where G.BrandId='" + guitar.BrandId + "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
+            SqlDataReader b = x.ExecuteReader();
+            dt2.Load(b);
+            var viewModel = new GuitarViewModel
+            {
+                GuitarModel = guitar.MDL,
+                BrandName = dt2.Rows[0][0].ToString(),
+                TypeName = dt2.Rows[0][1].ToString(),
+                Price = guitar.MSRP,
+                Electricfied = guitar.ELE,
+                InsuranceName = dt2.Rows[0][7].ToString(),
+                ImageLink = guitar.ImageLink,
+                Availability = guitar.Availability,
+                TopName = dt2.Rows[0][2].ToString(),
+                SideName = dt2.Rows[0][3].ToString(),
+                BackName = dt2.Rows[0][4].ToString(),
+                NeckName = dt2.Rows[0][5].ToString(),
+                FingsName = dt2.Rows[0][6].ToString(),
+                Description = guitarspec.Descript
+
+            };
+            a.Close();
+            return View("Delete", viewModel);
+            
+            //string g = string.Format("delete from dbo.Guitars where GuitarId='" + id + "'");
+            //SqlCommand y = new SqlCommand(g, a);
+            //string d = string.Format("delete from dbo.GuitarSpecs where GuitarId='" + id + "'");
+            //SqlCommand v = new SqlCommand(d, a);
+            //y.ExecuteNonQuery();
+            //v.ExecuteNonQuery();
+            ////_DbContext.Guitars.DeleteOnSubmit(guitar);
+            ////_DbContext.Guitars.
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+            _DbContext.Guitars.Remove(guitar);
+            _DbContext.GuitarSpecs.Remove(guitarspec);
+            _DbContext.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

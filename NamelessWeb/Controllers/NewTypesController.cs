@@ -29,14 +29,14 @@ namespace NamelessWeb.Controllers
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewType()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewType(GuitarTypes viewModel)
         {
             var type = new GuitarTypes
@@ -48,14 +48,14 @@ namespace NamelessWeb.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewTop()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewTop(GoTop viewModel)
         {
             var top = new GoTop
@@ -68,7 +68,7 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewNeck()
         {
 
@@ -76,7 +76,7 @@ namespace NamelessWeb.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewNeck(GoNeck viewModel)
         {
             var neck = new GoNeck
@@ -89,7 +89,7 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewBack()
         {
 
@@ -97,7 +97,7 @@ namespace NamelessWeb.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewBack(GoBack viewModel)
         {
             var back = new GoBack
@@ -110,7 +110,7 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewSide()
         {
 
@@ -118,7 +118,7 @@ namespace NamelessWeb.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewSide(GoSide viewModel)
         {
             var side = new GoSide
@@ -131,7 +131,7 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewFing()
         {
 
@@ -139,7 +139,7 @@ namespace NamelessWeb.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewFing(GoFing viewModel)
         {
             var fing = new GoFing
@@ -151,12 +151,12 @@ namespace NamelessWeb.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewSupplier()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public ActionResult NewSupplier (Supplier viewModel )
         {
@@ -173,7 +173,7 @@ namespace NamelessWeb.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewBrand()
         {
             var viewModel = new SupplierViewModel
@@ -182,7 +182,7 @@ namespace NamelessWeb.Controllers
             };
             return View(viewModel);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public ActionResult NewBrand(SupplierViewModel viewModel)
         {
