@@ -18,14 +18,16 @@ namespace NamelessWeb.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -52,6 +54,17 @@ namespace NamelessWeb.Controllers
             }
         }
 
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -167,10 +180,8 @@ namespace NamelessWeb.Controllers
                     var result = await UserManager.CreateAsync(user, model.Password);
                     var roleStore = new RoleStore<IdentityRole>(_db);
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
-
                     var userStore = new UserStore<ApplicationUser>(_db);
                     var userManager = new UserManager<ApplicationUser>(userStore);
-                    
                     if (result.Succeeded)
                     {
                         userManager.AddToRole(user.Id, "Customer");

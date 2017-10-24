@@ -11,7 +11,7 @@ using NamelessWeb.Models;
 
 namespace NamelessWeb.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
