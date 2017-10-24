@@ -4,19 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create Role</h2>
-@Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<h2  style="color:aliceblue">Create Role</h2>
+<button class="btn" style="padding-right:20px;">
+    @Html.ActionLink("List Roles", "Index")</button> | <button class="btn" style="padding-right:20px;">
+    @Html.ActionLink("Manage User Role", "ManageUserRoles") </button>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-    <div>
-        Role name
-    </div>
-    <p>
-        @Html.TextBox("RoleName")
-    </p>
-    <input type="submit" value="Save" />
-}
+        <div style="color:aliceblue">
+            Role name
+        </div>
+        <p>
+            @Html.TextBox("RoleName")
+        </p>
+        <input type="submit" value="Save" />
+    }

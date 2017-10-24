@@ -4,17 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Roles Listing </h2>
 
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr/>
+
+<h2 style="color:aliceblue">Roles Listing </h2>
+
+<button class="btn" style="padding-right:20px;">@Html.ActionLink("Create New Role", "Create")</button> | <button class="btn" style="padding-right:20px;">
+    @Html.ActionLink("Manage User Role", "ManageUserRoles")</button>
+<hr />
 <div>
     @foreach (var role in Model)
     {
-        <p><strong>@role.Name | </strong> 
-            <span onclick="return confirm('Are you sure to delete?')"><a href="/Role/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Delete</a></span> | 
-            @Html.ActionLink("Edit", "Edit", new { roleName = @role.Name })
-        </p>
+        <p>
+            <strong style="color:aliceblue;">@role.Name | </strong>
+            <button class="btn" style="padding-right:20px;">
+                <span onclick="return confirm('Are you sure to delete?')"><a href="/Role/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Delete</a></span> </button>
+                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Edit", "Edit", new { roleName = @role.Name })</button>
+</p>
     }
 </div>
 

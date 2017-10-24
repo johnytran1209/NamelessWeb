@@ -8,23 +8,22 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <head>
-    <%: Html.HiddenFor(model => model.Availability) %>
 </head>
 <br/>
 
-    <h2>Details</h2>
+    <h2 style="color:aliceblue">Details</h2style="color:aliceblue">
 @using (Html.BeginForm("Order","guitar"))
 {
     @Html.HiddenFor(m=>m.GuitarId)
     <div id="detailsForm" >
-        <h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
+        <h2 style="color:aliceblue; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
         </h2>
         
         <div>
         
             <hr />
             <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
-            <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
+            <dl class="dl-horizontal" style="color:aliceblue; font-weight:100; font-size:22px">
 
                 <dt>
                     Body Type:
@@ -114,10 +113,6 @@
      </div>          
 }
     @Html.Partial("Order")
-
-
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GuitarId }) |
-    @Html.ActionLink("Back to List", "Index")
 
 
 <script>

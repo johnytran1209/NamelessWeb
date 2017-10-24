@@ -4,18 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Manage User Roles</h2>
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
+<h2 color:aliceblue">Manage User Roles</h2>
+<div style="color:aliceblue">
+    <button class="btn" style="padding-right:20px;">@Html.ActionLink("Create New Role", "Create")</button> | <button class="btn" style="padding-right:20px;">
+        @Html.ActionLink("Manage User Role", "ManageUserRoles")
+    </button>
+</div>
+
 <hr />
 
-<h2>Add Role To User</h2>
+<h2 style="color:aliceblue">Add Role To User</h2>
 
 @using (Html.BeginForm("RoleAddToUser", "Role"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <p>
+    <p style="color:aliceblue">
         Username : @Html.TextBox("UserName")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 
@@ -24,11 +29,11 @@
     <input type="submit" value="Save" />
 }
 <hr />
-<h3>Get Roles for a User</h3>
+<h3 style="color:aliceblue">Get Roles for a User</h3>
 @using (Html.BeginForm("GetRoles", "Role"))
 {
     @Html.AntiForgeryToken()
-    <p>
+    <p style="color:aliceblue">
         Username : @Html.TextBox("UserName")
         <input type="submit" value="Get Roles for this User" />
     </p>
@@ -48,14 +53,14 @@
 }
 
 <hr />
-<h3>Delete A User from a Role</h3>
+<h3 style="color: aliceblue">Delete A User from a Role</h3>
 
 @using (Html.BeginForm("DeleteRoleForUser", "Role"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <p>
+    <p style="color: aliceblue">
         Username : @Html.TextBox("UserName")
         Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 

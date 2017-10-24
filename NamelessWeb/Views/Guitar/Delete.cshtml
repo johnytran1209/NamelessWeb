@@ -4,11 +4,11 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Are you sure you want to delete this?</h1>
+<h1 style="color:aliceblue">Are you sure you want to delete this?</h1>
 <div>
     <hr />
     <div id="detailsForm">
-        <h2 style="color:black; font-weight:100">
+        <h2 style="color:aliceblue; font-weight:100">
             @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
         </h2>
             
@@ -16,7 +16,7 @@
 
             <hr />
             <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
-            <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
+            <dl class="dl-horizontal" style="color:aliceblue; font-weight:100; font-size:22px">
 
                 <dt>
                     Body Type:
@@ -112,7 +112,7 @@
 
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index", "Home")
+                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back to List", "Index", "Home")</button>
             </div>
         }
     </div>
