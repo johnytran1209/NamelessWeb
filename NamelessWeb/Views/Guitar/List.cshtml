@@ -6,7 +6,7 @@
 }
 <style>
     .hyper {
-        color: darkblue;
+        color: aliceblue;
     }
 </style>
 <h2>List</h2>
@@ -64,7 +64,9 @@
             <img src="@Url.Content("~/Content/Img/guitar/"+item.ImageLink)" style="max-height: 100px"/>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GuitarId },new { @class="hyper"}) |
+            <div class="action">
+                <a href="@Url.Action("Edit","Guitar",new { id = item.GuitarId })">Edit</a>
+            </div>
             @Html.ActionLink("Details", "Details", new { id=item.GuitarId }, new { @class = "hyper" }) | 
             @Html.ActionLink("Delete", "Delete", new { id=item.GuitarId }, new { @class = "hyper" })
         </td>

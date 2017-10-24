@@ -441,6 +441,7 @@
     <Content Include="Views\NewTypes\NewBrand.cshtml" />
     <Content Include="Views\NewTypes\NewType.cshtml" />
     <Content Include="Views\Guitar\Delete.cshtml" />
+    <Content Include="Views\Guitar\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Order\" />

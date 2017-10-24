@@ -13,14 +13,15 @@
 <br/>
 
     <h2>Details</h2>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Order","guitar"))
 {
+    @Html.HiddenFor(m=>m.GuitarId)
     <div id="detailsForm" >
         <h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
         </h2>
         
         <div>
-    
+        
             <hr />
             <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
             <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
@@ -107,60 +108,17 @@
                 </dt>
                 <dd>
                     @Html.DisplayTextFor(model => model.Description)
-                </dd>
-       
-       
+                </dd>             
             </dl>
         </div>
-        
-        <!-- Trigger the modal with a button -->
-        <button type="submit" value="Submit" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Order Successful</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        @*<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Order</a>
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a href="#" class="close" data-dismiss="modal">&times;</a>
-                        <h3 class="modal-title">Oder</h3>
-
-                    </div>
-                    <div class="modal-body">
-                        Order Success
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" value="Submit" class="btn btn-success" data-dismiss="modal">Ok</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
+     </div>          
 }
+    @Html.Partial("Order")
 
-@*<p>
+
     @Html.ActionLink("Edit", "Edit", new { id = Model.GuitarId }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+
 
 <script>
     //$(document).ready(function() {

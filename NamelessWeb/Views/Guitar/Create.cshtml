@@ -6,11 +6,9 @@
 <h2>@Model.Heading</h2>
 @using (Html.BeginForm(Model.Action,"Guitar"))
 {
-    
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Id) 
     <div class="form-horizontal">
-        <h4>Creating New Guitar</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
