@@ -11,7 +11,6 @@ namespace NamelessWeb.Models.Bills.Exports
         [Key]
         public string ExpBId { get; set; }
         public string Model { get; set; }
-        public int Qtt { get; set; }
         public float Cost { get; set; }
         public string ExpEmp { get; set; }
     }

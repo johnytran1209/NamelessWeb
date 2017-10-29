@@ -11,7 +11,6 @@ namespace NamelessWeb.Models.Bills.Imports
         [Key]
         public string ImpBId { get; set; }
         public string Model { get; set; }
-        public int Qtt { get; set; }
         public float ImpCost { get; set; }
         public string ImpEmp { get; set; }
     }

@@ -11,7 +11,6 @@ namespace NamelessWeb.Models.Bills.Orders
         [Key]
         public string OrdBId { get; set; }
         public string Model { get; set; }
-        public int Qtt { get; set; }
         public float OrdCost { get; set; }
         public string OrdEmp { get; set; }
     }

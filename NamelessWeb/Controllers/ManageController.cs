@@ -1,21 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NamelessWeb.Models;
 
 namespace NamelessWeb.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
+    [Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public ApplicationDbContext _DbContext = new ApplicationDbContext();
         public ManageController()
         {
         }
@@ -333,21 +336,74 @@ namespace NamelessWeb.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult ViewProfile(string id)
+        public ActionResult ViewProfile()
         {
-            //var user = _dbContext.AspNetUsers.Single(u => u.Email == id);
-            //var User = new AspNetUser()
-            //{
-            //    Name = user.Name,
-            //    Email = user.Email,
-            //    PhoneNumber = user.PhoneNumber,
-            //    Address = user.Address,
-            //    Question = user.Question,
-            //    Answer = user.Answer
-            //};
+            var id = User.Identity.GetUserId();
+            var user = _DbContext.Users.Single(u => u.Id == id);
+            var current = new RegisterViewModel
+            {
+                Name = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                Question = user.Question,
+                Answer = user.Answer
+            };
+            return View(current);
+        }
+
+        [Authorize]
+        public ActionResult Create()
+        {
             return View();
         }
 
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(RegisterViewModel model)
+        {
+            using (var _db = new ApplicationDbContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = new ApplicationUser
+                    {
+                        UserName = model.Email,
+                        Email = model.Email,
+                        PhoneNumber = model.PhoneNumber,
+                        Question = model.Question,
+                        Answer = model.Answer,
+                        FullName = model.Name,
+                        Address = model.Address
+                    };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    var roleStore = new RoleStore<IdentityRole>(_db);
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    var userStore = new UserStore<ApplicationUser>(_db);
+                    var userManager = new UserManager<ApplicationUser>(userStore);
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRole(user.Id, "Employee");
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Manage");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
+                }
+                // If we got this far, something failed, redisplay form
+                return View(model);
+            }
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
