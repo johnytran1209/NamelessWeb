@@ -7,6 +7,13 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+{
+    <div class="item-search">
+        <label> Search</label>
+        @Html.TextBox("searchtext", "")
+    </div>
+}
  <body style="background-color:dimgrey">
             <div class="navbar navbar-inverse" >
                 <div class="container">
