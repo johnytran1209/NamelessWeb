@@ -352,6 +352,26 @@ namespace NamelessWeb.Controllers
             return View(current);
         }
 
+        public ActionResult Details(string id)
+        {
+            var user = _DbContext.Users.Single(u => u.Id == id);
+            var current = new RegisterViewModel
+            {
+                Name = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                Question = user.Question,
+                Answer = user.Answer
+            };
+            return View(current);
+        }
+
+        public ActionResult UserList()
+        {             
+            return View(_DbContext.Users.ToList());
+        }
+
         [Authorize]
         public ActionResult Create()
         {
