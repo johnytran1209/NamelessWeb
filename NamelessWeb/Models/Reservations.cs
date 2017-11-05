@@ -14,5 +14,7 @@ namespace NamelessWeb.Models
         [Key]
         [Required]
         public int GuitarId { get; set; }
+        [Required]
+        public DateTime DateReserve { get; set; }
     }
 }

@@ -145,4 +145,48 @@ namespace NamelessWeb.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class EditViewModel
+    {
+        public string Id { get; set; }
+        public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Compare("Email", ErrorMessage = "The email and confirmation email do not match")]
+        [Display(Name = "Confirm Email")]
+        public string ConfirmEmail { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Confirm Phone number")]
+        [Compare("PhoneNumber", ErrorMessage = "The phone number and confirmation number do not match")]
+        public string ConfirmPhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Question")]
+        public string Question { get; set; }
+
+        [Required]
+        [Display(Name = "Answer")]
+        public string Answer { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+    }
 }
