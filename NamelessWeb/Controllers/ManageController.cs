@@ -388,12 +388,12 @@ namespace NamelessWeb.Controllers
             return View("Edit",current);
         }
 
-        [HttpPost]
-        public ActionResult Edit(EditViewModel model)
+        [HttpPost, ActionName("Edit")]
+        public ActionResult Update(EditViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", model);
+                return View("Edit", model);
             }
             var user = _DbContext.Users.Single(c => c.Id == model.Id);
             user.FullName = model.Name;

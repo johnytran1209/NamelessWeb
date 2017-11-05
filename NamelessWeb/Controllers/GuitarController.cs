@@ -354,5 +354,11 @@ namespace NamelessWeb.Controllers
             _DbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult OrderList()
+        {
+
+            return View();
+        }
     }
 }
