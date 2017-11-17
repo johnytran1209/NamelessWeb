@@ -215,7 +215,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewTypesController.cs" />
-    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -319,14 +318,6 @@
     <Compile Include="Migrations\201710231645110_AddAddress.cs" />
     <Compile Include="Migrations\201710231645110_AddAddress.Designer.cs">
       <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710291342329_DropQtt.cs" />
-    <Compile Include="Migrations\201710291342329_DropQtt.Designer.cs">
-      <DependentUpon>201710291342329_DropQtt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711051750025_AddDateReserve.cs" />
-    <Compile Include="Migrations\201711051750025_AddDateReserve.Designer.cs">
-      <DependentUpon>201711051750025_AddDateReserve.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -450,22 +441,11 @@
     <Content Include="Views\NewTypes\NewBrand.cshtml" />
     <Content Include="Views\NewTypes\NewType.cshtml" />
     <Content Include="Views\Guitar\Delete.cshtml" />
-    <Content Include="Views\Role\Create.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Role\Edit.cshtml" />
-    <Content Include="Views\Role\ManageUserRoles.cshtml" />
-    <Content Include="Views\Guitar\Search.cshtml" />
-    <Content Include="Views\Manage\ViewProfile.cshtml" />
-    <Content Include="Views\Manage\Create.cshtml" />
-    <Content Include="Views\Manage\Details.cshtml" />
-    <Content Include="Views\Manage\UserList.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Guitar\Order.cshtml" />
-=======
-    <Content Include="Views\Manage\Edit.cshtml" />
->>>>>>> 32af96888f2363e7d17845e9da28062629167b82
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -556,12 +536,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710231645110_AddAddress.resx">
       <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710291342329_DropQtt.resx">
-      <DependentUpon>201710291342329_DropQtt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711051750025_AddDateReserve.resx">
-      <DependentUpon>201711051750025_AddDateReserve.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
