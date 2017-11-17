@@ -1,4 +1,5 @@
-﻿@model NamelessWeb.Models.RegisterViewModel
+﻿@using Microsoft.AspNet.Identity
+@model NamelessWeb.Models.RegisterViewModel
 
 @{
     ViewBag.Title = "ViewProfile";
@@ -62,6 +63,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Change Password","ChangePassword") |
+    @Html.ActionLink("Edit", "Edit", new {  id = User.Identity.GetUserId() }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

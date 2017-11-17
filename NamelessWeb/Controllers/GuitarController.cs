@@ -354,12 +354,20 @@ namespace NamelessWeb.Controllers
             _DbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+<<<<<<< HEAD
         public ActionResult Search(FormCollection f, int id = 1)
         {
             string searchtext = f["searchtext"];
             var content = _DbContext.Guitars.Where(n => n.MDL.Contains(searchtext)).ToList();
 
             return View(content);
+=======
+
+        public ActionResult OrderList()
+        {
+
+            return View();
+>>>>>>> 32af96888f2363e7d17845e9da28062629167b82
         }
     }
 }

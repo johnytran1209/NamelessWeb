@@ -372,6 +372,40 @@ namespace NamelessWeb.Controllers
             return View(_DbContext.Users.ToList());
         }
 
+        public ActionResult Edit(string id)
+        {
+            var user = _DbContext.Users.Single(u => u.Id == id);
+            var current = new EditViewModel
+            {
+                Id=user.Id,
+                Name = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                Question = user.Question,
+                Answer = user.Answer
+            };
+            return View("Edit",current);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult Update(EditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", model);
+            }
+            var user = _DbContext.Users.Single(c => c.Id == model.Id);
+            user.FullName = model.Name;
+            user.Email = model.Email;
+            user.Address = model.Address;
+            user.Question = model.Question;
+            user.Answer = model.Answer;
+            user.PhoneNumber = model.PhoneNumber;
+            _DbContext.SaveChanges();
+            return RedirectToAction("ViewProfile", "Manage");
+        }
+
         [Authorize]
         public ActionResult Create()
         {

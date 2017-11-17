@@ -324,6 +324,10 @@
     <Compile Include="Migrations\201710291342329_DropQtt.Designer.cs">
       <DependentUpon>201710291342329_DropQtt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711051750025_AddDateReserve.cs" />
+    <Compile Include="Migrations\201711051750025_AddDateReserve.Designer.cs">
+      <DependentUpon>201711051750025_AddDateReserve.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -455,7 +459,11 @@
     <Content Include="Views\Manage\Create.cshtml" />
     <Content Include="Views\Manage\Details.cshtml" />
     <Content Include="Views\Manage\UserList.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Guitar\Order.cshtml" />
+=======
+    <Content Include="Views\Manage\Edit.cshtml" />
+>>>>>>> 32af96888f2363e7d17845e9da28062629167b82
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -551,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710291342329_DropQtt.resx">
       <DependentUpon>201710291342329_DropQtt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711051750025_AddDateReserve.resx">
+      <DependentUpon>201711051750025_AddDateReserve.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
