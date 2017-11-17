@@ -450,15 +450,14 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\ManageUserRoles.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Guitar\Search.cshtml" />
     <Content Include="Views\Manage\ViewProfile.cshtml" />
     <Content Include="Views\Manage\Create.cshtml" />
     <Content Include="Views\Manage\Details.cshtml" />
     <Content Include="Views\Manage\UserList.cshtml" />
+    <Content Include="Views\Guitar\Order.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

@@ -112,7 +112,11 @@
         </div>
      </div>          
 }
-    @Html.Partial("Order")
+    @if(Model.Availability==0)
+    {
+        @Html.Partial("Order")
+    }
+    
 
 
 <script>
