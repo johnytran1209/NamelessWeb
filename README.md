@@ -75,6 +75,9 @@ Giao diện:
 - trong mục chi tiết sản phẩm làm kiểu grid, nhiều hình (hiện tại chỉ có 1 hình nên sẽ đơn điệu nên muốn có nhiều hình hơn để cho khách hàng có thể xem)
 - chức năng zoom khi di chuột lên ảnh (như trong các web ecomerce)
 
++video:
+- cho phép hiện video theo link youtube
+
 + âm thanh:
 - âm thanh khi click vào 1 mục (cho âm thanh là 1 hợp âm đàn guitar, nút khác nhau có âm thanh khác nhau)
 
