@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Heading.</h2>
+<h2>Create New Employee.</h2>
 
-@using (Html.BeginForm(Model.Action, "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
 {
     @Html.AntiForgeryToken()
 

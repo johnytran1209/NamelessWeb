@@ -5,9 +5,9 @@
 }
 
 
-<h2>New Side</h2>
+<h2 style = "color:aliceblue">New Side</h2>
 <body>
-@using (Html.BeginForm("NewSide", "NewTypes"))
+@using (Html.BeginForm("NewSide", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
 {
     <div class="form-group">
         <div style="left: auto" , class="form-group">

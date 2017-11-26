@@ -346,6 +346,7 @@
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModels\BillViewModel.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
     <Compile Include="Views\ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
@@ -423,12 +424,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Guitar\Create.cshtml" />
@@ -443,10 +438,30 @@
     <Content Include="Views\NewTypes\NewBrand.cshtml" />
     <Content Include="Views\NewTypes\NewType.cshtml" />
     <Content Include="Views\Guitar\Delete.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Manage\Create.cshtml" />
     <Content Include="Views\Manage\Details.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
     <Content Include="Views\Manage\UserList.cshtml" />
+=======
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\ManageUserRoles.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Guitar\OrderList.cshtml" />
+    <Content Include="Views\Guitar\Order.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Create.cshtml" />
+    <Content Include="Views\Manage\Details.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\UserList.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+>>>>>>> c05b05265b8075cb3da3f22b08eb39b49ce2f592
     <Content Include="Views\Manage\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>

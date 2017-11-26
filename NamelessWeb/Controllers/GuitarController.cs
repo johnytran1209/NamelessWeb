@@ -128,6 +128,7 @@ namespace NamelessWeb.Controllers
             return View(_DbContext.Guitars.ToList());
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
             a.Open();
@@ -346,6 +347,7 @@ namespace NamelessWeb.Controllers
             ////_DbContext.Guitars.
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -367,7 +369,11 @@ namespace NamelessWeb.Controllers
         }
         public ActionResult OrderList()
         {
-
+            var orders = _DbContext.Reservation.ToList();
+            foreach(var order in orders)
+            {
+                var user = _DbContext.Users.Single(c => c.Id == order.UserId);
+            }
             return View();
         }
     }

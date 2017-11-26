@@ -48,6 +48,7 @@ namespace NamelessWeb.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
         [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewTop()
         {

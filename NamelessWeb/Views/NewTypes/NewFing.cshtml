@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Fing</h2>
+<h2 style = "color:aliceblue">New Fing</h2>
 <body>
-@using (Html.BeginForm("NewFing", "NewTypes"))
+@using (Html.BeginForm("NewFing", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
 {
     <div class="form-group">
         <div style="left: auto" , class="form-group">

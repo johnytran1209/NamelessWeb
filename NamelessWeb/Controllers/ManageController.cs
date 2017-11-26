@@ -336,6 +336,7 @@ namespace NamelessWeb.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize]
         public ActionResult ViewProfile()
         {
             var id = User.Identity.GetUserId();
@@ -352,6 +353,7 @@ namespace NamelessWeb.Controllers
             return View(current);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(string id)
         {
             var user = _DbContext.Users.Single(u => u.Id == id);
@@ -367,11 +369,13 @@ namespace NamelessWeb.Controllers
             return View(current);
         }
 
+        [Authorize]
         public ActionResult UserList()
         {             
             return View(_DbContext.Users.ToList());
         }
 
+        [Authorize]
         public ActionResult Edit(string id)
         {
             var user = _DbContext.Users.Single(u => u.Id == id);
@@ -406,14 +410,14 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("ViewProfile", "Manage");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(RegisterViewModel model)
         {
@@ -447,7 +451,7 @@ namespace NamelessWeb.Controllers
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                        return RedirectToAction("Index", "Manage");
+                        return RedirectToAction("UserList", "Manage");
                     }
                     else
                     {
