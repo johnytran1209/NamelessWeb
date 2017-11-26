@@ -35,12 +35,6 @@ namespace NamelessWeb.Controllers
             return View();
         }
 
-        public ActionResult Search(FormCollection f, int id = 1)
-        {
-            string searchtext = f["searchtext"];
-            var content = _DbContext.Guitars.Where(n => n.MDL.Contains(searchtext)).ToList();
-
-            return View(content);
-        }
+        
     }
 }
