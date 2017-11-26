@@ -8,22 +8,23 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <head>
+    <%: Html.HiddenFor(model => model.Availability) %>
 </head>
 <br/>
 
-    <h2 style="color:aliceblue">Details</h2style="color:aliceblue">
-@using (Html.BeginForm("Order","guitar"))
+    <h2>Details</h2>
+@using (Html.BeginForm("Details","Guitar"))
 {
     @Html.HiddenFor(m=>m.GuitarId)
     <div id="detailsForm" >
-        <h2 style="color:aliceblue; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
+        <h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
         </h2>
         
         <div>
         
             <hr />
             <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
-            <dl class="dl-horizontal" style="color:aliceblue; font-weight:100; font-size:22px">
+            <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
 
                 <dt>
                     Body Type:
@@ -56,7 +57,7 @@
                 <dd>
                     @(Model.Electricfied ? "Yes" : "No")
                 </dd>
-                <hr />
+
                 <dt>
                     Specification
                 </dt>
@@ -107,16 +108,56 @@
                 </dt>
                 <dd>
                     @Html.DisplayTextFor(model => model.Description)
-                </dd>             
+                </dd>             c 
             </dl>
         </div>
+        @if (Model.Availability==0)
+        {          
+            <!-- Trigger the modal with a button -->
+            <button type="submit" value="Save" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
+             <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: saddlebrown">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body" style="background-color:sandybrown">
+                            <p>Are you sure to order?</p>
+                        </div>
+                        <div class="modal-footer" style="background-color: saddlebrown">
+                            <!-- Choose to do it-->
+                            <input type="submit" value="Save" class="btn btn-default" style="background-color:green; color:black;" data-toggle="modal" data-target="#myModal2" id="btnDisplay"/>
+                            <button type="submit" value="Save "
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:red; color:black">No</button>
+
+                            <div class="modal fade" id="myModal2" role="dialog">
+
+                                <div class="modal-dialog">
+                                    Modal content
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Congratulation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You've ordered successfully</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }              
      </div>          
 }
-    @if(Model.Availability==0)
-    {
-        @Html.Partial("Order")
-    }
-    
 
 
 <script>

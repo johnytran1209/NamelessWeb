@@ -2015,6 +2015,7 @@ textarea.input-lg {
       -ms-user-select: none;
        -o-user-select: none;
           user-select: none;
+  margin: 10px;
 }
 
 .btn:focus {
@@ -2029,13 +2030,13 @@ textarea.input-lg {
   text-decoration: none;
 }
 
-.btn:active,
-.btn.active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
+    .btn:active,
+    .btn.active {
+        background-image: url('Img/button_template.png');
+        outline: 0;
+        -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
 
 .btn.disabled,
 .btn[disabled],
@@ -2295,10 +2296,11 @@ fieldset[disabled] .btn-info.active {
 }
 
 .btn-link {
-  font-weight: normal;
-  color: #428bca;
-  cursor: pointer;
-  border-radius: 0;
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+    border-radius: 0;
+
 }
 
 .btn-link,
@@ -2308,6 +2310,7 @@ fieldset[disabled] .btn-link {
   background-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
+    
 }
 
 .btn-link,
@@ -2319,7 +2322,7 @@ fieldset[disabled] .btn-link {
 
 .btn-link:hover,
 .btn-link:focus {
-  color: #2a6496;
+  color: black;
   text-decoration: underline;
   background-color: transparent;
 }

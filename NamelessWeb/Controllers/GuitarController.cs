@@ -141,6 +141,7 @@ namespace NamelessWeb.Controllers
             dt2.Load(b);
             var viewModel = new GuitarViewModel
             {
+                GuitarId = id,
                 GuitarModel = guitar.MDL,
                 BrandName = dt2.Rows[0][0].ToString(),
                 TypeName = dt2.Rows[0][1].ToString(),
@@ -154,8 +155,9 @@ namespace NamelessWeb.Controllers
                 BackName= dt2.Rows[0][4].ToString(),
                 NeckName= dt2.Rows[0][5].ToString(),
                 FingsName= dt2.Rows[0][6].ToString(),
-                Description = guitarspec.Descript
-
+                Description = guitarspec.Descript,
+                Id=guitarspec.GuitarId
+          
             };
             a.Close();
             return View("Details",viewModel);
@@ -163,19 +165,19 @@ namespace NamelessWeb.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Order(GuitarViewModel viewModel)
+        public ActionResult Details(GuitarViewModel viewModel)
         {
-            var reserved = _DbContext.Reservation.Single(c => c.GuitarId == viewModel.GuitarId);
-            if (reserved == null)
+            var content = _DbContext.Reservation.Where(n => n.GuitarId==viewModel.Id).ToList();
+            if (content.Count == 0)
             {
                 try
                 {
                     a.Open();
-                    string z = string.Format("insert into dbo.Reservations values('{0}','{1}'",
+                    string z = string.Format("insert into dbo.Reservations values('{0}','{1}',CURRENT_TIMESTAMP)",
                         User.Identity.GetUserId(),
-                        viewModel.GuitarId);
+                        viewModel.Id);
                     SqlCommand u = new SqlCommand(z, a);
-                    string x = string.Format("update dbo.Guitars set Availability='1' where GuitarId='"+viewModel.GuitarId+"'");
+                    string x = string.Format("update dbo.Guitars set Availability='1' where GuitarId='{0}'",viewModel.GuitarId);
                     SqlCommand y = new SqlCommand(x, a);
                     u.ExecuteNonQuery();
                     y.ExecuteNonQuery();
@@ -185,9 +187,10 @@ namespace NamelessWeb.Controllers
                 {
                     return View("Details", viewModel);
                 }
-                return RedirectToAction("Index", "Home");
+                return View("Details", viewModel);
             }
             return View("Details", viewModel);
+
         }
 
         [Authorize(Roles = "Admin, Employee")]
