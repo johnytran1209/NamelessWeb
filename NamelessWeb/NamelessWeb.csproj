@@ -442,6 +442,11 @@
     <Content Include="Views\NewTypes\NewType.cshtml" />
     <Content Include="Views\Guitar\Delete.cshtml" />
     <Content Include="Views\Guitar\Order.cshtml" />
+    <Content Include="Views\Manage\ViewProfile.cshtml" />
+    <Content Include="Views\Manage\Create.cshtml" />
+    <Content Include="Views\Manage\Details.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Order\" />

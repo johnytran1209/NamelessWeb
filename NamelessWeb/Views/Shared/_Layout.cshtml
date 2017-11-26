@@ -7,12 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 @using (Html.BeginForm("Search", "Guitar", FormMethod.Post))
-{
-    <div class="item-search">
-        <label> Search</label>
-        @Html.TextBox("searchtext", "")
-    </div>
+{   <div class="container">
+        <div class="item-search">
+            <label style="color:aliceblue"> Search</label>
+            @Html.TextBox("searchtext", "")
+        </div>
+    </div>    
 }
  <body style="background-color:dimgrey">
             <div class="navbar navbar-inverse" >
@@ -45,7 +47,7 @@
                             <li> <button class="btn"style="padding-right:20px;">@Html.ActionLink("Contact", "Contact", "Home")</button></li>
                             @if (Request.IsAuthenticated)
                             {
-                                <li><button class="btn" style="padding-right:20px;">@Html.ActionLink("View Profile", "      ViewProfile", "Manage")</button></li>
+                                <li><button class="btn" style="padding-right:20px;">@Html.ActionLink("View Profile", "ViewProfile", "Manage")</button></li>
                             }
                             @*<li>
                                 <div class="dropdown">

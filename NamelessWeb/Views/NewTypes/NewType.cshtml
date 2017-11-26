@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>NewType</h2>
+<h2 style = "color:aliceblue">NewType</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("NewType", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" })) 
 {
     @Html.AntiForgeryToken()
     
