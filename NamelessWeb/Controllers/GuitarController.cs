@@ -357,6 +357,11 @@ namespace NamelessWeb.Controllers
 
         public ActionResult OrderList()
         {
+            var orders = _DbContext.Reservation.ToList();
+            foreach(var order in orders)
+            {
+                var user = _DbContext.Users.Single(c => c.Id == order.UserId);
+            }
 
             return View();
         }
