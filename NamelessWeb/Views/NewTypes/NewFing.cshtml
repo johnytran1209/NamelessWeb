@@ -6,19 +6,26 @@
 
 <h2 style = "color:aliceblue">New Fing</h2>
 <body>
-@using (Html.BeginForm("NewFing", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
-{
-    <div class="form-group">
-        <div style="left: auto" , class="form-group">
-            @Html.Label("Fing Id:")
-            @Html.TextBoxFor(m => m.FingId, new { @class = "form-control" })
-        </div>
-        <div style="left: auto" , class="form-group">
-            @Html.Label("Fing:")
-            @Html.TextBoxFor(m => m.FingName, new {@class = "form-control"})
-        </div>
-        <button type="submit" value="Save" class="btn btn-primary">Save</button>
-    </div>
+    @using (Html.BeginForm("NewFing", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
+    {
+        <div class="form-group">
+            <div style="left: auto" , class="form-group">
+                @Html.Label("FingerBoard Id:", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(m => m.FingId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FingId, "", new { @class = "text-danger" })
+            </div>
+            <div style="left: auto" , class="form-group">
+                @Html.Label("Fingboard Name:", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(m => m.FingName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FingName, "", new { @class = "text-danger" })
+            </div>  
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn" style="padding-right:20px;">
+                        @Html.ActionLink("Back", "Create", "Guitar")
+                    </button>
+                    <button type="submit" value="Save" class="btn btn-primary">Save</button>
+                </div>
+            </div>
 }
 </body>
 @section scripts

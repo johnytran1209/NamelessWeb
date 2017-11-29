@@ -3,6 +3,12 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .btn{
+        background-color:aliceblue
+    }
+</style>
+
 <h2 style="color:aliceblue;">@Model.Heading</h2>
 @using (Html.BeginForm(Model.Action,"Guitar"))
 {
@@ -11,13 +17,6 @@
     <div class="form-horizontal" style="color:aliceblue;">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.GuitarId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GuitarId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GuitarId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.GuitarModel, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -31,6 +30,7 @@
             @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.BrandId, new SelectList(Model.BrandIds, "BrandId", "BrandName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Brand", "NewBrand", "NewTypes")  </button>
                 @Html.ValidationMessageFor(m => m.BrandId)
             </div>
         </div>
@@ -39,6 +39,7 @@
             @Html.LabelFor(model => model.TypeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.TypeId, new SelectList(Model.TypeIds, "TypeId", "TypeName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Type", "NewType", "NewTypes")  </button>
                 @Html.ValidationMessageFor(m => m.TypeId)
             </div>
         </div>
@@ -47,6 +48,7 @@
             @Html.LabelFor(model => model.Top, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.Top, new SelectList(Model.Tops, "TopId", "TopName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Top", "NewTop", "NewTypes")  </button>
                 @Html.ValidationMessageFor(m => m.Top)
             </div>
         </div>
@@ -55,6 +57,7 @@
             @Html.LabelFor(model => model.Side, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.Side, new SelectList(Model.Sides, "SideId", "SideName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Neck", "NewNeck", "NewTypes")</button>
                 @Html.ValidationMessageFor(m => m.Side)
             </div>
         </div>
@@ -63,6 +66,7 @@
             @Html.LabelFor(model => model.Back, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.Back, new SelectList(Model.Backs, "BackId", "BackName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Back", "NewBack", "NewTypes")</button>
                 @Html.ValidationMessageFor(m => m.Back)
             </div>
         </div>
@@ -71,6 +75,7 @@
             @Html.LabelFor(model => model.Neck, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                @Html.DropDownListFor(m => m.Neck, new SelectList(Model.Necks, "NeckId", "NeckName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Side", "NewSide", "NewTypes")</button>
                @Html.ValidationMessageFor(m => m.Neck)
             </div>
         </div>
@@ -79,6 +84,7 @@
             @Html.LabelFor(model => model.Fing, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.Fing, new SelectList(Model.Fings, "FingId", "FingName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Fing", "NewFing", "NewTypes")</button>
                 @Html.ValidationMessageFor(m => m.Fing)
             </div>
         </div>
@@ -116,9 +122,39 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ImageLink1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.ImageLink, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.ImageLink1, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageLink2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageLink2, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageLink3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageLink3, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageLink4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageLink4, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageLink5, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageLink5, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageLink6, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ImageLink6, new { @class = "form-control" })
             </div>
         </div>
 

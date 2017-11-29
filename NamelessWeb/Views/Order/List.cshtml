@@ -1,0 +1,65 @@
+﻿
+@*@model IEnumerable<NamelessWeb.Views.ViewModels.OrderViewModel>*@
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .hyper {
+        color: aliceblue;
+    }
+</style>
+<h2 style="color:aliceblue">Reservation List</h2>
+
+<table class="table" style="color:aliceblue">
+    <tr style="color:aliceblue">
+        <th>
+            Product
+        </th>
+        <th>
+            Customer Information      
+        </th>
+        <th>
+            Reservation Date
+        </th>
+        <th></th>
+    </tr>
+
+    @for (int i=0;i<Model.Rows.Count;i++)
+    {
+        <tr style="color:aliceblue">
+            <td>
+                @if (@Model.Rows[i][2].ToString() != null)
+                {
+                    <img src="@Model.Rows[i][2].ToString()" style="max-height: 100px" />
+                }
+                <br />
+                @Model.Rows[i][1].ToString()
+            </td>            
+            <td>
+                @Model.Rows[i][3].ToString()
+                <br />
+                @Model.Rows[i][4].ToString()
+                <br />
+                 0 @Model.Rows[i][6].ToString()
+                <br />
+                @Model.Rows[i][5].ToString()
+            </td>    
+            <td>
+               @Model.Rows[i][7].ToString()
+            </td>            
+            <td>
+                <div class="action">
+                    <button>Delete</button>
+                    <button>Proceed</button>
+                </div>
+
+
+            </td>
+        </tr>
+    }
+</table>
+
+

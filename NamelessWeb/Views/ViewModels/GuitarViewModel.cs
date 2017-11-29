@@ -55,7 +55,12 @@ namespace NamelessWeb.Views.ViewModels
         [Required]
         public bool Electricfied { get; set; }
         public string Description { get; set; }
-        public string ImageLink { get; set; }
+        public string ImageLink1 { get; set; }
+        public string ImageLink2 { get; set; }
+        public string ImageLink3 { get; set; }
+        public string ImageLink4 { get; set; }
+        public string ImageLink5 { get; set; }
+        public string ImageLink6 { get; set; }
         [Required]
         public byte Availability { get; set; }
 
@@ -63,7 +68,7 @@ namespace NamelessWeb.Views.ViewModels
         public string Heading { get; set; }
         public string Action
         {
-            get { return (Id != null) ? "Update" : "Create"; }
+            get { return (Id > 0) ? "Update" : "Create"; }
         }
     }
 }

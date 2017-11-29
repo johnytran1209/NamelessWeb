@@ -80,7 +80,10 @@
         {
             <li>
                 <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
-                    <img src="@Url.Content("~/content/Img/guitar/"+ item.ImageLink)" style="max-width: 200px; max-height: 120px;">
+                    @if (item.ImageLink1 != null)
+                    {
+                        <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
+                    }                   
                     @Html.DisplayFor(modelItem=>item.MDL)                 
                 </a>
             </li>

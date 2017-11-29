@@ -10,14 +10,21 @@
 {
     <div class="form-group">
         <div style="left: auto" , class="form-group">
-            @Html.Label("Neck Id:")
+            @Html.Label("Neck Id:", htmlAttributes: new { @class = "control-label col-md-2" })
             @Html.TextBoxFor(m => m.NeckId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NeckId, "", new { @class = "text-danger" })
         </div>
         <div style="left: auto" , class="form-group">
-            @Html.Label("Neck:")
-            @Html.TextBoxFor(m => m.NeckName, new {@class = "form-control"})
+            @Html.Label("Neck:", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.NeckName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NeckName, "", new { @class = "text-danger" })
         </div>
-        <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn" style="padding-right:20px;">
+                @Html.ActionLink("Back", "Create", "Guitar")
+            </button>
+            <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        </div>
     </div>
 }
 </body>

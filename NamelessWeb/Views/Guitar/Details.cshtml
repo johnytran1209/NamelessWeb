@@ -8,151 +8,397 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <head>
-    <%: Html.HiddenFor(model => model.Availability) %>
 </head>
-<br/>
+<style>
+    body {
+        font-family: 'open sans';
+        overflow-x: hidden;
+    }
 
-    <h2>Details</h2>
-@using (Html.BeginForm("Details","Guitar"))
+    img {
+        max-width: 100%;
+    }
+
+    .preview {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    -webkit-box-flex: 1; 
+    -webkit-flex-grow: 1; 
+    -ms-flex-positive: 1; flex-grow: 1;
+
+    .preview-thumbnail.nav-tabs {
+        border: none;
+        margin-top: 15px;
+    }
+
+        .preview-thumbnail.nav-tabs li {
+            width: 18%;
+            margin-right: 2.5%;
+        }
+
+            .preview-thumbnail.nav-tabs li img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .preview-thumbnail.nav-tabs li a {
+                padding: 0;
+                margin: 0;
+            }
+
+            .preview-thumbnail.nav-tabs li:last-of-type {
+                margin-right: 0;
+            }
+
+    .tab-content {
+        overflow: hidden;
+    }
+
+        .tab-content img {
+            width: 100%;
+            -webkit-animation-name: opacity;
+            animation-name: opacity;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+        }
+
+    .card {
+        margin-top: 50px;
+        background: #eee;
+        padding: 3em;
+        line-height: 1.5em;
+    }
+
+
+    .details {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .colors {
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .product-title, .price, .sizes, .colors {
+        text-transform: UPPERCASE;
+        font-weight: bold;
+    }
+
+        .checked, .price span {
+            color: #ff9f1a;
+        }
+
+    .product-title, .rating, .product-description, .price, .vote, .sizes {
+        margin-bottom: 15px;
+    }
+
+    .product-title {
+        margin-top: 0;
+    }
+
+    .size {
+        margin-right: 10px;
+    }
+
+        .size:first-of-type {
+            margin-left: 40px;
+        }
+
+    .color {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        height: 2em;
+        width: 2em;
+        border-radius: 2px;
+    }
+
+        .color:first-of-type {
+            margin-left: 20px;
+        }
+
+    .add-to-cart, .like {
+        background: #ff9f1a;
+        padding: 1.2em 1.5em;
+        border: none;
+        text-transform: UPPERCASE;
+        font-weight: bold;
+        color: #fff;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+    }
+
+        .add-to-cart:hover, .like:hover {
+            background: #b36800;
+            color: #fff;
+        }
+
+    .not-available {
+        text-align: center;
+        line-height: 2em;
+    }
+
+        .not-available:before {
+            font-family: fontawesome;
+            content: "\f00d";
+            color: #fff;
+        }
+
+    .orange {
+        background: #ff9f1a;
+    }
+
+    .green {
+        background: #85ad00;
+    }
+
+    .blue {
+        background: #0076ad;
+    }
+
+    .tooltip-inner {
+        padding: 1.3em;
+    }
+</style>
+
+@using (Html.BeginForm("Details", "Guitar"))
 {
-    @Html.HiddenFor(m=>m.GuitarId)
-    <div id="detailsForm" >
-        <h2 style="color:black; font-weight:100"> @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
-        </h2>
-        
-        <div>
-        
-            <hr />
-            <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
-            <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
-
-                <dt>
-                    Body Type:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.TypeName)
-                </dd>
-
-                <dt>
-                    Price:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
-
-                <dt>
-                    Warranty:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.InsuranceName)
-                </dd>
-
-                <dt>
-                    Electrified:
-                </dt>
-
-                <dd>
-                    @(Model.Electricfied ? "Yes" : "No")
-                </dd>
-
-                <dt>
-                    Specification
-                </dt>
-                <dd>        
-                </dd>
-                <dt>
-                    Top wood:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.TopName)
-                </dd>
-
-                <dt>
-                    Side Wood:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.SideName)
-                </dd>
-
-                <dt>
-                    Back Wood:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.BackName)
-                </dd>
-
-                <dt>
-                    Neck Wood:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NeckName)
-                </dd>
-
-                <dt>
-                    FretBoard:
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.FingsName)
-                </dd>
-        
-                <dt>
-                    Description
-                </dt>
-                <dd>
-                    @Html.DisplayTextFor(model => model.Description)
-                </dd>             c 
-            </dl>
-        </div>
-        @if (Model.Availability==0)
-        {          
-            <!-- Trigger the modal with a button -->
-            <button type="submit" value="Save" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
-             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: saddlebrown">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+    @Html.HiddenFor(m => m.GuitarId)
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <h2 class="product-title" style="font-weight:100">@Html.DisplayFor(model => Model.BrandName) @Html.DisplayFor(model => Model.GuitarModel) </h2>
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                            @if (Model.ImageLink1 != null)
+                            {
+                                <div class="tab-pane active" id="pic-1"><img src=@Url.Content(Model.ImageLink1) /></div>
+                            }                            
+                            @if (Model.ImageLink2 != null)
+                            {
+                                <div class="tab-pane" id="pic-2"><img src=@Url.Content(Model.ImageLink2) /></div>
+                            }
+                            @if (Model.ImageLink3 != null)
+                            {
+                                <div class="tab-pane" id="pic-3"><img src=@Url.Content(Model.ImageLink3) /></div>
+                            }
+                            @if (Model.ImageLink4!= null)
+                            {
+                                <div class="tab-pane" id="pic-4"><img src=@Url.Content(Model.ImageLink4) /></div>
+                            } 
+                            @if (Model.ImageLink5 != null)
+                            {
+                                <div class="tab-pane" id="pic-5"><img src=@Url.Content(Model.ImageLink5) /></div>
+                            }
+                            @if (Model.ImageLink6 != null)
+                            {
+                                <div class="tab-pane" id="pic-6"><img src=@Url.Content(Model.ImageLink6) /></div>
+                            }
                         </div>
-                        <div class="modal-body" style="background-color:sandybrown">
-                            <p>Are you sure to order?</p>
-                        </div>
-                        <div class="modal-footer" style="background-color: saddlebrown">
-                            <!-- Choose to do it-->
-                            <input type="submit" value="Save" class="btn btn-default" data-toggle="modal" data-target="#myModal2" id="btnDisplay" style="background-color:green; color:black;" />                           
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:red; color:black">No</button>
+                        <br />
+                        <ul class="preview-thumbnail nav nav-tabs">                           
+                            @if (Model.ImageLink1 != null)
+                            {
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src=@Url.Content(Model.ImageLink1) /></a></li>
+                            }  
+                            @if (Model.ImageLink2 != null)
+                            {
+                                <li><a data-target="#pic-2" data-toggle="tab"><img src=@Url.Content(Model.ImageLink2) /></a></li>
+                            }   
+                            @if (Model.ImageLink3 != null)
+                            {
+                                <li><a data-target="#pic-3" data-toggle="tab"><img src=@Url.Content(Model.ImageLink3) /></a></li>
+                            }    
+                            @if (Model.ImageLink4 != null)
+                            {
+                                <li><a data-target="#pic-4" data-toggle="tab"><img src=@Url.Content(Model.ImageLink4) /></a></li>
+                            }                            
+                            @if (Model.ImageLink5 != null)
+                            {
+                                <li><a data-target="#pic-5" data-toggle="tab"><img src=@Url.Content(Model.ImageLink5) /></a></li>
+                            }
+                            @if (Model.ImageLink6 != null)
+                            {
+                                <li><a data-target="#pic-6" data-toggle="tab"><img src=@Url.Content(Model.ImageLink5) /></a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="details col-md-6">
+                    </div>
+                    <p class="product-description">@Html.DisplayTextFor(model => model.Description)</p>
+                    <h4 class="price">current price: <span> @Html.DisplayFor(model => model.Price)</span></h4>
+                    <div class="action">
+                        @if (Model.Availability == 0)
+                        {
+                                    <!-- Trigger the modal with a button -->
+                            <button type="submit" value="Save" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
+                                    <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
 
-                            <div class="modal fade" id="myModal2" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">                                           
-                                            <h4 class="modal-title">Congratulation</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>You've ordered successfully</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color: saddlebrown">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body" style="background-color:sandybrown">
+                                                <p>Are you sure to order?</p>
+                                            </div>
+                                            <div class="modal-footer" style="background-color: saddlebrown">
+                                                <!-- Choose to do it-->
+                                                <input type="submit" value="Save" class="btn btn-default" data-toggle="modal" data-target="#myModal2" id="btnDisplay" style="background-color:green; color:black;" />
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:red; color:black">No</button>
+
+                                                <div class="modal fade" id="myModal2" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Congratulation</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>You've ordered successfully</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <input type="submit" value="Save" class="btn btn-default" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
-        }              
-     </div>          
+        </div>
+    </div>
+        <hr />
+        <div class="container">
+            <div class="card">
+                <H2>Specification</H2>
+                <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
+                    <dt>
+                        Body Type:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TypeName)
+                    </dd>
+
+                    <dt>
+                        Warranty:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.InsuranceName)
+                    </dd>
+
+                    <dt>
+                        Electrified:
+                    </dt>
+
+                    <dd>
+                        @(Model.Electricfied ? "Yes" : "No")
+                    </dd>
+
+                    <dd>
+                    </dd>
+                    <dt>
+                        Top wood:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TopName)
+                    </dd>
+
+                    <dt>
+                        Side Wood:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SideName)
+                    </dd>
+
+                    <dt>
+                        Back Wood:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BackName)
+                    </dd>
+
+                    <dt>
+                        Neck Wood:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NeckName)
+                    </dd>
+
+                    <dt>
+                        FretBoard:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FingsName)
+                    </dd>
+
+                </dl>
+                @if (Model.ImageLink1 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink1) />
+                }
+                <a></a>
+                @if (Model.ImageLink2 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink2) />
+                }
+                <a></a>
+                @if (Model.ImageLink3 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink3) />
+                }
+                <a></a>
+                @if (Model.ImageLink4 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink4) />
+                }
+                <a></a>
+                @if (Model.ImageLink5 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink5) />
+                }
+                <a></a>
+                @if (Model.ImageLink6 != null)
+                {
+                    <img src=@Url.Content(Model.ImageLink6) />
+                }
+
+            </div>
+        </div>
+        <hr />
 }
 
 
@@ -172,8 +418,8 @@
     //})
     var x = document.getElementById('Availability').value;
     var y;
-    if (x==0) {
-          
+    if (x == 0) {
+
     }
 </script>
 

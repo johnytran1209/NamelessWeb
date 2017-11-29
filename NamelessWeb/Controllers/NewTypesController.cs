@@ -46,7 +46,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GuitarType.Add(type);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
 
         [Authorize(Roles = "Admin,Employee")]
@@ -66,7 +66,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoTop.Add(top);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
 
         [Authorize(Roles = "Admin,Employee")]
@@ -87,7 +87,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoNeck.Add(neck);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
 
         [Authorize(Roles = "Admin,Employee")]
@@ -108,7 +108,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoBack.Add(back);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
 
         [Authorize(Roles = "Admin,Employee")]
@@ -129,7 +129,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoSide.Add(side);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
 
         [Authorize(Roles = "Admin,Employee")]
@@ -150,7 +150,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.GoFing.Add(fing);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
         [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewSupplier()
@@ -172,7 +172,7 @@ namespace NamelessWeb.Controllers
             };
             _dbContext.Supplier.Add(supp);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
         [Authorize(Roles = "Admin,Employee")]
         public ActionResult NewBrand()
@@ -195,7 +195,7 @@ namespace NamelessWeb.Controllers
             SqlCommand x = new SqlCommand(y, a);
             x.ExecuteNonQuery();
             a.Close();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Create", "Guitar");
         }
     }
 }

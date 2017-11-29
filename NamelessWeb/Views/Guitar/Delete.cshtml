@@ -15,7 +15,38 @@
         <div>
 
             <hr />
-            <img src="@Url.Content("~/Content/Img/guitar/" + Model.ImageLink)" style="max-height: 350px; background-position-x:center;">
+            
+            @if (Model.ImageLink1 != null)
+            {
+                <img src=@Url.Content(Model.ImageLink1) style="max-height: 350px; background-position-x:center;" />
+            }
+            <a></a>
+            @if (Model.ImageLink2 != null )
+            {
+                <img src=@Url.Content(Model.ImageLink2) style="max-height: 350px; background-position-x:center;" />
+            }
+            <a></a>
+            @if (Model.ImageLink3 != null)
+            {
+                <img src=@Url.Content(Model.ImageLink3) style="max-height: 350px; background-position-x:center;"  />
+            }
+            <a></a>
+            @if (Model.ImageLink4 != null)
+            {
+                <img src=@Url.Content(Model.ImageLink4) style="max-height: 350px; background-position-x:center;" />
+            }
+            <a></a>
+            @if (Model.ImageLink5 != null)
+            {
+                <img src=@Url.Content(Model.ImageLink5) style="max-height: 350px; background-position-x:center;" />
+            }
+            <a></a>
+            @if (Model.ImageLink6 != null)
+            {
+                <img src=@Url.Content(Model.ImageLink6) style="max-height: 350px; background-position-x:center;" />
+            }
+
+
             <dl class="dl-horizontal" style="color:aliceblue; font-weight:100; font-size:22px">
 
                 <dt>

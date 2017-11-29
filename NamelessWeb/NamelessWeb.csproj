@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewTypesController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -319,6 +320,14 @@
     <Compile Include="Migrations\201710231645110_AddAddress.Designer.cs">
       <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271628039_more pic.cs" />
+    <Compile Include="Migrations\201711271628039_more pic.Designer.cs">
+      <DependentUpon>201711271628039_more pic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711272037471_something new.cs" />
+    <Compile Include="Migrations\201711272037471_something new.Designer.cs">
+      <DependentUpon>201711272037471_something new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -346,7 +355,7 @@
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\ViewModels\BillViewModel.cs" />
+    <Compile Include="Views\ViewModels\OrderViewModel.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
     <Compile Include="Views\ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
@@ -459,10 +468,10 @@
     <Content Include="Views\Manage\UserList.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ViewProfile.cshtml" />
+    <Content Include="Views\Guitar\View.cshtml" />
+    <Content Include="Views\Order\List.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -553,6 +562,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710231645110_AddAddress.resx">
       <DependentUpon>201710231645110_AddAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271628039_more pic.resx">
+      <DependentUpon>201711271628039_more pic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711272037471_something new.resx">
+      <DependentUpon>201711272037471_something new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

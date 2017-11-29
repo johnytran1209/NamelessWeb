@@ -9,7 +9,7 @@
         text-align: center;
         font-size: 28px;
         padding: 20px;
-        width: 200px;
+        width: 120px;
         transition: all 0.5s;
         cursor: pointer;
         margin: 5px;
@@ -25,17 +25,20 @@
 </head>
 
 @using (Html.BeginForm("Search", "Guitar", FormMethod.Post))
-{   <div class="container">
+{   
+    <div class="container">
         <div class="item-search">
             <label style="color:aliceblue"> Search</label>
             @Html.TextBox("searchtext", "")
+            @{Html.RenderPartial("_LoginPartial");}
+            
         </div>
     </div>    
 }
  <body style="background-color:dimgrey">
             <div class="navbar navbar-inverse" >
                 <div class="container">
-                    <img src="~/Content/Img/14324639_1827253130838647_1699345684361355571_o.jpg" style="max-height: 390px" rel="home" href="#" title="No music No life"/>
+                    <img src="~/Content/Img/14324639_1827253130838647_1699345684361355571_o.jpg" style="max-height: 370px" rel="home" href="#" title="No music No life"/>
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-ex1-collapse">
@@ -63,11 +66,7 @@
                             <li> <button class="btn"style="margin:10px;">@Html.ActionLink("Contact", "Contact", "Home")</button></li>
                             @if (Request.IsAuthenticated)
                             {
-
-                                <li><button class="btn" style="margin:10px;;">@Html.ActionLink("View Profile", "      ViewProfile", "Manage")</button></li>
-
-                                <li><button class="btn" style="padding-right:20px;">@Html.ActionLink("View Profile", "ViewProfile", "Manage")</button></li>
-
+                                <li><button class="btn" style="margin:10px;;">@Html.ActionLink("View Profile", "ViewProfile", "Manage")</button></li>
                             }
                             @*<li>
                                 <div class="dropdown">
@@ -84,15 +83,12 @@
                                 </div>
                             </li>*@
                         </ul>
-                        @{Html.RenderPartial("_LoginPartial");}  
+                        
                     </div>
-                  </div>
-                    
+                  </div>                 
                </div>
      <div class="container body-content">
          <hr />
-         <hr />
-         <p class="bottom-three ">
              @RenderBody()
             <footer>
                 <p style="color:aliceblue">&copy; @DateTime.Now.Year - Nameless Guitar Inc.</p>

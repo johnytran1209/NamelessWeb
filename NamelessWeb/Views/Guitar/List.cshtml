@@ -13,7 +13,7 @@
 
 <p>
     <button class="btn" style="padding-right:20px;">
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create","Guitar")
     </button>
 </p>
 <table class="table" style="color:aliceblue">
@@ -37,7 +37,7 @@
             @Html.DisplayNameFor(model => model.ELE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageLink)
+            @Html.DisplayNameFor(model => model.ImageLink1)
         </th>
         <th></th>
     </tr>
@@ -63,14 +63,19 @@
             @Html.DisplayFor(modelItem => item.ELE)
         </td>
         <td>
-            <img src="@Url.Content("~/Content/Img/guitar/"+item.ImageLink)" style="max-height: 100px"/>
+            @if (item.ImageLink1 != null)
+            {
+                <img src="@Url.Content(item.ImageLink1)" style="max-height: 100px" />
+            }
+            
         </td>
         <td>
             <div class="action">
-                <button href="@Url.Action("Edit","Guitar",new { id = item.GuitarId })">Edit</button>
+                <button >@Html.ActionLink("Edit", "Edit", "Guitar", new { id = item.GuitarId }, null)</button>
+                <button >@Html.ActionLink("Detail", "Details", "Guitar", new { id = item.GuitarId }, null)</button>
+                <button >@Html.ActionLink("Delete", "Delete", "Guitar", new { id = item.GuitarId }, null)</button> 
             </div>
-            <button href="@Url.Action("Details", "Details", new { id=item.GuitarId })">Details</button> |
-            <button href="@Url.Action("Delete", "Delete", new { id = item.GuitarId })">Delete</button> |
+            
 
            </td>
     </tr>
