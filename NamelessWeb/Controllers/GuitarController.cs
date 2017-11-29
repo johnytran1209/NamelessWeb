@@ -27,19 +27,26 @@ namespace NamelessWeb.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {
-            var viewModel = new GuitarViewModel
+            try
             {
-                TypeIds = _DbContext.GuitarType.ToList(),
-                BrandIds = _DbContext.Brand.ToList(),
-                Tops = _DbContext.GoTop.ToList(),
-                Sides = _DbContext.GoSide.ToList(),
-                Backs = _DbContext.GoBack.ToList(),
-                Necks = _DbContext.GoNeck.ToList(),
-                Fings = _DbContext.GoFing.ToList(),
-                Insurances = _DbContext.Warranty.ToList(),
-                Heading = "Add new Guitar"
-            };
-            return View(viewModel);
+                var viewModel = new GuitarViewModel
+                {
+                    TypeIds = _DbContext.GuitarType.ToList(),
+                    BrandIds = _DbContext.Brand.ToList(),
+                    Tops = _DbContext.GoTop.ToList(),
+                    Sides = _DbContext.GoSide.ToList(),
+                    Backs = _DbContext.GoBack.ToList(),
+                    Necks = _DbContext.GoNeck.ToList(),
+                    Fings = _DbContext.GoFing.ToList(),
+                    Insurances = _DbContext.Warranty.ToList(),
+                    Heading = "Add new Guitar"
+                };
+                return View(viewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [Authorize(Roles = "Admin, Employee")]
@@ -187,42 +194,49 @@ namespace NamelessWeb.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int id)
         {
-            a.Open();
-            var guitar = _DbContext.Guitars.Single(c=>c.GuitarId==id);
-            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-            SqlCommand x = new SqlCommand("" +
-                "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
-                "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
-                "where G.BrandId='"+guitar.BrandId+ "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
-            SqlDataReader b = x.ExecuteReader();
-            dt2.Load(b);
-            var viewModel = new GuitarViewModel
+            try
             {
-                GuitarId = id,
-                GuitarModel = guitar.MDL,
-                BrandName = dt2.Rows[0][0].ToString(),
-                TypeName = dt2.Rows[0][1].ToString(),
-                Price = guitar.MSRP,
-                Electricfied = guitar.ELE,
-                InsuranceName = dt2.Rows[0][7].ToString(),
-                ImageLink1 = guitar.ImageLink1,
-                ImageLink2 = guitar.ImageLink2,
-                ImageLink3 = guitar.ImageLink3,
-                ImageLink4 = guitar.ImageLink4,
-                ImageLink5 = guitar.ImageLink5,
-                ImageLink6 = guitar.ImageLink6,
-                Availability = guitar.Availability,
-                TopName = dt2.Rows[0][2].ToString(),
-                SideName= dt2.Rows[0][3].ToString(),
-                BackName= dt2.Rows[0][4].ToString(),
-                NeckName= dt2.Rows[0][5].ToString(),
-                FingsName= dt2.Rows[0][6].ToString(),
-                Description = guitarspec.Descript,
-                Id=guitarspec.GuitarId
-          
-            };
-            a.Close();
-            return View("Details",viewModel);
+                a.Open();
+                var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+                var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+                SqlCommand x = new SqlCommand("" +
+                    "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
+                    "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
+                    "where G.BrandId='" + guitar.BrandId + "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
+                SqlDataReader b = x.ExecuteReader();
+                dt2.Load(b);
+                var viewModel = new GuitarViewModel
+                {
+                    GuitarId = id,
+                    GuitarModel = guitar.MDL,
+                    BrandName = dt2.Rows[0][0].ToString(),
+                    TypeName = dt2.Rows[0][1].ToString(),
+                    Price = guitar.MSRP,
+                    Electricfied = guitar.ELE,
+                    InsuranceName = dt2.Rows[0][7].ToString(),
+                    ImageLink1 = guitar.ImageLink1,
+                    ImageLink2 = guitar.ImageLink2,
+                    ImageLink3 = guitar.ImageLink3,
+                    ImageLink4 = guitar.ImageLink4,
+                    ImageLink5 = guitar.ImageLink5,
+                    ImageLink6 = guitar.ImageLink6,
+                    Availability = guitar.Availability,
+                    TopName = dt2.Rows[0][2].ToString(),
+                    SideName = dt2.Rows[0][3].ToString(),
+                    BackName = dt2.Rows[0][4].ToString(),
+                    NeckName = dt2.Rows[0][5].ToString(),
+                    FingsName = dt2.Rows[0][6].ToString(),
+                    Description = guitarspec.Descript,
+                    Id = guitarspec.GuitarId
+
+                };
+                a.Close();
+                return View("Details", viewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
@@ -258,42 +272,49 @@ namespace NamelessWeb.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit(int id)
         {
-            var userId = User.Identity.GetUserId();
-            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-            var viewModel = new GuitarViewModel
+            try
             {
-                TypeIds = _DbContext.GuitarType.ToList(),
-                BrandIds = _DbContext.Brand.ToList(),
-                Tops = _DbContext.GoTop.ToList(),
-                Sides = _DbContext.GoSide.ToList(),
-                Backs = _DbContext.GoBack.ToList(),
-                Necks = _DbContext.GoNeck.ToList(),
-                Fings = _DbContext.GoFing.ToList(),
-                Insurances = _DbContext.Warranty.ToList(),
-                GuitarId=guitar.GuitarId,
-                GuitarModel=guitar.MDL,
-                TypeId=guitar.TypeId,
-                BrandId=guitar.BrandId,
-                Insurance=guitar.WarrId,
-                Price=guitar.MSRP,
-                Electricfied=guitar.ELE,
-                ImageLink1 = guitar.ImageLink1,
-                ImageLink2 = guitar.ImageLink2,
-                ImageLink3 = guitar.ImageLink3,
-                ImageLink4 = guitar.ImageLink4,
-                ImageLink5 = guitar.ImageLink5,
-                ImageLink6 = guitar.ImageLink6,
-                Top = guitarspec.TopId.ToString(),
-                Side= guitarspec.SideId.ToString(),
-                Back=guitarspec.BackId.ToString(),
-                Neck=guitarspec.NeckId.ToString(),
-                Fing=guitarspec.FingId.ToString(),
-                Description=guitarspec.Descript,
-                Heading = "Edit Information",
-                Id= guitar.GuitarId
-            };
-            return View("Create",viewModel);
+                var userId = User.Identity.GetUserId();
+                var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+                var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+                var viewModel = new GuitarViewModel
+                {
+                    TypeIds = _DbContext.GuitarType.ToList(),
+                    BrandIds = _DbContext.Brand.ToList(),
+                    Tops = _DbContext.GoTop.ToList(),
+                    Sides = _DbContext.GoSide.ToList(),
+                    Backs = _DbContext.GoBack.ToList(),
+                    Necks = _DbContext.GoNeck.ToList(),
+                    Fings = _DbContext.GoFing.ToList(),
+                    Insurances = _DbContext.Warranty.ToList(),
+                    GuitarId = guitar.GuitarId,
+                    GuitarModel = guitar.MDL,
+                    TypeId = guitar.TypeId,
+                    BrandId = guitar.BrandId,
+                    Insurance = guitar.WarrId,
+                    Price = guitar.MSRP,
+                    Electricfied = guitar.ELE,
+                    ImageLink1 = guitar.ImageLink1,
+                    ImageLink2 = guitar.ImageLink2,
+                    ImageLink3 = guitar.ImageLink3,
+                    ImageLink4 = guitar.ImageLink4,
+                    ImageLink5 = guitar.ImageLink5,
+                    ImageLink6 = guitar.ImageLink6,
+                    Top = guitarspec.TopId.ToString(),
+                    Side = guitarspec.SideId.ToString(),
+                    Back = guitarspec.BackId.ToString(),
+                    Neck = guitarspec.NeckId.ToString(),
+                    Fing = guitarspec.FingId.ToString(),
+                    Description = guitarspec.Descript,
+                    Heading = "Edit Information",
+                    Id = guitar.GuitarId
+                };
+                return View("Create", viewModel);
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
         }
 
         [Authorize(Roles = "Admin, Employee")]
@@ -335,37 +356,44 @@ namespace NamelessWeb.Controllers
             //guitarspec.Descript = viewModel.Description;
 
             //_DbContext.SaveChanges();
-            a.Open();
-            string y = string.Format("update dbo.guitars set MDL='{0}', BrandId='{1}', TypeId='{2}',MSRP='{3}',ELE='{4}',WarrId='{5}',ImageLink1='{6}',ImageLink2='{7}',ImageLink3='{8}',ImageLink4='{9}',ImageLink5='{10}',ImageLink6='{11}',Availability='0',  where GuitarId='{12}'",
+            try
+            {
+                a.Open();
+                string y = string.Format("update dbo.guitars set MDL='{0}', BrandId='{1}', TypeId='{2}',MSRP='{3}',ELE='{4}',WarrId='{5}',ImageLink1='{6}',ImageLink2='{7}',ImageLink3='{8}',ImageLink4='{9}',ImageLink5='{10}',ImageLink6='{11}',Availability='0',  where GuitarId='{12}'",
 
-                viewModel.GuitarModel.ToString(),
-                viewModel.BrandId.ToString(),
-                viewModel.TypeId.ToString(),
-                viewModel.Price,
-                viewModel.Electricfied,
-                viewModel.Insurance,
-                viewModel.ImageLink1,
-                viewModel.ImageLink2,
-                viewModel.ImageLink3,
-                viewModel.ImageLink4,
-                viewModel.ImageLink5,
-                viewModel.ImageLink6,
-                viewModel.GuitarId);
-            SqlCommand x = new SqlCommand(y, a);
-            string z = string.Format("update dbo.GuitarSpecs set TopId='{0}',SideId='{1}',BackId='{2}', NeckId='{3}', FingId='{4}', Descript='{5}' where GuitarId='{6}'",
-                viewModel.Top.ToString(),
-                viewModel.Side.ToString(),
-                viewModel.Back.ToString(),
-                viewModel.Neck.ToString(),
-                viewModel.Fing.ToString(),
-                viewModel.Description.ToString(),
-                viewModel.GuitarId);
-            SqlCommand u = new SqlCommand(z, a);
-            x.ExecuteNonQuery();
-            u.ExecuteNonQuery();
-            a.Close();
+                    viewModel.GuitarModel.ToString(),
+                    viewModel.BrandId.ToString(),
+                    viewModel.TypeId.ToString(),
+                    viewModel.Price,
+                    viewModel.Electricfied,
+                    viewModel.Insurance,
+                    viewModel.ImageLink1,
+                    viewModel.ImageLink2,
+                    viewModel.ImageLink3,
+                    viewModel.ImageLink4,
+                    viewModel.ImageLink5,
+                    viewModel.ImageLink6,
+                    viewModel.GuitarId);
+                SqlCommand x = new SqlCommand(y, a);
+                string z = string.Format("update dbo.GuitarSpecs set TopId='{0}',SideId='{1}',BackId='{2}', NeckId='{3}', FingId='{4}', Descript='{5}' where GuitarId='{6}'",
+                    viewModel.Top.ToString(),
+                    viewModel.Side.ToString(),
+                    viewModel.Back.ToString(),
+                    viewModel.Neck.ToString(),
+                    viewModel.Fing.ToString(),
+                    viewModel.Description.ToString(),
+                    viewModel.GuitarId);
+                SqlCommand u = new SqlCommand(z, a);
+                x.ExecuteNonQuery();
+                u.ExecuteNonQuery();
+                a.Close();
 
-            return RedirectToAction("List", "Guitar");
+                return RedirectToAction("List", "Guitar");
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
             
         }
 
@@ -378,49 +406,57 @@ namespace NamelessWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            a.Open();
-            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-            SqlCommand x = new SqlCommand("" +
-                                          "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
-                                          "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
-                                          "where G.BrandId='" + guitar.BrandId + "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
-            SqlDataReader b = x.ExecuteReader();
-            dt2.Load(b);
-            var viewModel = new GuitarViewModel
+            try
             {
-                GuitarModel = guitar.MDL,
-                BrandName = dt2.Rows[0][0].ToString(),
-                TypeName = dt2.Rows[0][1].ToString(),
-                Price = guitar.MSRP,
-                Electricfied = guitar.ELE,
-                InsuranceName = dt2.Rows[0][7].ToString(),
-                ImageLink1 = guitar.ImageLink1,
-                ImageLink2 = guitar.ImageLink2,
-                ImageLink3 = guitar.ImageLink3,
-                ImageLink4 = guitar.ImageLink4,
-                ImageLink5 = guitar.ImageLink5,
-                ImageLink6 = guitar.ImageLink6,
-                Availability = guitar.Availability,
-                TopName = dt2.Rows[0][2].ToString(),
-                SideName = dt2.Rows[0][3].ToString(),
-                BackName = dt2.Rows[0][4].ToString(),
-                NeckName = dt2.Rows[0][5].ToString(),
-                FingsName = dt2.Rows[0][6].ToString(),
-                Description = guitarspec.Descript
+                a.Open();
+                var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+                var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+                SqlCommand x = new SqlCommand("" +
+                                              "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
+                                              "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
+                                              "where G.BrandId='" + guitar.BrandId + "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
+                SqlDataReader b = x.ExecuteReader();
+                dt2.Load(b);
+                var viewModel = new GuitarViewModel
+                {
+                    GuitarModel = guitar.MDL,
+                    BrandName = dt2.Rows[0][0].ToString(),
+                    TypeName = dt2.Rows[0][1].ToString(),
+                    Price = guitar.MSRP,
+                    Electricfied = guitar.ELE,
+                    InsuranceName = dt2.Rows[0][7].ToString(),
+                    ImageLink1 = guitar.ImageLink1,
+                    ImageLink2 = guitar.ImageLink2,
+                    ImageLink3 = guitar.ImageLink3,
+                    ImageLink4 = guitar.ImageLink4,
+                    ImageLink5 = guitar.ImageLink5,
+                    ImageLink6 = guitar.ImageLink6,
+                    Availability = guitar.Availability,
+                    TopName = dt2.Rows[0][2].ToString(),
+                    SideName = dt2.Rows[0][3].ToString(),
+                    BackName = dt2.Rows[0][4].ToString(),
+                    NeckName = dt2.Rows[0][5].ToString(),
+                    FingsName = dt2.Rows[0][6].ToString(),
+                    Description = guitarspec.Descript
 
-            };
-            a.Close();
-            return View("Delete", viewModel);
-            
-            //string g = string.Format("delete from dbo.Guitars where GuitarId='" + id + "'");
-            //SqlCommand y = new SqlCommand(g, a);
-            //string d = string.Format("delete from dbo.GuitarSpecs where GuitarId='" + id + "'");
-            //SqlCommand v = new SqlCommand(d, a);
-            //y.ExecuteNonQuery();
-            //v.ExecuteNonQuery();
-            ////_DbContext.Guitars.DeleteOnSubmit(guitar);
-            ////_DbContext.Guitars.
+                };
+                a.Close();
+                return View("Delete", viewModel);
+
+                //string g = string.Format("delete from dbo.Guitars where GuitarId='" + id + "'");
+                //SqlCommand y = new SqlCommand(g, a);
+                //string d = string.Format("delete from dbo.GuitarSpecs where GuitarId='" + id + "'");
+                //SqlCommand v = new SqlCommand(d, a);
+                //y.ExecuteNonQuery();
+                //v.ExecuteNonQuery();
+                ////_DbContext.Guitars.DeleteOnSubmit(guitar);
+                ////_DbContext.Guitars.
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
+
         }
 
         [Authorize(Roles = "Admin, Employee")]
@@ -428,12 +464,20 @@ namespace NamelessWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-            _DbContext.Guitars.Remove(guitar);
-            _DbContext.GuitarSpecs.Remove(guitarspec);
-            _DbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+                var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+                _DbContext.Guitars.Remove(guitar);
+                _DbContext.GuitarSpecs.Remove(guitarspec);
+                _DbContext.SaveChanges();
+                return RedirectToAction("List", "Guitar");
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
+            
         }
 
         public ActionResult Search(FormCollection f, int id = 1)
@@ -443,14 +487,6 @@ namespace NamelessWeb.Controllers
 
             return View(content);
         }
-        public ActionResult OrderList()
-        {
-            var orders = _DbContext.Reservation.ToList();
-            foreach(var order in orders)
-            {
-                var user = _DbContext.Users.Single(c => c.Id == order.UserId);
-            }
-            return View();
-        }
+       
     }
 }

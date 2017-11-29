@@ -43,7 +43,7 @@
                 <br />
                 @Model.Rows[i][4].ToString()
                 <br />
-                 0 @Model.Rows[i][6].ToString()
+                @Model.Rows[i][6].ToString()
                 <br />
                 @Model.Rows[i][5].ToString()
             </td>    
@@ -52,7 +52,7 @@
             </td>            
             <td>
                 <div class="action">
-                    <button>Delete</button>
+                    <button>@Html.ActionLink("Delete", "Delete", "Order", new { id = Model.Rows[i][0] }, null)</button> 
                     <button>Proceed</button>
                 </div>
 

@@ -1,18 +1,64 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<br />
-<h2 style="color:aliceblue">What is Nameless Guitar Inc.</h2>
-<h3 style="color:aliceblue">"All we've ever love has been Music." John, Founder</h3>
+<style>
+    .column {
+    float: left;
+    }
 
-<p style="color:aliceblue">
-    Nameless Guitar Inc. was created due to the boredom of John and his Father.
-    Many young adults and grown ups want to learn to play the guitar, but....
-    didn't know which to buy, led up to most of them got rip-off.
-    May be, it was because of a moment we wished that we can become their helper.
-    And that was the story, just want to be someone who is good.
-    As the wave of Japanese guitars came over, we know it was a good thing.
-    John was a sucker for those JDM items, they are old, but ridiculously good,
-    well made, and can create incredible sound. After a year working in a music
-    store here, he improved  his skillset and knowledge. And the rest is History.
-</p>
+    /* Clear floats after the columns */
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    .textwrite{
+        float: left;
+    }
+    .center {
+        text-align: center;
+    }
+</style>
+
+<br />
+
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <h2 class="center">What is Nameless Guitar Inc.?</h2>
+            <h3 class="center">"All we've ever love has been Music." John, Founder</h3>
+            <div class="wrapper row">               
+                <div class="column" style="width:30%; float:left;">
+                    <img src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/558258_451988474845796_1269161604_n.jpg?_nc_eui2=v1%3AAeGo47HRmodHVvD4ODZRhatom91DTc2-UGWak9wuz04CYaBjII5nvImGu21tnZjI5dIXDg3d3vmEiogIJ7rL7f9EhIaYh8NhKehCLj-uDa2-6w&oh=d1549eb8b03ebcbb3780f19744a1ab10&oe=5AD42D84" style="width:200px"/>
+                </div>
+                <div class="column" style="width:40%">    
+                    <div class="textwrite">
+                        <p class="center">
+                            Nameless Guitar Inc. was created by John and his Father. Many young adults
+                            and grown ups want to learn to play the guitar, but....
+                            didn't know which to buy, led up to most of them got rip-off.
+                        </p>
+                        <p class="center">
+                            May be, it was because of a moment, we wished that we can become their helpers.
+                            And that was the story, just want to be someone who is good.
+                        </p>
+                        <p class="center">
+                            As the wave of Japanese guitars came over, we know it was a good thing.
+                            John was a sucker for those JDM items, they are old, but ridiculously good,
+                            well made, and can create incredible sound. After a year working in a music
+                            store here, he improved  his skillset and knowledge. And the rest is History.
+                        </p>
+                    </div>
+                </div>
+                <div class="column"style="width:30%; float:right;">
+                    <img src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/223826_451991834845460_368180717_n.jpg?_nc_eui2=v1%3AAeFLVUJsQao0dbpnq7xa2V_evFnQjLhpNnWmnMg-KZDBNl8CNnkbNR7vrIWmlN2_Vgkr2mKwHOzoT0ZQJJYOQizOFPZws5GNwTM3WjOe8N0bdA&oh=808716e9378574ff5241919cdcea086d&oe=5A8F41B0" style="width:200px; float:right" />
+                </div>                                              
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+
+

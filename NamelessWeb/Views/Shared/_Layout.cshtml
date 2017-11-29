@@ -49,8 +49,8 @@
                     <div>
                         <ul class="nav navbar-nav" style="padding-top:20px;">
                             <li> <button class="btn" style=" margin:10px;"> @Html.ActionLink("Home", "Index", "Home") </button></li>
-                            @*<li>
-                                <div class="dropdown">
+                            <li>
+                                @*<div class="dropdown">
                                     <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;" >
                                         Guitar<span class="caret"></span>
                                     </button>
@@ -60,14 +60,15 @@
                                         <li>Suzuki</li>
                                         <li>Others</li>
                                     </ul>
-                                </div>
-                            </li>*@
+                                </div>*@
+                            </li>
                             <li> <button class="btn" style="margin:10px;">@Html.ActionLink("About", "About", "Home")</button></li>
                             <li> <button class="btn"style="margin:10px;">@Html.ActionLink("Contact", "Contact", "Home")</button></li>
                             @if (Request.IsAuthenticated)
                             {
                                 <li><button class="btn" style="margin:10px;;">@Html.ActionLink("View Profile", "ViewProfile", "Manage")</button></li>
                             }
+
                             @*<li>
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;">
