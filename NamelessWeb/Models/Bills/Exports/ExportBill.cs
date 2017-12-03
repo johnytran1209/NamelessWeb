@@ -10,8 +10,17 @@ namespace NamelessWeb.Models.Bills.Exports
     {
         [Key]
         public string ExpBId { get; set; }
+        [Required]
         public DateTime ExpDate { get; set; }
+        [Required]
         public string ExpEmp { get; set; }
+        [Required]
+        public string ExpEmpId { get; set; }
+        [Required]
         public string ExpCus { get; set; }           
+        [Required]
+        public string ExpCusId { get; set; }
+        [Required]
+        public string ExpDes { get; set; }
     }
 }

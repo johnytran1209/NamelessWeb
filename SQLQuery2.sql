@@ -1,0 +1,1 @@
+select b.BrandName,G.MDL  from Guitars G ,Brands B where g.BrandId=b.BrandId and g.GuitarId=''

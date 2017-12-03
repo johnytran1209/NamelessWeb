@@ -220,6 +220,7 @@ namespace NamelessWeb.Controllers
                     ImageLink4 = guitar.ImageLink4,
                     ImageLink5 = guitar.ImageLink5,
                     ImageLink6 = guitar.ImageLink6,
+                    VideoLink=guitar.Videolink,
                     Availability = guitar.Availability,
                     TopName = dt2.Rows[0][2].ToString(),
                     SideName = dt2.Rows[0][3].ToString(),
@@ -258,14 +259,14 @@ namespace NamelessWeb.Controllers
                     u.ExecuteNonQuery();
                     y.ExecuteNonQuery();
                     a.Close();
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (Exception)
                 {
-                    return View("Details", viewModel);
+                    return RedirectToAction("Home", "Index");
                 }
-                return View("Details", viewModel);
             }
-            return View("Details", viewModel);
+            return RedirectToAction("Home", "Index");
 
         }
 
@@ -300,6 +301,7 @@ namespace NamelessWeb.Controllers
                     ImageLink4 = guitar.ImageLink4,
                     ImageLink5 = guitar.ImageLink5,
                     ImageLink6 = guitar.ImageLink6,
+                    VideoLink=guitar.Videolink,
                     Top = guitarspec.TopId.ToString(),
                     Side = guitarspec.SideId.ToString(),
                     Back = guitarspec.BackId.ToString(),

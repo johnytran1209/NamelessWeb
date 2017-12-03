@@ -1,0 +1,285 @@
+﻿@model NamelessWeb.Views.ViewModels.OrderViewModel
+@{
+    ViewBag.Title = "Proceed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<style>
+    body {
+        font-family: 'open sans';
+        overflow-x: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .preview {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    -webkit-box-flex: 1; -webkit-flex-grow: 1; -ms-flex-positive: 1; flex-grow: 1; .preview-thumbnail.nav-tabs {
+        border: none;
+        margin-top: 15px;
+    }
+
+    .preview-thumbnail.nav-tabs li {
+        width: 18%;
+        margin-right: 2.5%;
+    }
+
+        .preview-thumbnail.nav-tabs li img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .preview-thumbnail.nav-tabs li a {
+            padding: 0;
+            margin: 0;
+        }
+
+        .preview-thumbnail.nav-tabs li:last-of-type {
+            margin-right: 0;
+        }
+
+    .tab-content {
+        overflow: hidden;
+    }
+
+        .tab-content img {
+            width: 100%;
+            -webkit-animation-name: opacity;
+            animation-name: opacity;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s;
+        }
+
+    .card {
+        margin-top: 50px;
+        background: #eee;
+        padding: 3em;
+        line-height: 1.5em;
+    }
+
+
+    .details {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .colors {
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .product-title, .price, .sizes, .colors {
+        text-transform: UPPERCASE;
+        font-weight: bold;
+    }
+
+        .checked, .price span {
+            color: #ff9f1a;
+        }
+
+    .product-title, .rating, .product-description, .price, .vote, .sizes {
+        margin-bottom: 15px;
+    }
+
+    .product-title {
+        margin-top: 0;
+    }
+
+    .size {
+        margin-right: 10px;
+    }
+
+        .size:first-of-type {
+            margin-left: 40px;
+        }
+
+    .color {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        height: 2em;
+        width: 2em;
+        border-radius: 2px;
+    }
+
+        .color:first-of-type {
+            margin-left: 20px;
+        }
+
+    .add-to-cart, .like {
+        background: #ff9f1a;
+        padding: 1.2em 1.5em;
+        border: none;
+        text-transform: UPPERCASE;
+        font-weight: bold;
+        color: #fff;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+    }
+
+        .add-to-cart:hover, .like:hover {
+            background: #b36800;
+            color: #fff;
+        }
+
+    .not-available {
+        text-align: center;
+        line-height: 2em;
+    }
+
+        .not-available:before {
+            font-family: fontawesome;
+            content: "\f00d";
+            color: #fff;
+        }
+
+    .orange {
+        background: #ff9f1a;
+    }
+
+    .green {
+        background: #85ad00;
+    }
+
+    .blue {
+        background: #0076ad;
+    }
+
+    .tooltip-inner {
+        padding: 1.3em;
+    }
+</style>
+<h1 style="color:aliceblue">Just a couple of steps more, check the details of the order and checkout</h1>
+<div id="bodypart">
+    @Html.HiddenFor(m => m.GuitarId)
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <h2 class="product-title" style="font-weight:100">@Html.DisplayFor(model => Model.BrandName) @Html.DisplayFor(model => Model.GuitarModel) </h2>
+                <div class="wrapper row">
+                    <div class="details col-md-6">
+                        @if (Model.Imagelink1 != null)
+                        {
+                            <img src=@Url.Content(Model.Imagelink1) style="max-height: 350px; background-position-x:center;" />
+                        }
+                    </div>
+
+                    <div class="details col-md-6">
+
+                        <dl class="dl-horizontal" style="font-weight:100; font-size:22px">
+                            <dt>
+                                Price:
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Price)
+                            </dd>
+
+                            <dt>
+                                Warranty:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.InsuranceName)
+                            </dd>
+                            <hr />
+                            <dt>
+                                Customer:
+                            </dt>
+                            <dd></dd>
+
+                            <dt>
+                                Full name:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.BuyerName)
+                            </dd>
+
+                            <dt>
+                                Email:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+                            <dt>
+                                Phone:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Phone)
+                            </dd>
+                            <dt>
+                                Address:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Address)
+                            </dd>
+                            <dt>
+                                Order time:
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DateReserve)
+                            </dd>
+                        </dl>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Des, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Des, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Des, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Check out" class="btn btn-default" /> |
+                                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back to List", "List", "Order")</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@{
+    ViewBag.Title = "Proceed";
+}
+
+<h2>Proceed</h2>
+

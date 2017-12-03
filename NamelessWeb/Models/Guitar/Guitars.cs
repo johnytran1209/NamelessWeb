@@ -34,6 +34,7 @@ namespace NamelessWeb.Models.Guitar
         public string ImageLink4 { get; set; }
         public string ImageLink5 { get; set; }
         public string ImageLink6 { get; set; }
+        public string Videolink { get; set; }
         [Required]
         public byte Availability { get; set; }
        }

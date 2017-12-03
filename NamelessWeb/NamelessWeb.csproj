@@ -328,6 +328,18 @@
     <Compile Include="Migrations\201711272037471_something new.Designer.cs">
       <DependentUpon>201711272037471_something new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712010028392_updateorderbill.cs" />
+    <Compile Include="Migrations\201712010028392_updateorderbill.Designer.cs">
+      <DependentUpon>201712010028392_updateorderbill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712010033528_updateorderbill2.cs" />
+    <Compile Include="Migrations\201712010033528_updateorderbill2.Designer.cs">
+      <DependentUpon>201712010033528_updateorderbill2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712011254324_addvideolink.cs" />
+    <Compile Include="Migrations\201712011254324_addvideolink.Designer.cs">
+      <DependentUpon>201712011254324_addvideolink.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -470,6 +482,7 @@
     <Content Include="Views\Guitar\View.cshtml" />
     <Content Include="Views\Order\List.cshtml" />
     <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Proceed.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -568,6 +581,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711272037471_something new.resx">
       <DependentUpon>201711272037471_something new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712010028392_updateorderbill.resx">
+      <DependentUpon>201712010028392_updateorderbill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712010033528_updateorderbill2.resx">
+      <DependentUpon>201712010033528_updateorderbill2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712011254324_addvideolink.resx">
+      <DependentUpon>201712011254324_addvideolink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,9 +31,9 @@
         flex-direction: column;
     }
 
-    -webkit-box-flex: 1; 
-    -webkit-flex-grow: 1; 
-    -ms-flex-positive: 1; flex-grow: 1;
+    -webkit-box-flex:1; 
+    -webkit-flex-grow:1; 
+    -ms-flex-positive:1; flex-grow: 1;
 
     .preview-thumbnail.nav-tabs {
         border: none;
@@ -202,7 +202,7 @@
                             {
                                 <div class="tab-pane" id="pic-3"><img src=@Url.Content(Model.ImageLink3) /></div>
                             }
-                            @if (Model.ImageLink4!= null)
+                            @if (Model.ImageLink4 != null)
                             {
                                 <div class="tab-pane" id="pic-4"><img src=@Url.Content(Model.ImageLink4) /></div>
                             } 
@@ -239,13 +239,14 @@
                             }
                             @if (Model.ImageLink6 != null)
                             {
-                                <li><a data-target="#pic-6" data-toggle="tab"><img src=@Url.Content(Model.ImageLink5) /></a></li>
+                                <li><a data-target="#pic-6" data-toggle="tab"><img src=@Url.Content(Model.ImageLink6) /></a></li>
                             }
                         </ul>
                     </div>
                     <div class="details col-md-6">
+                        <iframe width="420" height="315" src=@Url.Content(Model.VideoLink)></iframe>
                     </div>
-                    <p class="product-description">@Html.DisplayTextFor(model => model.Description)</p>
+                    <p>@Html.DisplayTextFor(model => model.Description)</p>
                     <h4 class="price">current price: <span> @Html.DisplayFor(model => model.Price)</span></h4>
                     <div class="action">
                         @if (Model.Availability == 0)
@@ -294,7 +295,6 @@
             </div>
         </div>
     </div>
-        <hr />
         <div class="container">
             <div class="card">
                 <H2>Specification</H2>
