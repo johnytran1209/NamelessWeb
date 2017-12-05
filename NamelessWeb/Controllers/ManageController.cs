@@ -381,7 +381,7 @@ namespace NamelessWeb.Controllers
         public ActionResult EmployeeList()
         {
             //var roleId = _DbContext.Roles.Where(m => m.Name == "Employee").Select(m => m.Id).SingleOrDefault();
-            var users = from u in _DbContext.Users where u.Roles.Any(r => r.RoleId == "2") select u;
+            var users = from u in _DbContext.Users where u.Roles.Any(r => r.RoleId == "2" || r.RoleId == "0") select u;
             return View(users);
         }
 
