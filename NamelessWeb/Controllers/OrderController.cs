@@ -141,7 +141,7 @@ namespace NamelessWeb.Controllers
                 SqlCommand y = new SqlCommand(gc, a);
                 SqlDataReader d = y.ExecuteReader();
                 dt1.Load(d);
-                string z = string.Format("insert into ExpBillDetails values ('{0}','{1}','{2} {3}')", expcount, dt1.Rows[0][2].ToString(), dt1.Rows[0][0].ToString(), dt1.Rows[0][1].ToString());
+                string z = string.Format("insert into ExpBillDetails values ('{0}','{1}','{2} {3}',{4})", expcount, dt1.Rows[0][2].ToString(), dt1.Rows[0][0].ToString(), dt1.Rows[0][1].ToString(),viewModel.GuitarId);
                 SqlCommand vaoexpbilldet = new SqlCommand(z, a);
                 vaoexpbilldet.ExecuteNonQuery();
 

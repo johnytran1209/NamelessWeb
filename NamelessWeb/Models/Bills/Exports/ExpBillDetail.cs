@@ -12,6 +12,7 @@ namespace NamelessWeb.Models.Bills.Exports
         public string ExpBId { get; set; }
         [Required]
         public string Product { get; set; }
+        public string GuitarId { get; set; }
         [Required]
         public float Cost { get; set; }
     }

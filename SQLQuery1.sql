@@ -1,3 +1,3 @@
-select B.Product, r.ExpCus, r.ExpDes,
+select B.Product, r.ExpCus, r.ExpDes, r.ExpDate, r.ExpEmp, u.Email, u.PhoneNumber
 from AspNetUsers U, ExpBillDetails B, ExportBills R 
-where R.ExpCusId= u.Id and r.ExpEmpId = u.Id
+where r.ExpEmpId = u.Id
