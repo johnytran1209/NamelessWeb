@@ -28,13 +28,8 @@ namespace NamelessWeb.Controllers
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult WList()
         {
-            var Orders = _DbContext.ExportBill.ToList();
-            a.Open();
-            SqlCommand x = new SqlCommand("" +
-                "select G.GuitarId,G.MDL,G.ImageLink1, U.FullName, u.Email,U.Address, u.PhoneNumber, r.DateReserve from Guitars G, AspNetUsers U, Reservations R where G.GuitarId = R.GuitarId and R.UserId = U.Id", a);
-            SqlDataAdapter da = new SqlDataAdapter(x);
-            da.Fill(dt2);
-            return View(dt2);
+         
+            return View();
 
 
         }
