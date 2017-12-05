@@ -370,9 +370,19 @@ namespace NamelessWeb.Controllers
         }
 
         [Authorize]
-        public ActionResult UserList()
-        {             
-            return View(_DbContext.Users.ToList());
+        public ActionResult CustomerList()
+        {
+            //var roleId = _DbContext.Roles.Where(m => m.Name == "Employee").Select(m => m.Id).SingleOrDefault();
+            var users = from u in _DbContext.Users where u.Roles.Any(r => r.RoleId == "1") select u;
+            return View(users);
+        }
+
+        [Authorize]
+        public ActionResult EmployeeList()
+        {
+            //var roleId = _DbContext.Roles.Where(m => m.Name == "Employee").Select(m => m.Id).SingleOrDefault();
+            var users = from u in _DbContext.Users where u.Roles.Any(r => r.RoleId == "2") select u;
+            return View(users);
         }
 
         [Authorize]
@@ -451,7 +461,7 @@ namespace NamelessWeb.Controllers
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                        return RedirectToAction("UserList", "Manage");
+                        return RedirectToAction("EmployeeList", "Manage");
                     }
                     else
                     {
