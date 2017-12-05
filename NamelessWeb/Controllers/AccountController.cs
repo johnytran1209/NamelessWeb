@@ -218,6 +218,30 @@ namespace NamelessWeb.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
+        [AllowAnonymous]
+        public ActionResult Forgot()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> Forgot(ForgotViewModel model)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(context);
+            UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(store);
+            var user = UserManager.FindByEmail(model.Email);
+            if (model.Question == user.Question && model.Answer == user.Answer)
+            {
+                String hashedNewPassword = UserManager.PasswordHasher.HashPassword("123456");
+                ApplicationUser cUser = await UserManager.FindByIdAsync(user.Id);
+                await store.SetPasswordHashAsync(cUser, hashedNewPassword);
+                await store.UpdateAsync(cUser);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]

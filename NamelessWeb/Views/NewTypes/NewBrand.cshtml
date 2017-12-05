@@ -34,6 +34,7 @@
             @Html.Label("Supplier ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">                
                 @Html.DropDownListFor(m => m.SupplierId, new SelectList(Model.SuppIds, "SuppId", "SuppName"), new { @class = "form-control" })
+                <button>@Html.ActionLink("New Supplier", "NewSupplier", "NewTypes")  </button>
                 @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
             </div>
         </div>

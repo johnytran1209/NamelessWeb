@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NamelessWeb.Models.Guitar.Guitars>
+@{
+    ViewBag.Title = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    ul.products li {
+        width: 200px;
+        display: inline-block;
+        vertical-align: top;
+    }
+</style>
+<hr />
+<h2>Inventory</h2>
+<hr />
+<ul class="products">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
+                @if (item.ImageLink1 != null)
+                {
+                    <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
+                }
+                @Html.DisplayFor(modelItem => item.MDL)
+            </a>
+        </li>
+    }
+</ul>
+<hr />

@@ -1,5 +1,19 @@
 ﻿<style>
-    
+    .btn {
+        display: inline-block;
+        border-radius: 4px;
+        background-image: url('../../Content/Img/plank-156863_960_720.png');
+        background-position: center;
+        color: black;
+        text-align: center;
+        font-size: 15px;
+        padding: 12px;
+        min-width: 100px;
+        width: auto;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
 </style>
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
@@ -11,7 +25,7 @@
     <ul class="nav navbar-nav navbar-right" style="margin:10px;">
         <li>
             <button class="btn" style="margin:10px;">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", new { @style = "color:#000aaa;"}, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "ViewProfile", "Manage", new { @style = "color:#000aaa;"}, htmlAttributes: new { title = "Manage" })
             </button>
         </li>
         <li>
@@ -25,6 +39,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right" style="padding-top: 20px">
+        <li><button class="btn" style="margin:10px;">@Html.ActionLink("Forgot password", "Forgot", "Account", routeValues: null, htmlAttributes: new { id = "forgotLink" }) </button></li>
         <li><button class="btn" style="margin:10px;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </button ></li >
         <li><button class="btn" style="margin:10px;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</button></li>
     </ul>

@@ -185,6 +185,11 @@ namespace NamelessWeb.Controllers
             return RedirectToAction("Index", "Home");          
         }
 
+        public ActionResult Inventory()
+        {
+            return View(_DbContext.Guitars.ToList());
+        }
+
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult List()
         {
