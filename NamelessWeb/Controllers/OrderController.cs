@@ -28,7 +28,6 @@ namespace NamelessWeb.Controllers
 
         public ActionResult List()
         {
-            var guitar = _DbContext.Reservation.ToList();
             a.Open();
             SqlCommand x = new SqlCommand("" +
                 "select G.GuitarId,G.MDL,G.ImageLink1, U.FullName, u.Email,U.Address, u.PhoneNumber, r.DateReserve from Guitars G, AspNetUsers U, Reservations R where G.GuitarId = R.GuitarId and R.UserId = U.Id", a);
