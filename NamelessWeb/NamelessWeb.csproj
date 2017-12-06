@@ -486,10 +486,9 @@
     <Content Include="Views\Guitar\Inventory.cshtml" />
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Guitar\List.cshtml" />
+    <Content Include="Views\Export\Clist.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Export\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

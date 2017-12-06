@@ -25,7 +25,6 @@ namespace NamelessWeb.Controllers
         }
         // GET: Order
         [Authorize(Roles = "Admin, Employee")]
-
         public ActionResult List()
         {
             a.Open();
@@ -35,6 +34,7 @@ namespace NamelessWeb.Controllers
             da.Fill(dt2);
             return View(dt2);
         }
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -86,6 +86,7 @@ namespace NamelessWeb.Controllers
             SqlCommand u = new SqlCommand(z, a);
             return RedirectToAction("List", "Order");
         }
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Proceed(int? id)
         {
             if (id == null)
@@ -132,16 +133,19 @@ namespace NamelessWeb.Controllers
         {
             try
             {
-                var date = _DbContext.Reservation.Single(c => c.GuitarId == viewModel.GuitarId);
+                int id = viewModel.GuitarId;
+                var date = _DbContext.Reservation.Single(c => c.GuitarId == id);
                 var exp= _DbContext.ExportBill.ToList();
                 int expcount = exp.Count();
+                string newo = viewModel.Des.ToString();
                 a.Open();
 
                 string gc = string.Format("select b.BrandName,G.MDL, G.MSRP from Guitars G ,Brands B where g.BrandId=b.BrandId and g.GuitarId='{0}'", viewModel.GuitarId);
                 SqlCommand y = new SqlCommand(gc, a);
                 SqlDataReader d = y.ExecuteReader();
                 dt1.Load(d);
-                string z = string.Format("insert into ExpBillDetails values ('{0}','{1}','{2} {3}',{4})", expcount, dt1.Rows[0][2].ToString(), dt1.Rows[0][0].ToString(), dt1.Rows[0][1].ToString(),viewModel.GuitarId);
+
+                string z = string.Format("insert into ExpBillDetails values ('{0}','{1}','{2} {3}',{4})", expcount, dt1.Rows[0][2].ToString(), dt1.Rows[0][0].ToString(), dt1.Rows[0][1].ToString(), viewModel.GuitarId);
                 SqlCommand vaoexpbilldet = new SqlCommand(z, a);
                 vaoexpbilldet.ExecuteNonQuery();
 
@@ -149,7 +153,7 @@ namespace NamelessWeb.Controllers
                 SqlCommand x = new SqlCommand(bc, a);
                 SqlDataReader b = x.ExecuteReader();
                 dt2.Load(b);
-                string ab = string.Format("insert into ExportBills values ('{0}',CURRENT_TIMESTAMP,'{1}','{2}','{3}','{4}','Customer Email:{5} Customer Phone number:{6} Additional Information: {7}')", expcount, User.Identity.Name.ToString(), dt2.Rows[0][0].ToString(), User.Identity.IsAuthenticated.ToString(), date.UserId.ToString(), dt2.Rows[0][1].ToString(), dt2.Rows[0][3].ToString(),viewModel.Des);
+                string ab = string.Format("insert into ExportBills values ('{0}',CURRENT_TIMESTAMP,'{1}','{2}','{3}','{4}','Customer Email:{5} Customer Phone number:{6} Additional Information: {7}')", expcount, User.Identity.GetUserName(), dt2.Rows[0][0].ToString(), User.Identity.GetUserId(), date.UserId.ToString(), dt2.Rows[0][1].ToString(), dt2.Rows[0][3].ToString(), newo);
                 SqlCommand vaoexpbill = new SqlCommand(ab, a);
                 vaoexpbill.ExecuteNonQuery();
 
@@ -167,9 +171,7 @@ namespace NamelessWeb.Controllers
             catch
             {
                 return RedirectToAction("List", "Order");
-            }
-            
-            
+            }        
         }
 
         public ActionResult Index()
