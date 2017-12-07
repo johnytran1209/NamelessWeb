@@ -372,6 +372,7 @@
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModels\ExportViewModel.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
     <Compile Include="Views\ViewModels\OrderViewModel.cs" />
     <Compile Include="Views\ViewModels\SupplierViewModel.cs" />
@@ -486,10 +487,11 @@
     <Content Include="Views\Guitar\Inventory.cshtml" />
     <Content Include="Views\Account\Forgot.cshtml" />
     <Content Include="Views\Guitar\List.cshtml" />
+    <Content Include="Views\Export\Clist.cshtml" />
+    <Content Include="Views\Export\WList.cshtml" />
+    <Content Include="Views\Export\WListEdit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Export\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

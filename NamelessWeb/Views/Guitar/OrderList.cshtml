@@ -1,0 +1,54 @@
+﻿@model IEnumerable<NamelessWeb.Views.ViewModels.OrderViewModel>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OrderList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuitarId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReserve)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuitarId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReserve)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

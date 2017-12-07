@@ -62,17 +62,19 @@
                                 <li>@Html.ActionLink("Order List", "List", "Order")</li>
                                 <li>@Html.ActionLink("Customer List", "CustomerList", "Manage")</li>
                                 <li>@Html.ActionLink("Employee List", "EmployeeList", "Manage")</li>
+                                <li>
+                                    @Html.ActionLink("Export Bills", "Wlist", "Export")</li>
                                 @if (User.IsInRole("Admin"))
                                 {
 
                                 }
-                            </ul>
+</ul>
                         </li>
                     }
-                    @*@if (Request.IsAuthenticated)
+                    @if (Request.IsAuthenticated)
                         {
-                            <li><button class="btn" style="margin:10px;;">@Html.ActionLink("View Profile", "ViewProfile", "Manage")</button></li>
-                        }*@
+                            <li><button class="btn" style="margin:10px;;">@Html.ActionLink("Purchase History", "Clist", "Export")</button></li>
+                        }
 
                     @*<li>
                             <div class="dropdown">

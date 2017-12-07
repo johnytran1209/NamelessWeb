@@ -1,0 +1,89 @@
+﻿@model NamelessWeb.Views.ViewModels.ExportViewModel
+@{
+    ViewBag.Title = "Wlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("form").submit(function (e) {
+
+            e.preventDefault();
+            var emailValue = $("#String").val();
+            int id=$
+            $.ajax({
+                url: '/Export/WListEdit',
+                data: { id: ,text: emailValue }
+            });
+        });
+    });
+</script>
+<h2 style="color:aliceblue;">Bill Editor</h2>
+@using (Html.BeginForm("WListEdit", "Export"))
+{
+    @Html.AntiForgeryToken()
+    <table class="table" style="color:aliceblue;" height="120">
+        <tr style="color:aliceblue">
+            <th width="20%">
+                Product
+            </th>
+            <th width="10%">
+                Bill no.
+            </th>
+            <th width="30%" >
+                Customer Information
+            </th>
+
+            <th width="20%">
+                Employee Information
+            </th>
+            <th width="10%">
+
+            </th>
+        </tr>
+
+        <tr style="color:aliceblue">
+            <td>
+
+                @if (Model.ImageLink != "")
+                {
+                    <img src="@Model.ImageLink" style="max-height: 100px" />
+                }
+
+            </td>
+            <td>
+                <div>bill No.: @Model.Bid</div>
+                <div>
+                    @Model.Product
+                </div>
+                <div>
+                    @Model.Cost
+                </div>
+            </td>
+            <td>
+                @Model.CusName
+                <br />
+                <div >
+                    @Html.TextAreaFor(model => model.BillDes, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <br />
+                @Model.BillDate
+
+            </td>
+            <td>
+                @Model.EmployeeName
+                <br />
+                @Model.EmployeephoneNo
+            </td>
+            <td>
+                <input type="submit" id="emailSubmit" value="Submit change" />
+            </td>
+
+        </tr>
+        }
+    </table>
+
+}
+
+

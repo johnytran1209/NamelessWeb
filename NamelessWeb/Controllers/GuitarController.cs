@@ -116,7 +116,7 @@ namespace NamelessWeb.Controllers
                     }
                 }
                 a.Open();
-                string y = string.Format("insert into dbo.Guitars values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','0','{7}','{8}','{9}','{10}','{11}','{12}')",
+                string y = string.Format("insert into dbo.Guitars values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','0','{7}','{8}','{9}','{10}','{11}','{12}','{13}')",
                     b,
                     viewModel.GuitarModel.ToString(),
                     viewModel.BrandId.ToString(),
@@ -129,7 +129,8 @@ namespace NamelessWeb.Controllers
                     viewModel.ImageLink3,
                     viewModel.ImageLink4,
                     viewModel.ImageLink5,
-                    viewModel.ImageLink6
+                    viewModel.ImageLink6,
+                    viewModel.VideoLink
                     );
                 
                 SqlCommand vaoguitar = new SqlCommand(y, a);
