@@ -30,10 +30,51 @@ namespace NamelessWeb.Controllers
         {
             a.Open();
             SqlCommand x = new SqlCommand("" +
-                "select g.ImageLink1, d.Product, d.Cost, b.ExpCus, b.ExpDes, b.ExpDate, u.FullName,u.PhoneNumber from AspNetUsers U, ExportBills B, ExpBillDetails D, Guitars G where d.GuitarId = g.GuitarId and b.ExpBId = d.ExpBId and b.ExpEmpid = u.Id", a);
+                "select b.ExpBId,g.ImageLink1, d.Product, d.Cost, b.ExpCus, b.ExpDes, b.ExpDate, u.FullName,u.PhoneNumber from AspNetUsers U, ExportBills B, ExpBillDetails D, Guitars G where d.GuitarId = g.GuitarId and b.ExpBId = d.ExpBId and b.ExpEmpid = u.Id", a);
             SqlDataAdapter da = new SqlDataAdapter(x);
             da.Fill(dt2);
             return View(dt2);
+        }
+        [Authorize(Roles = "Admin, Employee")]
+        public ActionResult WListEdit(int? id)
+        {
+            a.Open();
+            string z = string.Format("select b.ExpBId,g.ImageLink1, d.Product, d.Cost, b.ExpCus, b.ExpDes, b.ExpDate, u.FullName,u.PhoneNumber from AspNetUsers U, ExportBills B, ExpBillDetails D, Guitars G where d.GuitarId = g.GuitarId and b.ExpBId = d.ExpBId and b.ExpEmpid = u.Id and b.ExpBId='{0}'", id);
+            SqlCommand x = new SqlCommand(z, a);
+            SqlDataAdapter da = new SqlDataAdapter(x);
+            da.Fill(dt2);
+            var viewModel = new ExportViewModel
+            {
+                Bid = Int16.Parse(dt2.Rows[0][0].ToString()),
+                ImageLink= dt2.Rows[0][1].ToString(),
+                Product= dt2.Rows[0][2].ToString(),
+                Cost= float.Parse(dt2.Rows[0][3].ToString()),
+                CusName= dt2.Rows[0][4].ToString(),
+                BillDes= dt2.Rows[0][5].ToString(),
+                BillDate= DateTime.Parse(dt2.Rows[0][6].ToString()),
+                EmployeeName= dt2.Rows[0][7].ToString(),
+                EmployeephoneNo=dt2.Rows[0][8].ToString()
+            };
+            return View(viewModel);
+        }
+        [Authorize(Roles = "Admin, Employee")]
+        [HttpPost, ActionName("WListEdit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult WListEdit(ExportViewModel viewModel)
+        {
+            try
+            {
+                a.Open();
+                string y = string.Format("update dbo.ExportBills set ExpDes='{0}'where ExpBId='{1}'",viewModel.BillDes,viewModel.Bid);
+                SqlCommand x = new SqlCommand(y, a);
+                x.ExecuteNonQuery();
+                return RedirectToAction("WList", "Export");
+            }
+            catch
+            {
+                return RedirectToAction("WList", "Export");
+            }
+
         }
         [Authorize]
         public ActionResult Clist()
@@ -45,5 +86,6 @@ namespace NamelessWeb.Controllers
             da.Fill(dt2);
             return View(dt2);
         }
+
     }
 }

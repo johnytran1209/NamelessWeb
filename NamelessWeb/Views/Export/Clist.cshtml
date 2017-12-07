@@ -4,20 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Clist</h2>
 
-<table class="table" style="color:aliceblue">
+<h2 style="color:aliceblue;">Clist</h2>
+
+<table class="table" style="color:aliceblue;">
     <tr style="color:aliceblue">
-        <th>
+        <th width="20%">
             Product 
         </th>
-        <th>
+        <th width="10%">
             Bill no. 
         </th>
-        <th>
+        <th width="40%">
             Customer Information
         </th>
-        <th>
+
+        <th width="30%">
             Employee Information
         </th>
         <th></th>
@@ -27,23 +29,34 @@
     {
         <tr style="color:aliceblue">
             <td>
+                
                 @if (@Model.Rows[i][2].ToString() != null)
                 {
-                    <img src="@Model.Rows[i][2].ToString()" style="max-height: 100px" />
+                    <img src="@Model.Rows[i][0].ToString()" style="max-height: 100px" />
                 }
-                <br />
-                @Model.Rows[i][1].ToString()
+                            
+            </td>
+            <td>
+                <div>
+                    @Model.Rows[i][1].ToString()
+                </div>
+                <div>
+                    @Model.Rows[i][2].ToString()
+                </div>  
             </td>
             <td>
                 @Model.Rows[i][3].ToString()
                 <br />
-                @Model.Rows[i][4].ToString()
-                <br />
-                @Model.Rows[i][6].ToString()
+                <p>
+                    @Model.Rows[i][4].ToString()
+                </p>                
                 <br />
                 @Model.Rows[i][5].ToString()
+                
             </td>
             <td>
+                @Model.Rows[i][6].ToString()
+                <br />
                 @Model.Rows[i][7].ToString()
             </td>
 
