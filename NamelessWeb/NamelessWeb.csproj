@@ -216,6 +216,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewTypesController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -344,6 +345,26 @@
     <Compile Include="Migrations\201712051640512_guitarid to expde.cs" />
     <Compile Include="Migrations\201712051640512_guitarid to expde.Designer.cs">
       <DependentUpon>201712051640512_guitarid to expde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081652018_AddNameToNote.cs" />
+    <Compile Include="Migrations\201712081652018_AddNameToNote.Designer.cs">
+      <DependentUpon>201712081652018_AddNameToNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081703424_FixNoteId.cs" />
+    <Compile Include="Migrations\201712081703424_FixNoteId.Designer.cs">
+      <DependentUpon>201712081703424_FixNoteId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091546059_AddDateToNote.cs" />
+    <Compile Include="Migrations\201712091546059_AddDateToNote.Designer.cs">
+      <DependentUpon>201712091546059_AddDateToNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091550233_DeleteNoteViewModels.cs" />
+    <Compile Include="Migrations\201712091550233_DeleteNoteViewModels.Designer.cs">
+      <DependentUpon>201712091550233_DeleteNoteViewModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091552393_FixDB.cs" />
+    <Compile Include="Migrations\201712091552393_FixDB.Designer.cs">
+      <DependentUpon>201712091552393_FixDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -490,6 +511,9 @@
     <Content Include="Views\Export\Clist.cshtml" />
     <Content Include="Views\Export\WList.cshtml" />
     <Content Include="Views\Export\WListEdit.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Note\Create.cshtml" />
+    <Content Include="Views\Note\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -600,6 +624,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712051640512_guitarid to expde.resx">
       <DependentUpon>201712051640512_guitarid to expde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081652018_AddNameToNote.resx">
+      <DependentUpon>201712081652018_AddNameToNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081703424_FixNoteId.resx">
+      <DependentUpon>201712081703424_FixNoteId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091546059_AddDateToNote.resx">
+      <DependentUpon>201712091546059_AddDateToNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091550233_DeleteNoteViewModels.resx">
+      <DependentUpon>201712091550233_DeleteNoteViewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091552393_FixDB.resx">
+      <DependentUpon>201712091552393_FixDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
