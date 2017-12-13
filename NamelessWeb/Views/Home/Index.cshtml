@@ -67,30 +67,50 @@
             setTimeout(showSlides, 3000); // Change image every 2 seconds
         }
     </script>
-    <hr />
-    <div style="color:aliceblue; font-size:25px">Inventory</div>
-    <hr />
-@*<a style="color:aliceblue">Morris</a>
-        <hr />
-        <a style="color:aliceblue">Yamaha</a>
-        <hr />
-        <a style="color:aliceblue">Others</a>*@
-    <ul class="products"> 
-        @foreach (var item in Model)
-        {
-            <li>
-                <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
-                    @if (item.ImageLink1 != null)
-                    {
-                        <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
-                    }                   
-                    @Html.DisplayFor(modelItem=>item.MDL)                 
-                </a>
-            </li>
-        }
-    </ul>
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="container body-content">
+                    <hr />
+                    <div style=" font-size:25px">@Html.ActionLink("Inventory", "Inventory", "Guitar")</div>
+                    <hr />
+                    @*<a style="color:aliceblue">Morris</a>
+                        <hr />
+                        <a style="color:aliceblue">Yamaha</a>
+                        <hr />
+                        <a style="color:aliceblue">Others</a>*@
+                    <ul class="products">
+                        @foreach (var item in Model)
+                        {
+                              <li>
+                                  <div class="w3-third">
+                                      <div class="w3-card">
+                                          <a href="@Url.Action("Details", "Guitar", new { id = item.GuitarId })" style=" max-width:80px;">
+                                              @if (item.ImageLink1 != null)
+                                              {
+                                                  <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
+                                              }
+                                          </a>
+                                          <div class="w3-container">
+                                              @Html.DisplayFor(modelItem => item.MDL)
+                                          </div>
+                                      </div>
+                                  </div>
+                                    
+                                    
+                               </li>   
+                           
+                        }
+                    </ul>
 
-    <hr />
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<hr />
 
 </body>
 </html> 

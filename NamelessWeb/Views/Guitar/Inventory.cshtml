@@ -11,7 +11,7 @@
     }
 </style>
 <hr />
-<h2>Inventory</h2>
+<h2 style="color:aliceblue">Inventory</h2>
 <hr />
 <ul class="products">
     @foreach (var item in Model)
@@ -22,8 +22,12 @@
                 {
                     <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
                 }
-                @Html.DisplayFor(modelItem => item.MDL)
+                
             </a>
+            <div style="color:aliceblue; max-width:80px;">
+                @Html.DisplayFor(modelItem => item.MDL)
+            </div>
+            
         </li>
     }
 </ul>

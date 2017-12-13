@@ -197,7 +197,7 @@ namespace NamelessWeb.Controllers
             return View(_DbContext.Guitars.ToList());
         }
 
-        [Authorize(Roles = "Admin, Employee")]
+        
         public ActionResult Details(int id)
         {
             try
