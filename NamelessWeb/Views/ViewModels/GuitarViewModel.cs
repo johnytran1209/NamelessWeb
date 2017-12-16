@@ -64,6 +64,9 @@ namespace NamelessWeb.Views.ViewModels
         public string VideoLink { get; set; }
         [Required]
         public byte Availability { get; set; }
+        public string customername{get;set;}
+        public int point { get; set; }
+        public string feedback { get; set; }
         public string Heading { get; set; }
         public string Action
         {

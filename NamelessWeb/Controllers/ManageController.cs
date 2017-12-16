@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NamelessWeb.Models;
+using System.Net;
 
 namespace NamelessWeb.Controllers
 {
@@ -196,39 +197,39 @@ namespace NamelessWeb.Controllers
             ModelState.AddModelError("", "Failed to verify phone");
             return View(model);
         }
-        [Authorize(Roles = "Admin, Employee")]
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    try
-        //    {
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                var user = _DbContext.Users.Single(c => c.Id == id);
+                return View(user);
+        }
+            catch
+            {
+                return RedirectToAction("EmployeeList", "Manage");
+    }
 
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("List", "Guitar");
-        //    }
+}
 
-        //}
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            try
+            {
+                var user = _DbContext.Users.Single(c => c.Id == id);
+                _DbContext.Users.Remove(user);
+                _DbContext.SaveChanges();
+                return RedirectToAction("EmployeeList", "Manage");
+            }
+            catch
+            {
+                return RedirectToAction("EmployeeList", "Manage");
+            }
 
-        //[Authorize(Roles = "Admin, Employee")]
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    try
-        //    {
-
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("List", "Guitar");
-        //    }
-
-        //}
+        }
 
         //
         // POST: /Manage/RemovePhoneNumber

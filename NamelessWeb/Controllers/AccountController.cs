@@ -229,30 +229,64 @@ namespace NamelessWeb.Controllers
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
-
-        [AllowAnonymous]
-        public ActionResult Forgot(string email)
+        public ActionResult GetEmail()
         {
-            try
-            {
-               
-            a.Open();
-            string z = string.Format("select Question from AspNetUsers where Email=''");
-            SqlCommand w = new SqlCommand(z, a);
-            SqlDataAdapter db = new SqlDataAdapter(w);
-            db.Fill(dt1);
-            a.Close();
-            _DbContext.Users.ToList();
-            string question = _DbContext.Users.Single(m => m.Email == email).Question.ToString();
-                var model = new ForgotViewModel { Email = email, Question = dt1.Rows[0][0].ToString() };
-                return View(model);
+            return View();
         }
-            catch
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetEmail(ForgotViewModel model)
+        {
+            if (model.Email == null)
             {
-                return RedirectToAction("Login", "Account");
-    }
-}
-
+                return View();
+            }
+            var user = _DbContext.Users.Single(c => c.Email == model.Email);
+            var user1 = new ForgotViewModel
+            {
+                Email = user.Email,
+                Question = user.Question
+            };
+            return View("Forgot", user1);
+        }
+        [AllowAnonymous]
+        public ActionResult Forgot()
+        {
+            //try
+            //{
+               
+            //a.Open();
+            //string z = string.Format("select Question from AspNetUsers where Email=''");
+            //SqlCommand w = new SqlCommand(z, a);
+            //SqlDataAdapter db = new SqlDataAdapter(w);
+            //db.Fill(dt1);
+            //a.Close();
+            //_DbContext.Users.ToList();
+            //string question = _DbContext.Users.Single(m => m.Email == email).Question.ToString();
+            //    var model = new ForgotViewModel { Email = email, Question = dt1.Rows[0][0].ToString() };
+                return View();
+        //}
+        //    catch
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        }
+        //[AllowAnonymous]
+        //public ActionResult getEmail()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public async Task<ActionResult> getEmail(string email)
+        //{
+        //    if(email==null)
+        //    {
+        //        return View();
+        //    }
+        //    var user = _DbContext.Users.Single(c => c.Email == email);
+        //    return RedirectToAction("Forgot", "Account", user.Question, email);
+        //}
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Forgot(ForgotViewModel model)

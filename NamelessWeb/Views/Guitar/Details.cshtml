@@ -31,33 +31,29 @@
         flex-direction: column;
     }
 
-    -webkit-box-flex:1; 
-    -webkit-flex-grow:1; 
-    -ms-flex-positive:1; flex-grow: 1;
-
-    .preview-thumbnail.nav-tabs {
+    -webkit-box-flex:1; -webkit-flex-grow:1; -ms-flex-positive:1; flex-grow: 1; .preview-thumbnail.nav-tabs {
         border: none;
         margin-top: 15px;
     }
 
-        .preview-thumbnail.nav-tabs li {
-            width: 18%;
-            margin-right: 2.5%;
+    .preview-thumbnail.nav-tabs li {
+        width: 18%;
+        margin-right: 2.5%;
+    }
+
+        .preview-thumbnail.nav-tabs li img {
+            max-width: 100%;
+            display: block;
         }
 
-            .preview-thumbnail.nav-tabs li img {
-                max-width: 100%;
-                display: block;
-            }
+        .preview-thumbnail.nav-tabs li a {
+            padding: 0;
+            margin: 0;
+        }
 
-            .preview-thumbnail.nav-tabs li a {
-                padding: 0;
-                margin: 0;
-            }
-
-            .preview-thumbnail.nav-tabs li:last-of-type {
-                margin-right: 0;
-            }
+        .preview-thumbnail.nav-tabs li:last-of-type {
+            margin-right: 0;
+        }
 
     .tab-content {
         overflow: hidden;
@@ -180,79 +176,85 @@
     }
 </style>
 
-@using (Html.BeginForm("Details", "Guitar"))
-{
-    @Html.HiddenFor(m => m.GuitarId)
-    <div class="container">
-        <div class="card">
-            <div class="container-fliud">
-                <h2 class="product-title" style="font-weight:100">@Html.DisplayFor(model => Model.BrandName) @Html.DisplayFor(model => Model.GuitarModel) </h2>
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-                        <div class="preview-pic tab-content">
-                            @if (Model.ImageLink1 != "")
-                            {
-                                <div class="tab-pane active" id="pic-1"><img src=@Url.Content(Model.ImageLink1) /></div>
-                            }                            
-                            @if (Model.ImageLink2 != "")
-                            {
-                                <div class="tab-pane" id="pic-2"><img src=@Url.Content(Model.ImageLink2) /></div>
-                            }
-                            @if (Model.ImageLink3 != "")
-                            {
-                                <div class="tab-pane" id="pic-3"><img src=@Url.Content(Model.ImageLink3) /></div>
-                            }
-                            @if (Model.ImageLink4 != "")
-                            {
-                                <div class="tab-pane" id="pic-4"><img src=@Url.Content(Model.ImageLink4) /></div>
-                            } 
-                            @if (Model.ImageLink5 != "")
-                            {
-                                <div class="tab-pane" id="pic-5"><img src=@Url.Content(Model.ImageLink5) /></div>
-                            }
-                            @if (Model.ImageLink6 != "")
-                            {
-                                <div class="tab-pane" id="pic-6"><img src=@Url.Content(Model.ImageLink6) /></div>
-                            }
-                        </div>
-                        <br />
-                        <ul class="preview-thumbnail nav nav-tabs">                           
-                            @if (Model.ImageLink1 != "")
-                            {
-                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src=@Url.Content(Model.ImageLink1) /></a></li>
-                            }  
-                            @if (Model.ImageLink2 != "")
-                            {
-                                <li><a data-target="#pic-2" data-toggle="tab"><img src=@Url.Content(Model.ImageLink2) /></a></li>
-                            }   
-                            @if (Model.ImageLink3 != "")
-                            {
-                                <li><a data-target="#pic-3" data-toggle="tab"><img src=@Url.Content(Model.ImageLink3) /></a></li>
-                            }    
-                            @if (Model.ImageLink4 != "")
-                            {
-                                <li><a data-target="#pic-4" data-toggle="tab"><img src=@Url.Content(Model.ImageLink4) /></a></li>
-                            }                            
-                            @if (Model.ImageLink5 != "")
-                            {
-                                <li><a data-target="#pic-5" data-toggle="tab"><img src=@Url.Content(Model.ImageLink5) /></a></li>
-                            }
-                            @if (Model.ImageLink6 != "")
-                            {
-                                <li><a data-target="#pic-6" data-toggle="tab"><img src=@Url.Content(Model.ImageLink6) /></a></li>
-                            }
-                        </ul>
+
+
+
+
+@Html.HiddenFor(m => m.GuitarId)
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <h2 class="product-title" style="font-weight:100">@Html.DisplayFor(model => Model.BrandName) @Html.DisplayFor(model => Model.GuitarModel) </h2>
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                        @if (Model.ImageLink1 != "")
+                        {
+                            <div class="tab-pane active" id="pic-1"><img src=@Url.Content(Model.ImageLink1) /></div>
+                        }
+                        @if (Model.ImageLink2 != "")
+                        {
+                            <div class="tab-pane" id="pic-2"><img src=@Url.Content(Model.ImageLink2) /></div>
+                        }
+                        @if (Model.ImageLink3 != "")
+                        {
+                            <div class="tab-pane" id="pic-3"><img src=@Url.Content(Model.ImageLink3) /></div>
+                        }
+                        @if (Model.ImageLink4 != "")
+                        {
+                            <div class="tab-pane" id="pic-4"><img src=@Url.Content(Model.ImageLink4) /></div>
+                        }
+                        @if (Model.ImageLink5 != "")
+                        {
+                            <div class="tab-pane" id="pic-5"><img src=@Url.Content(Model.ImageLink5) /></div>
+                        }
+                        @if (Model.ImageLink6 != "")
+                        {
+                            <div class="tab-pane" id="pic-6"><img src=@Url.Content(Model.ImageLink6) /></div>
+                        }
                     </div>
+                    <br />
+                    <ul class="preview-thumbnail nav nav-tabs">
+                        @if (Model.ImageLink1 != "")
+                        {
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src=@Url.Content(Model.ImageLink1) /></a></li>
+                        }
+                        @if (Model.ImageLink2 != "")
+                        {
+                            <li><a data-target="#pic-2" data-toggle="tab"><img src=@Url.Content(Model.ImageLink2) /></a></li>
+                        }
+                        @if (Model.ImageLink3 != "")
+                        {
+                            <li><a data-target="#pic-3" data-toggle="tab"><img src=@Url.Content(Model.ImageLink3) /></a></li>
+                        }
+                        @if (Model.ImageLink4 != "")
+                        {
+                            <li><a data-target="#pic-4" data-toggle="tab"><img src=@Url.Content(Model.ImageLink4) /></a></li>
+                        }
+                        @if (Model.ImageLink5 != "")
+                        {
+                            <li><a data-target="#pic-5" data-toggle="tab"><img src=@Url.Content(Model.ImageLink5) /></a></li>
+                        }
+                        @if (Model.ImageLink6 != "")
+                        {
+                            <li><a data-target="#pic-6" data-toggle="tab"><img src=@Url.Content(Model.ImageLink6) /></a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="preview col-md-6">
                     <div class="details col-md-6">
                         @if (Model.VideoLink != "")
                         {
                             <iframe width="420" height="315" src=@Url.Content(Model.VideoLink)></iframe>
-                        }                        
+                        }
+                        <br />
                     </div>
-                    
                     <div style="right:auto;">
-                        <p>@Html.DisplayTextFor(model => model.Description)</p>
-                        <h4 class="price">Price: <span> @Html.DisplayFor(model => model.Price)</span></h4>
+                        <br />
+                        <p style="font-size:20px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">@Html.DisplayTextFor(model => model.Description)</p>
+                        <br />
+                        <h4 class="price" style="font-size:15px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:26px;">Price: <span> @Html.DisplayFor(model => model.Price)</span></h4>
+                        <br />
                     </div>
                     <div class="action" style="right:auto;">
                         @if (Model.Availability == 0)
@@ -260,34 +262,33 @@
                                     <!-- Trigger the modal with a button -->
                             <button type="submit" value="Save" class="btn btn-info btn-lg btn-success" data-toggle="modal" data-target="#myModal" id="btnDisplay">Order</button>
                                     <!-- Modal -->
-                                <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
 
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="background-color: saddlebrown">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body" style="background-color:sandybrown">
-                                                <p>Are you sure to order?</p>
-                                            </div>
-                                            <div class="modal-footer" style="background-color: saddlebrown">
-                                                <!-- Choose to do it-->
-                                                <input type="submit" value="Save" class="btn btn-default" data-toggle="modal" data-target="#myModal2" id="btnDisplay" style="background-color:green; color:black;" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:red; color:black">No</button>
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: saddlebrown">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body" style="background-color:sandybrown">
+                                            <p>Are you sure to order?</p>
+                                        </div>
+                                        <div class="modal-footer" style="background-color: saddlebrown">
+                                            <!-- Choose to do it-->
+                                            <input type="submit" value="Save" class="btn btn-default" data-toggle="modal" data-target="#myModal2" id="btnDisplay" style="background-color:green; color:black;" />
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:red; color:black">No</button>
 
-                                                <div class="modal fade" id="myModal2" role="dialog">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Congratulation</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>You've ordered successfully</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <input type="submit" value="Save" class="btn btn-default" />
-                                                            </div>
+                                            <div class="modal fade" id="myModal2" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Congratulation</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>You've ordered successfully</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="submit" value="Save" class="btn btn-default" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -295,139 +296,133 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        }
+                        @if (Model.Availability == 2)
+                        {
+
+                            <div style="font:bold; font-family:'Adobe Fan Heiti Std'; font-size:18px;">
+                                Customer Review:
+                                <p style="font:bold; font-family:'Adobe Fan Heiti Std'; font-size:18px;">@Html.Display("Customer Name:") @Html.DisplayFor(c => c.customername)</p>
+                                <p style="font-family:'Adobe Fan Heiti Std'; font-size:35px;">@Html.Display("Points:")@Html.DisplayFor(c => c.point)/5</p> <p style="font-family:'Adobe Fan Heiti Std'; font-size: 25px;">"@Html.DisplayFor(c => c.feedback)"</p>
+                                <br />
+                            </div>
                         }
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-        <div class="container">
-            <div class="card">
-                <H2>Specification</H2>
-                <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
-                    <dt>
-                        Body Type:
-                    </dt>
+</div>
+<div class="container">
+    <div class="card">
+        <H2>Specification</H2>
+        <dl class="dl-horizontal" style="color:black; font-weight:100; font-size:22px">
+            <dt>
+                Body Type:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.TypeName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TypeName)
+            </dd>
 
-                    <dt>
-                        Warranty:
-                    </dt>
+            <dt>
+                Warranty:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.InsuranceName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.InsuranceName)
+            </dd>
 
-                    <dt>
-                        Electrified:
-                    </dt>
+            <dt>
+                Electrified:
+            </dt>
 
-                    <dd>
-                        @(Model.Electricfied ? "Yes" : "No")
-                    </dd>
+            <dd>
+                @(Model.Electricfied ? "Yes" : "No")
+            </dd>
 
-                    <dd>
-                    </dd>
-                    <dt>
-                        Top wood:
-                    </dt>
+            <dd>
+            </dd>
+            <dt>
+                Top wood:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.TopName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TopName)
+            </dd>
 
-                    <dt>
-                        Side Wood:
-                    </dt>
+            <dt>
+                Side Wood:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.SideName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SideName)
+            </dd>
 
-                    <dt>
-                        Back Wood:
-                    </dt>
+            <dt>
+                Back Wood:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.BackName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BackName)
+            </dd>
 
-                    <dt>
-                        Neck Wood:
-                    </dt>
+            <dt>
+                Neck Wood:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.NeckName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NeckName)
+            </dd>
 
-                    <dt>
-                        FretBoard:
-                    </dt>
+            <dt>
+                FretBoard:
+            </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.FingsName)
-                    </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FingsName)
+            </dd>
 
-                </dl>
-                @if (Model.ImageLink1 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink1) />
-                }
-                <a></a>
-                @if (Model.ImageLink2 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink2) />
-                }
-                <a></a>
-                @if (Model.ImageLink3 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink3) />
-                }
-                <a></a>
-                @if (Model.ImageLink4 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink4) />
-                }
-                <a></a>
-                @if (Model.ImageLink5 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink5) />
-                }
-                <a></a>
-                @if (Model.ImageLink6 != "")
-                {
-                    <img src=@Url.Content(Model.ImageLink6) />
-                }
+        </dl>
+        @if (Model.ImageLink1 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink1) />
+        }
+        <a></a>
+        @if (Model.ImageLink2 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink2) />
+        }
+        <a></a>
+        @if (Model.ImageLink3 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink3) />
+        }
+        <a></a>
+        @if (Model.ImageLink4 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink4) />
+        }
+        <a></a>
+        @if (Model.ImageLink5 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink5) />
+        }
+        <a></a>
+        @if (Model.ImageLink6 != "")
+        {
+            <img src=@Url.Content(Model.ImageLink6) />
+        }
 
-            </div>
-        </div>
-        <hr />
+    </div>
+</div>
+
+<hr />
 }
 
 
-<script>
-    //$(document).ready(function() {
-    //    $("#btnSubmit").click(function() {
-    //        var myformData = $("#detailsForm").serialize();
-    //        $.ajax({
-    //            type: "POST",
-    //            url:"/Guitar/Details",
-    //            data: myformData,
-    //            success: function() {
-    //                $("#myModal").modal("hide");
-    //            }
-    //        })
-    //    })
-    //})
-    var x = document.getElementById('Availability').value;
-    var y;
-    if (x == 0) {
-
-    }
-</script>
 
 @section scripts
 {

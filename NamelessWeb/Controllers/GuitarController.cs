@@ -212,7 +212,7 @@ namespace NamelessWeb.Controllers
             return View(_DbContext.Guitars.ToList());
         }
 
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             try
@@ -226,6 +226,40 @@ namespace NamelessWeb.Controllers
                     "where G.BrandId='" + guitar.BrandId + "' and T.TypeId='" + guitar.TypeId + "' and GT.TopId = '" + guitarspec.TopId + "' and GS.SideId = '" + guitarspec.SideId + "' and GB.BackId = '" + guitarspec.BackId + "' and GN.NeckId = '" + guitarspec.NeckId + "' and GF.FingId = '" + guitarspec.FingId + "' and W.WarrId = '" + guitar.WarrId + "'", a);
                 SqlDataReader b = x.ExecuteReader();
                 dt2.Load(b);
+                if(guitar.Availability==2)
+                {
+                    var feed = _DbContext.GuitarRating.Single(c => c.GuitarId == id);
+                    var viewModel2 = new GuitarViewModel
+                    {
+                        GuitarId = id,
+                        GuitarModel = guitar.MDL,
+                        BrandName = dt2.Rows[0][0].ToString(),
+                        TypeName = dt2.Rows[0][1].ToString(),
+                        Price = guitar.MSRP,
+                        Electricfied = guitar.ELE,
+                        InsuranceName = dt2.Rows[0][7].ToString(),
+                        ImageLink1 = guitar.ImageLink1,
+                        ImageLink2 = guitar.ImageLink2,
+                        ImageLink3 = guitar.ImageLink3,
+                        ImageLink4 = guitar.ImageLink4,
+                        ImageLink5 = guitar.ImageLink5,
+                        ImageLink6 = guitar.ImageLink6,
+                        VideoLink = guitar.Videolink,
+                        Availability = guitar.Availability,
+                        TopName = dt2.Rows[0][2].ToString(),
+                        SideName = dt2.Rows[0][3].ToString(),
+                        BackName = dt2.Rows[0][4].ToString(),
+                        NeckName = dt2.Rows[0][5].ToString(),
+                        FingsName = dt2.Rows[0][6].ToString(),
+                        Description = guitarspec.Descript,
+                        Id = guitarspec.GuitarId,
+                        customername = feed.CusName,
+                        point = feed.Stars,
+                        feedback = feed.FeedMes
+                    };
+                    a.Close();
+                    return View("Details", viewModel2);
+                }
                 var viewModel = new GuitarViewModel
                 {
                     GuitarId = id,
@@ -241,7 +275,7 @@ namespace NamelessWeb.Controllers
                     ImageLink4 = guitar.ImageLink4,
                     ImageLink5 = guitar.ImageLink5,
                     ImageLink6 = guitar.ImageLink6,
-                    VideoLink=guitar.Videolink,
+                    VideoLink = guitar.Videolink,
                     Availability = guitar.Availability,
                     TopName = dt2.Rows[0][2].ToString(),
                     SideName = dt2.Rows[0][3].ToString(),
@@ -251,6 +285,8 @@ namespace NamelessWeb.Controllers
                     Description = guitarspec.Descript,
                     Id = guitarspec.GuitarId
                 };
+
+
                 a.Close();
                 return View("Details", viewModel);
             }

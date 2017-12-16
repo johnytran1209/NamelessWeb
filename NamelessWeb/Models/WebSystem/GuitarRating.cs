@@ -10,7 +10,7 @@ namespace NamelessWeb.Models.WebSystem
     {
         [Key]
         public int FeedId { get; set; }
-        public string GuitarId { get; set; }
+        public int GuitarId { get; set; }
         public string CusName { get; set; }
         public int Stars { get; set; }
         [Required]

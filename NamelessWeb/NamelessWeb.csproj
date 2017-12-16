@@ -370,6 +370,10 @@
     <Compile Include="Migrations\201712141807254_gogo.Designer.cs">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712161611017_change id for guitar ratings.cs" />
+    <Compile Include="Migrations\201712161611017_change id for guitar ratings.Designer.cs">
+      <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -523,9 +527,10 @@
     <Content Include="Views\Guitar\Sold.cshtml" />
     <Content Include="Views\Guitar\Archive.cshtml" />
     <Content Include="Views\Export\Rating.cshtml" />
-    <Content Include="Views\Account\getemail.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Guitar\Rating.cshtml" />
+    <Content Include="Views\Manage\Delete.cshtml" />
+    <Content Include="Views\Account\GetEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -654,6 +659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141807254_gogo.resx">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712161611017_change id for guitar ratings.resx">
+      <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
