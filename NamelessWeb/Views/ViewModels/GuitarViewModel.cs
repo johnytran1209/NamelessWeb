@@ -64,12 +64,14 @@ namespace NamelessWeb.Views.ViewModels
         public string VideoLink { get; set; }
         [Required]
         public byte Availability { get; set; }
-
-        
         public string Heading { get; set; }
         public string Action
         {
-            get { return (Id > 0) ? "Update" : "Create"; }
+            get {
+                if (GuitarId > -1)
+                    return "Update";
+                else
+                    return "Create"; }
         }
     }
 }

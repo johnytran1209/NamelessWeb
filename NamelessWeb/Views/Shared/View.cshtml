@@ -1,0 +1,9 @@
+﻿@model  IEnumerable < NamelessWeb.Models.WebSystem.GuitarRating>
+
+@foreach(var item in Model)
+{
+    @Html.Display(item.CusName);
+    @Html.Display(item.Stars.ToString())
+    @Html.Display(item.FeedMes);
+}
+

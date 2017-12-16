@@ -6,68 +6,77 @@
 }
 
 
-<h2 style="color:aliceblue;">Saleslist</h2>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <h2>Saleslist</h2>
 
-<table class="table" style="color:aliceblue;">
-    <tr style="color:aliceblue">
-        <th width="20%">
-            Product
-        </th>
-        <th width="10%">
-            Bill no.
-        </th>
-        <th width="30%">
-            Customer Information
-        </th>
+                <table class="table">
+                    <tr>
+                        <th width="20%">
+                            Product
+                        </th>
+                        <th width="10%">
+                            Bill no.
+                        </th>
+                        <th width="30%">
+                            Customer Information
+                        </th>
 
-        <th width="20%">
-            Employee Information
-        </th>
-        <th width="10%">
+                        <th width="20%">
+                            Employee Information
+                        </th>
+                        <th width="10%">
 
-        </th>
-    </tr>
+                        </th>
+                    </tr>
 
-    @for (int i = 0; i < Model.Rows.Count; i++)
-    {
-        <tr style="color:aliceblue">
-            <td>
-               
-                @if (@Model.Rows[i][1].ToString() != "")
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+                        <tr>
+                            <td>
+
+                                @if (@Model.Rows[i][1].ToString() != "")
                 {
-                    <img src="@Model.Rows[i][1].ToString()" style="max-height: 100px" />
-                }
+                                    <img src="@Model.Rows[i][1].ToString()" style="max-height: 100px" />
+                                }
 
-            </td>
-            <td>
-                <div>bill No.: @Model.Rows[i][0].ToString()</div>
-                <div>
-                    @Model.Rows[i][2].ToString()
-                </div>
-                <div>
-                    @Model.Rows[i][3].ToString()
-                </div>
-            </td>
-            <td>
-                @Model.Rows[i][4].ToString()
-                <br />
-                <p>
-                    @Model.Rows[i][5].ToString()
-                </p>
-                <br />
-                @Model.Rows[i][6].ToString()
+                            </td>
+                            <td>
+                                <div>bill No.: @Model.Rows[i][0].ToString()</div>
+                                <div>
+                                    @Model.Rows[i][2].ToString()
+                                </div>
+                                <div>
+                                    @Model.Rows[i][3].ToString()
+                                </div>
+                            </td>
+                            <td>
+                                @Model.Rows[i][4].ToString()
+                                <br />
+                                <p>
+                                    @Model.Rows[i][5].ToString()
+                                </p>
+                                <br />
+                                @Model.Rows[i][6].ToString()
 
-            </td>
-            <td>
-                @Model.Rows[i][7].ToString()
-                <br />
-                @Model.Rows[i][8].ToString()
-            </td>
-            <td>
-                <button>@Html.ActionLink("Edit", "WListEdit", "Export", new { id = Model.Rows[i][0] }, null)</button>
-            </td>
+                            </td>
+                            <td>
+                                @Model.Rows[i][7].ToString()
+                                <br />
+                                @Model.Rows[i][8].ToString()
+                            </td>
+                            <td>
+                                <button>@Html.ActionLink("Edit", "WListEdit", "Export", new { id = Model.Rows[i][0] }, null)</button>
+                            </td>
 
-        </tr>
-    }
-</table>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 

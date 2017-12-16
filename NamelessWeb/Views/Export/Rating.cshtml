@@ -1,0 +1,49 @@
+﻿@model NamelessWeb.Views.ViewModels.GuitarRatingViewModel
+@{
+    ViewBag.Title = "Rating";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn {
+        background-color: aliceblue
+    }
+</style>
+<body>
+    <h2 style="color:aliceblue;">@Model.heading</h2>
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        @using (Html.BeginForm(Model.action, "Export"))
+                        {
+                            <div class="column" style="width:40%; float:left;">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(c => c.guitarid)
+                                <img src=@Model.guitarimg style="left:auto;max-height:250px; max-width:200px" /> <p>@Model.guitarmdl</p>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="column" style="width:60%; float:left;">
+                                @Html.Label("Stars:")
+                                @Html.EditorFor(model => model.stars, new { htmlAttributes = new { @class = "form-control", min = 0, max = 5, style = "width:50px" } })
+                                @Html.ValidationMessageFor(model => model.stars, "", new { @class = "text-danger" })
+
+                                @Html.Label("Feedback:")
+                                @Html.TextBoxFor(model => model.GuitarMess, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.GuitarMess, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

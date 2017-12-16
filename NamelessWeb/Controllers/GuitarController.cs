@@ -39,7 +39,9 @@ namespace NamelessWeb.Controllers
                     Necks = _DbContext.GoNeck.ToList(),
                     Fings = _DbContext.GoFing.ToList(),
                     Insurances = _DbContext.Warranty.ToList(),
-                    Heading = "Add new Guitar"
+                    Heading = "Add new Guitar",
+                    GuitarId= -1,
+                    Id=-1,
                 };
                 return View(viewModel);
             }
@@ -67,27 +69,27 @@ namespace NamelessWeb.Controllers
                 viewModel.Insurances = _DbContext.Warranty.ToList();
                 // return View("create", viewModel);
             }
-            if(viewModel.ImageLink1 == null)
+            if(viewModel.ImageLink1 == "")
             {
                 viewModel.ImageLink1 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
-            if (viewModel.ImageLink2 == null)
+            if (viewModel.ImageLink2 == "")
             {
                 viewModel.ImageLink2 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
-            if (viewModel.ImageLink3 == null)
+            if (viewModel.ImageLink3 == "")
             {
                 viewModel.ImageLink3 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
-            if (viewModel.ImageLink4 == null)
+            if (viewModel.ImageLink4 == "")
             {
                 viewModel.ImageLink4 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
-            if (viewModel.ImageLink5 == null)
+            if (viewModel.ImageLink5 == "")
             {
                 viewModel.ImageLink5 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
-            if (viewModel.ImageLink6 == null)
+            if (viewModel.ImageLink6 == "")
             {
                 viewModel.ImageLink6 = "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14322177_1827252967505330_4313197727578070295_n.jpg?_nc_eui2=v1%3AAeFSMHqfkDeFc-RuhMuE0qMvbDqkBiibsnmDR273uJiXNJT0jMCARmkH9Tv59VLc9JsUR0jcSzz6xY3pUo6EfS-1jOUpnKMGKiCB81wRACRurA&oh=e6c4e20566a3420a44ca3f5827165445&oe=5A9C8148";
             }
@@ -112,6 +114,7 @@ namespace NamelessWeb.Controllers
                             break;
                             //goto done;
                         }
+                        b = j+1;
 
                     }
                 }
@@ -185,8 +188,20 @@ namespace NamelessWeb.Controllers
 
             return RedirectToAction("Index", "Home");          
         }
+        public ActionResult Rating()
+        {
+            return View(_DbContext.GuitarRating.ToList());
+        }
 
         public ActionResult Inventory()
+        {
+            return View(_DbContext.Guitars.ToList());
+        }
+        public ActionResult Sold()
+        {
+            return View(_DbContext.Guitars.ToList());
+        }
+        public ActionResult Archive()
         {
             return View(_DbContext.Guitars.ToList());
         }
@@ -197,7 +212,7 @@ namespace NamelessWeb.Controllers
             return View(_DbContext.Guitars.ToList());
         }
 
-        
+        [Authorize]
         public ActionResult Details(int id)
         {
             try
@@ -235,7 +250,6 @@ namespace NamelessWeb.Controllers
                     FingsName = dt2.Rows[0][6].ToString(),
                     Description = guitarspec.Descript,
                     Id = guitarspec.GuitarId
-
                 };
                 a.Close();
                 return View("Details", viewModel);
@@ -325,6 +339,7 @@ namespace NamelessWeb.Controllers
             }
         }
 
+
         [Authorize(Roles = "Admin, Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -367,7 +382,7 @@ namespace NamelessWeb.Controllers
             try
             {
                 a.Open();
-                string y = string.Format("update dbo.guitars set MDL='{0}', BrandId='{1}', TypeId='{2}',MSRP='{3}',ELE='{4}',WarrId='{5}',ImageLink1='{6}',ImageLink2='{7}',ImageLink3='{8}',ImageLink4='{9}',ImageLink5='{10}',ImageLink6='{11}',Availability='0',  where GuitarId='{12}'",
+                string y = string.Format("update dbo.guitars set MDL='{0}', BrandId='{1}', TypeId='{2}',MSRP='{3}',ELE='{4}',WarrId='{5}',ImageLink1='{6}',ImageLink2='{7}',ImageLink3='{8}',ImageLink4='{9}',ImageLink5='{10}',ImageLink6='{11}',VideoLink='{12}',Availability='0'  where GuitarId='{13}'",
 
                     viewModel.GuitarModel.ToString(),
                     viewModel.BrandId.ToString(),
@@ -381,8 +396,10 @@ namespace NamelessWeb.Controllers
                     viewModel.ImageLink4,
                     viewModel.ImageLink5,
                     viewModel.ImageLink6,
-                    viewModel.GuitarId);
+                    viewModel.VideoLink,
+                    viewModel.Id);
                 SqlCommand x = new SqlCommand(y, a);
+                x.ExecuteNonQuery();
                 string z = string.Format("update dbo.GuitarSpecs set TopId='{0}',SideId='{1}',BackId='{2}', NeckId='{3}', FingId='{4}', Descript='{5}' where GuitarId='{6}'",
                     viewModel.Top.ToString(),
                     viewModel.Side.ToString(),
@@ -390,12 +407,10 @@ namespace NamelessWeb.Controllers
                     viewModel.Neck.ToString(),
                     viewModel.Fing.ToString(),
                     viewModel.Description.ToString(),
-                    viewModel.GuitarId);
-                SqlCommand u = new SqlCommand(z, a);
-                x.ExecuteNonQuery();
+                    viewModel.Id);
+                SqlCommand u = new SqlCommand(z, a);                
                 u.ExecuteNonQuery();
                 a.Close();
-
                 return RedirectToAction("List", "Guitar");
             }
             catch

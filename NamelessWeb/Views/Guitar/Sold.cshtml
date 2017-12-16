@@ -1,0 +1,54 @@
+﻿@model IEnumerable<NamelessWeb.Models.Guitar.Guitars>
+@{
+    ViewBag.Title = "Sold";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    ul.products li {
+        width: 200px;
+        display: inline-block;
+        vertical-align: top;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <hr />
+                <div style=" font-size:25px">Sold</div>
+                <hr />
+                <ul class="products">
+                    @foreach (var item in Model.Where(c=>c.Availability==2))
+                    {
+                            <li>
+                                <div class="w3-third">
+                                    <div class="w3-card">
+                                        <a href="@Url.Action("Details", "Guitar", new { id = item.GuitarId })" style=" max-width:80px;">
+                                            @if (item.ImageLink1 != null)
+                                            {
+                                                <img src="@Url.Content(item.ImageLink1)" style="max-width: 250px; max-height: 150px;">
+                                            }
+                                        </a>
+                                        <div class="w3-container" style="align-content:center;">
+                                            @Html.DisplayFor(modelItem => item.MDL)
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

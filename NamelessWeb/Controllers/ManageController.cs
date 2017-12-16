@@ -196,6 +196,39 @@ namespace NamelessWeb.Controllers
             ModelState.AddModelError("", "Failed to verify phone");
             return View(model);
         }
+        [Authorize(Roles = "Admin, Employee")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            try
+            {
+
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
+
+        }
+
+        [Authorize(Roles = "Admin, Employee")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                return RedirectToAction("List", "Guitar");
+            }
+
+        }
 
         //
         // POST: /Manage/RemovePhoneNumber

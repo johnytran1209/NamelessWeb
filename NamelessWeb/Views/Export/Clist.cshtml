@@ -5,62 +5,76 @@
 }
 
 
-<h2 style="color:aliceblue;">Clist</h2>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <h2>Clist</h2>
 
-<table class="table" style="color:aliceblue;">
-    <tr style="color:aliceblue">
-        <th width="20%">
-            Product 
-        </th>
-        <th width="10%">
-            Bill no. 
-        </th>
-        <th width="40%">
-            Customer Information
-        </th>
+                <table class="table">
+                    <tr>
+                        <th width="20%">
+                            Product
+                        </th>
+                        <th width="10%">
+                            Bill no.
+                        </th>
+                        <th width="40%">
+                            Customer Information
+                        </th>
 
-        <th width="30%">
-            Employee Information
-        </th>
-        <th></th>
-    </tr>
+                        <th width="30%">
+                            Employee Information
+                        </th>
+                        <th>
 
-    @for (int i = 0; i < Model.Rows.Count; i++)
-    {
-        <tr style="color:aliceblue">
-            <td>
-                
-                @if (@Model.Rows[i][2].ToString() != null)
+                        </th>
+                    </tr>
+
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+                        <tr>
+                            <td>
+
+                                @if (@Model.Rows[i][2].ToString() != null)
                 {
-                    <img src="@Model.Rows[i][0].ToString()" style="max-height: 100px" />
-                }
-                            
-            </td>
-            <td>
-                <div>
-                    @Model.Rows[i][1].ToString()
-                </div>
-                <div>
-                    @Model.Rows[i][2].ToString()
-                </div>  
-            </td>
-            <td>
-                @Model.Rows[i][3].ToString()
-                <br />
-                <p>
-                    @Model.Rows[i][4].ToString()
-                </p>                
-                <br />
-                @Model.Rows[i][5].ToString()
-                
-            </td>
-            <td>
-                @Model.Rows[i][6].ToString()
-                <br />
-                @Model.Rows[i][7].ToString()
-            </td>
+                                    <img src="@Model.Rows[i][0].ToString()" style="max-height: 100px" />
+                                }
 
-        </tr>
-    }
-</table>
+                            </td>
+                            <td>
+                                <div>
+                                    @Model.Rows[i][1].ToString()
+                                </div>
+                                <div>
+                                    @Model.Rows[i][2].ToString()
+                                </div>
+                            </td>
+                            <td>
+                                @Model.Rows[i][3].ToString()
+                                <br />
+                                <p>
+                                    @Model.Rows[i][4].ToString()
+                                </p>
+                                <br />
+                                @Model.Rows[i][5].ToString()
+
+                            </td>
+                            <td>
+                                @Model.Rows[i][6].ToString()
+                                <br />
+                                @Model.Rows[i][7].ToString()
+                            </td>
+                            <td>
+                                <button>@Html.ActionLink("Edit FeedBack", "Update", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
+                                <button>@Html.ActionLink("FeedBack", "Rating", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
+                            </td>
+
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 

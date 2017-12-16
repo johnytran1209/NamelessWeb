@@ -4,147 +4,157 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1 style="color:aliceblue">Are you sure you want to delete this?</h1>
-<div>
-    <hr />
-    <div id="detailsForm">
-        <h2 style="color:aliceblue; font-weight:100">
-            @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
-        </h2>
-            
-        <div>
 
-            <hr />
-            
-            @if (Model.ImageLink1 != null)
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <div>
+                    <hr />
+                    <div id="detailsForm">
+                        <h1>Are you sure you want to delete this?</h1>
+                        <h2 style=" font-weight:100">
+                            @Html.DisplayFor(model => model.BrandName) @Html.DisplayFor(model => model.GuitarModel)
+                        </h2>
+
+                        <div>
+
+                            <hr />
+
+                            @if (Model.ImageLink1 != null)
             {
-                <img src=@Url.Content(Model.ImageLink1) style="max-height: 350px; background-position-x:center;" />
-            }
-            <a></a>
-            @if (Model.ImageLink2 != null )
+                                <img src=@Url.Content(Model.ImageLink1) style="max-height: 350px; background-position-x:center;" />
+                            }
+                            <a></a>
+                            @if (Model.ImageLink2 != null)
+                            {
+                                <img src=@Url.Content(Model.ImageLink2) style="max-height: 350px; background-position-x:center;" />
+                            }
+                            <a></a>
+                            @if (Model.ImageLink3 != null)
             {
-                <img src=@Url.Content(Model.ImageLink2) style="max-height: 350px; background-position-x:center;" />
-            }
-            <a></a>
-            @if (Model.ImageLink3 != null)
+                                <img src=@Url.Content(Model.ImageLink3) style="max-height: 350px; background-position-x:center;" />
+                            }
+                            <a></a>
+                            @if (Model.ImageLink4 != null)
             {
-                <img src=@Url.Content(Model.ImageLink3) style="max-height: 350px; background-position-x:center;"  />
-            }
-            <a></a>
-            @if (Model.ImageLink4 != null)
+                                <img src=@Url.Content(Model.ImageLink4) style="max-height: 350px; background-position-x:center;" />
+                            }
+                            <a></a>
+                            @if (Model.ImageLink5 != null)
             {
-                <img src=@Url.Content(Model.ImageLink4) style="max-height: 350px; background-position-x:center;" />
-            }
-            <a></a>
-            @if (Model.ImageLink5 != null)
+                                <img src=@Url.Content(Model.ImageLink5) style="max-height: 350px; background-position-x:center;" />
+                            }
+                            <a></a>
+                            @if (Model.ImageLink6 != null)
             {
-                <img src=@Url.Content(Model.ImageLink5) style="max-height: 350px; background-position-x:center;" />
-            }
-            <a></a>
-            @if (Model.ImageLink6 != null)
-            {
-                <img src=@Url.Content(Model.ImageLink6) style="max-height: 350px; background-position-x:center;" />
-            }
+                                <img src=@Url.Content(Model.ImageLink6) style="max-height: 350px; background-position-x:center;" />
+                            }
 
 
-            <dl class="dl-horizontal" style="color:aliceblue; font-weight:100; font-size:22px">
+                            <dl class="dl-horizontal" style=" font-weight:100; font-size:22px">
 
-                <dt>
-                    Body Type:
-                </dt>
+                                <dt>
+                                    Body Type:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.TypeName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TypeName)
+                                </dd>
 
-                <dt>
-                    Price:
-                </dt>
+                                <dt>
+                                    Price:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Price)
+                                </dd>
 
-                <dt>
-                    Warranty:
-                </dt>
+                                <dt>
+                                    Warranty:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.InsuranceName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.InsuranceName)
+                                </dd>
 
-                <dt>
-                    Electrified:
-                </dt>
+                                <dt>
+                                    Electrified:
+                                </dt>
 
-                <dd>
-                    @(Model.Electricfied ? "Yes" : "No")
-                </dd>
-                <hr />
-                <dt>
-                    Specification
-                </dt>
-                <dd>
-                </dd>
-                <dt>
-                    Top wood:
-                </dt>
+                                <dd>
+                                    @(Model.Electricfied ? "Yes" : "No")
+                                </dd>
+                                <hr />
+                                <dt>
+                                    Specification
+                                </dt>
+                                <dd>
+                                </dd>
+                                <dt>
+                                    Top wood:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.TopName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TopName)
+                                </dd>
 
-                <dt>
-                    Side Wood:
-                </dt>
+                                <dt>
+                                    Side Wood:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.SideName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SideName)
+                                </dd>
 
-                <dt>
-                    Back Wood:
-                </dt>
+                                <dt>
+                                    Back Wood:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.BackName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.BackName)
+                                </dd>
 
-                <dt>
-                    Neck Wood:
-                </dt>
+                                <dt>
+                                    Neck Wood:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.NeckName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NeckName)
+                                </dd>
 
-                <dt>
-                    FretBoard:
-                </dt>
+                                <dt>
+                                    FretBoard:
+                                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.FingsName)
-                </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.FingsName)
+                                </dd>
 
-                <dt>
-                    Description
-                </dt>
-                <dd>
-                    @Html.DisplayTextFor(model => model.Description)
-                </dd>
+                                <dt>
+                                    Description
+                                </dt>
+                                <dd>
+                                    @Html.DisplayTextFor(model => model.Description)
+                                </dd>
 
 
-            </dl>
-        </div>
+                            </dl>
+                        </div>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back to List", "Index", "Home")</button>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-default" /> |
+                                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back to List", "Index", "Home")</button>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
-        }
+        </div>
     </div>
 </div>
+

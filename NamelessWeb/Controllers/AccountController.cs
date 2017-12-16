@@ -10,12 +10,19 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NamelessWeb.Models;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace NamelessWeb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=False;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        DataTable dt2 = new DataTable();
+        DataTable dt1 = new DataTable();
+        private ApplicationDbContext _DbContext= new ApplicationDbContext( );
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
@@ -71,7 +78,12 @@ namespace NamelessWeb.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            var neno = new LoginViewModel
+            {
+                Email="Example@gmail.com",
+                Password="please fill this in"
+            };
+            return View(neno);
         }
 
         //
@@ -219,10 +231,27 @@ namespace NamelessWeb.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Forgot()
+        public ActionResult Forgot(string email)
         {
-            return View();
+            try
+            {
+               
+            a.Open();
+            string z = string.Format("select Question from AspNetUsers where Email=''");
+            SqlCommand w = new SqlCommand(z, a);
+            SqlDataAdapter db = new SqlDataAdapter(w);
+            db.Fill(dt1);
+            a.Close();
+            _DbContext.Users.ToList();
+            string question = _DbContext.Users.Single(m => m.Email == email).Question.ToString();
+                var model = new ForgotViewModel { Email = email, Question = dt1.Rows[0][0].ToString() };
+                return View(model);
         }
+            catch
+            {
+                return RedirectToAction("Login", "Account");
+    }
+}
 
         [HttpPost]
         [AllowAnonymous]
@@ -441,6 +470,7 @@ namespace NamelessWeb.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+        
 
         //
         // POST: /Account/LogOff
@@ -538,5 +568,6 @@ namespace NamelessWeb.Controllers
             }
         }
         #endregion
+
     }
 }

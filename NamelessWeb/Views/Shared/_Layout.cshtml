@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <style>
     .column {
         float: left;
@@ -22,40 +23,40 @@
 
 <br />
 
-            <html>
-            <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Nameless Guitar Inc.</title>
-                @Styles.Render("~/Content/css")
-                @Scripts.Render("~/bundles/modernizr")
-            </head>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nameless Guitar Inc.</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
 
-            @{Html.RenderPartial("_LoginPartial");}
-            @using (Html.BeginForm("Search", "Guitar", FormMethod.Post))
-            {
-                <div class="container">
-                    <div class="item-search">
-                        <label style="color:aliceblue"> Search</label>
-                        @Html.TextBox("searchtext", "")
-                    </div>
-                </div>
-            }
-            <body style="background-color:dimgrey">
-                <div class="navbar navbar-inverse">
-                    <div class="container">
-                        <img src="~/Content/Img/14324639_1827253130838647_1699345684361355571_o.jpg" style="max-height: 370px" rel="home" href="#" title="No music No life" />
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target=".navbar-ex1-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div>
-                            <ul class="nav navbar-nav" style="padding-top:20px;">
-                                <li> <button class="btn" style=" margin:10px;"> @Html.ActionLink("Home", "Index", "Home") </button></li>
-                                @*<li>
+@{Html.RenderPartial("_LoginPartial");}
+@using (Html.BeginForm("Search", "Guitar", FormMethod.Post))
+{
+    <div class="container">
+        <div class="item-search">
+            <label style="color:aliceblue"> Search</label>
+            @Html.TextBox("searchtext", "")
+        </div>
+    </div>
+}
+<body style="background-color:dimgrey">
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <img src="~/Content/Img/14324639_1827253130838647_1699345684361355571_o.jpg" style="max-height: 370px" rel="home" href="#" title="No music No life" />
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div>
+                <ul class="nav navbar-nav" style="padding-top:20px;">
+                    <li> <button class="btn" style=" margin:10px;">     @Html.ActionLink("Home", "Index", "Home") </button></li>
+                    @*<li>
                             <div class="dropdown">
                                 <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;" >
                                     Guitar<span class="caret"></span>
@@ -68,36 +69,38 @@
                                 </ul>
                             </div>
                         </li>*@
-                                <li> <button class="btn" style="margin:10px;">@Html.ActionLink("About", "About", "Home")</button></li>
-                                <li> <button class="btn" style="margin:10px;">@Html.ActionLink("Contact", "Contact", "Home")</button></li>
-                                <li> <button class="btn" style="margin:10px;"></button></li>
-                                @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    <li> <button class="btn" style="margin:10px;">@Html.ActionLink("Archives", "Archive", "Guitar")</button></li>
+                    <li> <button class="btn" style="margin:10px;">@Html.ActionLink("Inventory", "Inventory", "Guitar")</button></li>
+                    <li> <button class="btn" style="margin:10px;">@Html.ActionLink("Sold", "Sold", "Guitar")</button></li>
+                    <li> <button class="btn" style="margin:10px;">@Html.ActionLink("About", "About", "Home")</button></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li><button class="btn" style="margin:10px;">@Html.ActionLink("Purchase History", "Clist", "Export")</button></li>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    {
+                        <li class="dropdown">
+                            <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue; margin:10px;">
+                                Functions<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Guitar List", "List", "Guitar")</li>
+                                <li>@Html.ActionLink("Order List", "List", "Order")</li>
+                                <li>@Html.ActionLink("Customer List", "CustomerList", "Manage")</li>
+                                <li>@Html.ActionLink("Employee List", "EmployeeList", "Manage")</li>
+                                <li>
+                                    @Html.ActionLink("Export Bills", "Wlist", "Export")
+                                </li>
+                                @if (User.IsInRole("Admin"))
                                 {
-                                    <li class="dropdown">
-                                        <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue; margin:10px;">
-                                            Functions<span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li>@Html.ActionLink("Guitar List", "List", "Guitar")</li>
-                                            <li>@Html.ActionLink("Order List", "List", "Order")</li>
-                                            <li>@Html.ActionLink("Customer List", "CustomerList", "Manage")</li>
-                                            <li>@Html.ActionLink("Employee List", "EmployeeList", "Manage")</li>
-                                            <li>
-                                                @Html.ActionLink("Export Bills", "Wlist", "Export")
-                                            </li>
-                                            @if (User.IsInRole("Admin"))
-                                            {
 
-                                            }
-                                        </ul>
-                                    </li>
                                 }
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <li><button class="btn" style="margin:10px;">@Html.ActionLink("Purchase History", "Clist", "Export")</button></li>
-                                }
+                            </ul>
+                        </li>
+                    }
 
-                                @*<li>
+
+                    @*<li>
                             <div class="dropdown">
                                 <button class="btn" type="button" data-toggle="dropdown" style="color:cornflowerblue;padding-right:20px;">
                                     New Types<span class="caret"></span>
@@ -111,54 +114,68 @@
                                 </ul>
                             </div>
                         </li>*@
-                            </ul>
+                </ul>
 
-                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="align-self:center;">
+        <hr />
+        @RenderBody()
+        <hr />
+        <div class="container">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="container body-content">
+                        <img src="~/Content/Img/Untitled.png" style="max-width:inherit;" "   />
                     </div>
                 </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
                 <div class="container body-content">
-                    <hr />
-                    @RenderBody()
-                    <footer>
-                        <p style="color:aliceblue">&copy; @DateTime.Now.Year - Nameless Guitar Inc.</p>
-                    </footer>
+                    @RenderSection("scripts", required: false)
+                    <div style="font-size: 25px;"> <img src="https://www.facebook.com/images/fb_icon_325x325.png" style="max-width:3%;" />:<a href="https://www.facebook.com/nameless.guitar">https://www.facebook.com/nameless.guitar</a> </div>
+                    <br />
+                    <div style="font-size: 25px;">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
+                    <br />
+                    <div style="font-size: 25px;" ;>Phone: 01228669537-0902840270</div>
+                    <br />
+                    <div id="map" style="width:100%;height:200px"></div>
                 </div>
-                @Scripts.Render("~/bundles/jquery")
-                @Scripts.Render("~/bundles/bootstrap")
-                <div class="container">
-                    <div class="card">
-                        <div class="container-fliud">
-                            <div class="container body-content">
-                                @RenderSection("scripts", required: false)
-                                <div style="font-size: 25px;"> <img src="https://www.facebook.com/images/fb_icon_325x325.png" style="max-width:5%;" />:<a>https://www.facebook.com/nameless.guitar</a> </div>
-                                <br />
-                                <div style="font-size: 25px;">C/C 16/9 Ky Dong, Phuong 9 Quan 3, TPHCM</div>
-                                <br />
-                                <div style="font-size: 25px;" ;>Phone: 01228669537-0902840270</div>
-                                <br />
-                                <div id="map" style="width:100%;height:200px"></div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                            <script>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>     </p><p style="color:aliceblue">&copy; @DateTime.Now.Year - Nameless Guitar Inc.</p>
+    </footer>
 
-                                function myMap() {
-                                    var myCenter = new google.maps.LatLng(10.783218, 106.680901);
-                                    var mapCanvas = document.getElementById("map");
-                                    var mapOptions = { center: myCenter, zoom: 15 };
-                                    var map = new google.maps.Map(mapCanvas, mapOptions);
-                                    var marker = new google.maps.Marker({ position: myCenter });
-                                    marker.setMap(map);
-                                }
-                            </script>
+    <script>
 
-                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAjmpwkAnUlZMsMCteeCXrdeJG_mDn-g&callback=myMap"></script>
-                            <!--
-                To use this code on your website, get a free API key from Google.
-                Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-                -->
+        function myMap() {
+            var myCenter = new google.maps.LatLng(10.783218, 106.680901);
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = { center: myCenter, zoom: 15 };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({ position: myCenter });
+            marker.setMap(map);
+        }
+    </script>
 
-            </body>
-        </html>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAjmpwkAnUlZMsMCteeCXrdeJG_mDn-g&callback=myMap"></script>
+    <!--
+    To use this code on your website, get a free API key from Google.
+    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+    -->
+
+</body>
+</html>
+
+
+

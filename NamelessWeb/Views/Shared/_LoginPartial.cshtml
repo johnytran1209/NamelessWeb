@@ -24,10 +24,16 @@
 
     <ul class="nav navbar-nav navbar-right" style="margin:10px;">
         <li>
-            <button class="btn" style="margin:10px;">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "ViewProfile", "Manage", new { @style = "color:#000aaa;"}, htmlAttributes: new { title = "Manage" })
-            </button>
+            <utton class="btn" style="margin:10px;">
+               
+               @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "ViewProfile", "Manage", new { @style = "color:#000aaa;" }, htmlAttributes: new { title = "Manage" })
+            </utton>
         </li>
+        <li>
+            <button class="btn" style="margin:10px;">
+                @Html.ActionLink("Change your password", "ChangePassword")
+            </button>   
+        </li>    
         <li>
             <button class="btn" style="margin:10px;">
                 <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

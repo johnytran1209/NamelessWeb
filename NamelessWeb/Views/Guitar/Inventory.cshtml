@@ -10,25 +10,39 @@
         vertical-align: top;
     }
 </style>
-<hr />
-<h2 style="color:aliceblue">Inventory</h2>
-<hr />
-<ul class="products">
-    @foreach (var item in Model)
-    {
-        <li>
-            <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})" style="color:aliceblue; max-width:80px;">
-                @if (item.ImageLink1 != null)
-                {
-                    <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 120px;">
-                }
-                
-            </a>
-            <div style="color:aliceblue; max-width:80px;">
-                @Html.DisplayFor(modelItem => item.MDL)
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <hr />
+                <h2 >Inventory</h2>
+                <hr />
+                <ul class="products">
+                    @foreach (var item in Model)
+                    {
+                        if (item.Availability == 0)
+                        {
+                                <li>
+                                <a href="@Url.Action("Details","Guitar",new {id=item.GuitarId})", style="height:200px;">
+                                    @if (item.ImageLink1 != null)
+                                    {
+                                        <img src="@Url.Content(item.ImageLink1)" style="max-width: 200px; max-height: 200px;">
+                                    }
+                                    <div style="max-width:300px;">
+                                        @Html.DisplayFor(modelItem => item.MDL)
+                                    </div>
+                                </a>
+                                
+
+                            </li>
+                        }
+                    }
+                </ul>
+
+                <hr />
             </div>
-            
-        </li>
-    }
-</ul>
-<hr />
+        </div>
+    </div>
+</div>
+

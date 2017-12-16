@@ -5,63 +5,73 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="color:aliceblue">Search</h2>
 
 
-<table class="table" style="color :aliceblue">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MDL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MSRP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WarrId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ELE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageLink1)
-        </th>
-        
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <h2>Search</h2>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MDL)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BrandId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TypeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MSRP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WarrId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ELE)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImageLink1)
+                        </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MDL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MSRP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WarrId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ELE)
-        </td>
-        <td>
-            <img src="@Url.Content(item.ImageLink1)" style="max-height: 100px" />
-        </td>
-        <td>
-             |@Html.ActionLink("Details", "Details", new { id = item.GuitarId })
-        </td>
-    </tr>
-}
+                        <th></th>
+                    </tr>
 
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MDL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BrandId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TypeId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MSRP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WarrId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ELE)
+                            </td>
+                            <td>
+                                <img src="@Url.Content(item.ImageLink1)" style="max-height: 100px" />
+                            </td>
+                            <td>
+                                |@Html.ActionLink("Details", "Details", new { id = item.GuitarId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
