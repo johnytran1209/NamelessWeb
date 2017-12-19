@@ -1,0 +1,167 @@
+﻿@model NamelessWeb.Models.LichLamViecModel
+
+@{
+    ViewBag.Title = "DangKyLichLamViec";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="container body-content">
+                <h2>Schedule</h2>
+
+            @using (Html.BeginForm(Model.action, "DangKyLichLamViec"))
+            {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.idLich)
+            @Html.HiddenFor(m=>m.idUser)
+                //Buổi sáng
+                <h3>Sáng</h3>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 2</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang2)
+                                @Html.ValidationMessageFor(model => model.sang2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 3</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang3)
+                                @Html.ValidationMessageFor(model => model.sang3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 4</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang4)
+                                @Html.ValidationMessageFor(model => model.sang4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 5</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang5)
+                                @Html.ValidationMessageFor(model => model.sang5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 6</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang6)
+                                @Html.ValidationMessageFor(model => model.sang6, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 7</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sang7)
+                                @Html.ValidationMessageFor(model => model.sang7, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Chủ nhật</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.sangCN)
+                                @Html.ValidationMessageFor(model => model.sangCN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    @*Buổi chiều*@
+                    <h3>Chiều</h3>
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 2</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu2)
+                                @Html.ValidationMessageFor(model => model.chieu2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 3</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu3)
+                                @Html.ValidationMessageFor(model => model.chieu3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 4</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu4)
+                                @Html.ValidationMessageFor(model => model.chieu4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 5</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu5)
+                                @Html.ValidationMessageFor(model => model.chieu5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 6</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu6)
+                                @Html.ValidationMessageFor(model => model.chieu6, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Thứ 7</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieu7)
+                                @Html.ValidationMessageFor(model => model.chieu7, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="control-label col-md-2">Chủ nhật</h4>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(model => model.chieuCN)
+                                @Html.ValidationMessageFor(model => model.chieuCN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" value="Save" class="btn btn-primary">Save</button>
+                </div>
+
+            }
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -24,6 +24,7 @@ namespace NamelessWeb.Controllers
             _DbContext = new ApplicationDbContext();
         }
         // GET: Guitar
+        //khởi tạo cái view
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {

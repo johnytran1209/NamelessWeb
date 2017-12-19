@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NamelessWeb</RootNamespace>
     <AssemblyName>NamelessWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,16 +64,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -114,6 +113,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -211,6 +211,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DangKyLichLamViecController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\GuitarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -370,6 +371,26 @@
     <Compile Include="Migrations\201712141807254_gogo.Designer.cs">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.cs" />
+    <Compile Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.Designer.cs">
+      <DependentUpon>201712171621080_UpdateBangDangKyLichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.cs" />
+    <Compile Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.Designer.cs">
+      <DependentUpon>201712171629176_UpdateEditBangDangKyLichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181440371_updateModelLichLamViec.cs" />
+    <Compile Include="Migrations\201712181440371_updateModelLichLamViec.Designer.cs">
+      <DependentUpon>201712181440371_updateModelLichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181637225_updateModelLichLamViecEdit.cs" />
+    <Compile Include="Migrations\201712181637225_updateModelLichLamViecEdit.Designer.cs">
+      <DependentUpon>201712181637225_updateModelLichLamViecEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712190831301_checkModelLichLamViec.cs" />
+    <Compile Include="Migrations\201712190831301_checkModelLichLamViec.Designer.cs">
+      <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -391,8 +412,10 @@
     <Compile Include="Models\Guitar\Wood\GoNeck.cs" />
     <Compile Include="Models\Guitar\Wood\GoSide.cs" />
     <Compile Include="Models\Guitar\Wood\GoTop.cs" />
+    <Compile Include="Models\LichLamViecModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Reservations.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\WebSystem\GuitarRating.cs" />
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -526,6 +549,7 @@
     <Content Include="Views\Account\getemail.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Guitar\Rating.cshtml" />
+    <Content Include="Views\DangKyLichLamViec\DangKyLichLamViec.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -654,6 +678,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712141807254_gogo.resx">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.resx">
+      <DependentUpon>201712171621080_UpdateBangDangKyLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.resx">
+      <DependentUpon>201712171629176_UpdateEditBangDangKyLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181440371_updateModelLichLamViec.resx">
+      <DependentUpon>201712181440371_updateModelLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181637225_updateModelLichLamViecEdit.resx">
+      <DependentUpon>201712181637225_updateModelLichLamViecEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712190831301_checkModelLichLamViec.resx">
+      <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
