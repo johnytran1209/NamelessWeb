@@ -9,7 +9,7 @@ namespace NamelessWeb.Models.Bills.Exports
     public class ExportBill
     {
         [Key]
-        public string ExpBId { get; set; }
+        public int ExpBId { get; set; }
         [Required]
         public DateTime ExpDate { get; set; }
         [Required]

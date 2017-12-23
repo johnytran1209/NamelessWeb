@@ -10,7 +10,6 @@ namespace NamelessWeb.Models.Guitar
     public class Guitars
     {
         [Key]
-        [Required]
         public int GuitarId { get; set; }
         [Required]
         [StringLength(40)]
@@ -28,13 +27,15 @@ namespace NamelessWeb.Models.Guitar
         [Required]
         public bool ELE { get; set; }
         //[Required]
-        public string ImageLink1 { get; set; }
+        
         public string ImageLink2 { get; set; }
         public string ImageLink3 { get; set; }
+        public string ImageLink1 { get; set; }
         public string ImageLink4 { get; set; }
         public string ImageLink5 { get; set; }
         public string ImageLink6 { get; set; }
         public string Videolink { get; set; }
+
         [Required]
         public byte Availability { get; set; }
        }

@@ -1,5 +1,4 @@
-﻿
-@*@model IEnumerable<NamelessWeb.Views.ViewModels.OrderViewModel>*@
+﻿@*@model IEnumerable<NamelessWeb.Views.ViewModels.OrderViewModel>*@
 @model System.Data.DataTable
 
 @{
@@ -11,55 +10,67 @@
         color: aliceblue;
     }
 </style>
-<h2 style="color:aliceblue">Reservation List</h2>
-
-<table class="table" style="color:aliceblue">
-    <tr style="color:aliceblue">
-        <th>
-            Product
-        </th>
-        <th>
-            Customer Information      
-        </th>
-        <th>
-            Reservation Date
-        </th>
-        <th></th>
-    </tr>
-
-    @for (int i=0;i<Model.Rows.Count;i++)
-    {
-        <tr style="color:aliceblue">
-            <td>
-                @if (@Model.Rows[i][2].ToString() != null)
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <h2>Reservation List</h2>
+                @if (Model != null)
                 {
-                    <img src="@Model.Rows[i][2].ToString()" style="max-height: 100px" />
+                    <table class="table" >
+                        <tr >
+                            <th>
+                                Product
+                            </th>
+                            <th>
+                                Customer Information
+                            </th>
+                            <th>
+                                Reservation Date
+                            </th>
+                            <th></th>
+                        </tr>
+                        @for (int i = 0; i < Model.Rows.Count; i++)
+                        {
+                            <tr >
+                                <td>
+                                    @if (@Model.Rows[i][2].ToString() != null)
+                                    {
+                                        <img src="@Model.Rows[i][2].ToString()" style="max-height: 100px" />
+                                    }
+                                    <br />
+                                    @Model.Rows[i][1].ToString()
+                                </td>
+                                <td>
+                                    @Model.Rows[i][3].ToString()
+                                    <br />
+                                    @Model.Rows[i][4].ToString()
+                                    <br />
+                                    @Model.Rows[i][6].ToString()
+                                    <br />
+                                    @Model.Rows[i][5].ToString()
+                                </td>
+                                <td>
+                                    @Model.Rows[i][7].ToString()
+                                </td>
+                                <td>
+                                    <div class="action">
+                                        <button>@Html.ActionLink("Delete", "Delete", "Order", new { id = Model.Rows[i][0] }, null)</button>
+                                        <button>@Html.ActionLink("Proceed", "Proceed", "Order", new { id = Model.Rows[i][0] }, null)</button>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
                 }
-                <br />
-                @Model.Rows[i][1].ToString()
-            </td>            
-            <td>
-                @Model.Rows[i][3].ToString()
-                <br />
-                @Model.Rows[i][4].ToString()
-                <br />
-                @Model.Rows[i][6].ToString()
-                <br />
-                @Model.Rows[i][5].ToString()
-            </td>    
-            <td>
-               @Model.Rows[i][7].ToString()
-            </td>            
-            <td>
-                <div class="action">
-                    <button>@Html.ActionLink("Delete", "Delete", "Order", new { id = Model.Rows[i][0] }, null)</button> 
-                    <button>@Html.ActionLink("Proceed", "Proceed", "Order", new { id = Model.Rows[i][0] }, null)</button>
-                </div>
-
-
-            </td>
-        </tr>
-    }
-</table>
-
+                @if (Model == null)
+                {
+                    <h2 style="font-size:30px"> THERE IS NO ORDER AVAILABLE</h2>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 

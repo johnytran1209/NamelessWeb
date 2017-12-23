@@ -63,7 +63,7 @@
             @Html.DisplayFor(modelItem => item.ELE)
         </td>
         <td>
-            @if (item.ImageLink1 != null)
+            @if (item.ImageLink1 != "")
             {
                 <img src="@Url.Content(item.ImageLink1)" style="max-height: 100px" />
             }

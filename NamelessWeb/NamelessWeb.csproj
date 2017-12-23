@@ -218,7 +218,6 @@
     <Compile Include="Controllers\NewTypesController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -374,6 +373,18 @@
     <Compile Include="Migrations\201712161611017_change id for guitar ratings.Designer.cs">
       <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712231052415_No to reserve.cs" />
+    <Compile Include="Migrations\201712231052415_No to reserve.Designer.cs">
+      <DependentUpon>201712231052415_No to reserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231320512_lock.cs" />
+    <Compile Include="Migrations\201712231320512_lock.Designer.cs">
+      <DependentUpon>201712231320512_lock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231507029_lock no.cs" />
+    <Compile Include="Migrations\201712231507029_lock no.Designer.cs">
+      <DependentUpon>201712231507029_lock no.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -456,7 +467,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -662,6 +675,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712161611017_change id for guitar ratings.resx">
       <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231052415_No to reserve.resx">
+      <DependentUpon>201712231052415_No to reserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231320512_lock.resx">
+      <DependentUpon>201712231320512_lock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231507029_lock no.resx">
+      <DependentUpon>201712231507029_lock no.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

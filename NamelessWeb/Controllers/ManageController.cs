@@ -208,9 +208,9 @@ namespace NamelessWeb.Controllers
             catch
             {
                 return RedirectToAction("EmployeeList", "Manage");
-    }
+            }
 
-}
+        }
 
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
@@ -220,6 +220,10 @@ namespace NamelessWeb.Controllers
             try
             {
                 var user = _DbContext.Users.Single(c => c.Id == id);
+                //user.LockoutEnabled = false;
+                //user.TwoFactorEnabled
+                var role = _DbContext.Roles.Single(c => c.Id == id);
+                _DbContext.Roles.Remove(role);
                 _DbContext.Users.Remove(user);
                 _DbContext.SaveChanges();
                 return RedirectToAction("EmployeeList", "Manage");

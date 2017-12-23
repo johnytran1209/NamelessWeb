@@ -41,37 +41,37 @@ namespace NamelessWeb.Controllers
             
             var content = _DbContext.Note.ToList();
             int b = content.Count();
-            a.Open();
-            SqlCommand x = new SqlCommand("" + "select * from Notes", a);
-            SqlDataReader danhsachtam = x.ExecuteReader();
-            dt2.Load(danhsachtam);
-            a.Close();
-            for (int i = 0; i < content.Count; i++)
-            {
-                for (int j = i + 1; j < content.Count; j++)
-                {
-                    if (int.Parse((dt2.Rows[j][0]).ToString()) != int.Parse((dt2.Rows[i][0]).ToString()) + 1)
-                    {
-                        b = int.Parse((dt2.Rows[i][0]).ToString()) + 1;
-                        break;
-                        //goto done;
-                    }
-                }
-            }
-            //var note = new Note
+            //a.Open();
+            //SqlCommand x = new SqlCommand("" + "select * from Notes", a);
+            //SqlDataReader danhsachtam = x.ExecuteReader();
+            //dt2.Load(danhsachtam);
+            //a.Close();
+            //for (int i = 0; i < content.Count; i++)
             //{
-            //    NoteId = b,
-            //    NoteMess = models.NoteMess,
-            //    UserName = user.FullName,
-            //    Date = DateTime.Now
-            //};
-            //_DbContext.Note.Add(note);
-            //_DbContext.SaveChanges();
-            a.Open();
-            string y = string.Format("insert into dbo.Notes values('{0}','{1}','{2}','{3}')", b, models.NoteMess, user.FullName, DateTime.Now.ToShortDateString());
-            SqlCommand addnote = new SqlCommand(y, a);
-            addnote.ExecuteNonQuery();
-            a.Close();
+            //    for (int j = i + 1; j < content.Count; j++)
+            //    {
+            //        if (int.Parse((dt2.Rows[j][0]).ToString()) != int.Parse((dt2.Rows[i][0]).ToString()) + 1)
+            //        {
+            //            b = int.Parse((dt2.Rows[i][0]).ToString()) + 1;
+            //            break;
+            //            //goto done;
+            //        }
+            //    }
+            //}
+            var note = new Note
+            {
+                NoteId = b,
+                NoteMess = models.NoteMess,
+                UserName = user.FullName,
+                Date = DateTime.Now
+            };
+            _DbContext.Note.Add(note);
+            _DbContext.SaveChanges();
+            //a.Open();
+            //string y = string.Format("insert into dbo.Notes values('{0}','{1}','{2}','{3}')", b, models.NoteMess, user.FullName, DateTime.Now.ToShortDateString());
+            //SqlCommand addnote = new SqlCommand(y, a);
+            //addnote.ExecuteNonQuery();
+            //a.Close();
             return RedirectToAction("Index", "Note");
         }
 

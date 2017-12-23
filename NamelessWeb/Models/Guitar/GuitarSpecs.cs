@@ -10,7 +10,6 @@ namespace NamelessWeb.Models.Guitar
     public class GuitarSpecs
     {
         [Key]
-        [Required]
         public int GuitarId { get; set; }
         [Required]
         [StringLength(3)]

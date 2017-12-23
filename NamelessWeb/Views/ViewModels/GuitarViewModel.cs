@@ -54,6 +54,7 @@ namespace NamelessWeb.Views.ViewModels
         public float Price { get; set; }
         [Required]
         public bool Electricfied { get; set; }
+
         public string Description { get; set; }
         public string ImageLink1 { get; set; }
         public string ImageLink2 { get; set; }

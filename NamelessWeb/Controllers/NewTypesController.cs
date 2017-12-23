@@ -187,14 +187,22 @@ namespace NamelessWeb.Controllers
         [HttpPost]
         public ActionResult NewBrand(SupplierViewModel viewModel)
         {
-            a.Open();
-            string y = string.Format("insert into dbo.Brands values('{0}','{1}','{2}')",
-                viewModel.BrandId,
-                viewModel.BrandName.ToString(),
-                viewModel.SupplierId.ToString());
-            SqlCommand x = new SqlCommand(y, a);
-            x.ExecuteNonQuery();
-            a.Close();
+            var brand = new Brand()
+            {
+                BrandId = viewModel.BrandId,
+                BrandName=viewModel.BrandName,
+                SuppId=viewModel.SupplierId
+            };
+            _dbContext.Brand.Add(brand);
+            _dbContext.SaveChanges();
+            //a.Open();
+            //string y = string.Format("insert into dbo.Brands values('{0}','{1}','{2}')",
+            //    viewModel.BrandId,
+            //    viewModel.BrandName.ToString(),
+            //    viewModel.SupplierId.ToString());
+            //SqlCommand x = new SqlCommand(y, a);
+            //x.ExecuteNonQuery();
+            //a.Close();
             return RedirectToAction("Create", "Guitar");
         }
     }
