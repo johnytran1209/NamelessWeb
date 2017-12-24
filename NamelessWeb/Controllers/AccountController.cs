@@ -21,7 +21,7 @@ namespace NamelessWeb.Controllers
         SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=False;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         DataTable dt2 = new DataTable();
         DataTable dt1 = new DataTable();
-        private ApplicationDbContext _DbContext= new ApplicationDbContext( );
+        private ApplicationDbContext _DbContext = new ApplicationDbContext();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -43,9 +43,9 @@ namespace NamelessWeb.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -80,8 +80,8 @@ namespace NamelessWeb.Controllers
             ViewBag.ReturnUrl = returnUrl;
             var neno = new LoginViewModel
             {
-                Email="Example@gmail.com",
-                Password="please fill this in"
+                Email = "Example@gmail.com",
+                Password = "please fill this in"
             };
             return View(neno);
         }
@@ -97,7 +97,7 @@ namespace NamelessWeb.Controllers
             {
                 return View(model);
             }
-            
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -146,7 +146,7 @@ namespace NamelessWeb.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -255,7 +255,7 @@ namespace NamelessWeb.Controllers
         {
             //try
             //{
-               
+
             //a.Open();
             //string z = string.Format("select Question from AspNetUsers where Email=''");
             //SqlCommand w = new SqlCommand(z, a);
@@ -265,12 +265,12 @@ namespace NamelessWeb.Controllers
             //_DbContext.Users.ToList();
             //string question = _DbContext.Users.Single(m => m.Email == email).Question.ToString();
             //    var model = new ForgotViewModel { Email = email, Question = dt1.Rows[0][0].ToString() };
-                return View();
-        //}
-        //    catch
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
+            return View();
+            //}
+            //    catch
+            //    {
+            //        return RedirectToAction("Login", "Account");
+            //    }
         }
         //[AllowAnonymous]
         //public ActionResult getEmail()
@@ -505,7 +505,7 @@ namespace NamelessWeb.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-        
+
 
         //
         // POST: /Account/LogOff

@@ -9,13 +9,13 @@ using NamelessWeb.Models.Guitar.Wood;
 using NamelessWeb.Models.Guitar;
 using NamelessWeb.Models.Company;
 using NamelessWeb.Views.ViewModels;
-using System.Data.SqlClient;
+
 
 namespace NamelessWeb.Controllers
 {
     public class NewTypesController : Controller
     {
-        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         private readonly ApplicationDbContext _dbContext;
 
@@ -159,7 +159,7 @@ namespace NamelessWeb.Controllers
         }
         [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
-        public ActionResult NewSupplier (Supplier viewModel )
+        public ActionResult NewSupplier(Supplier viewModel)
         {
             var supp = new Supplier
             {
@@ -190,8 +190,8 @@ namespace NamelessWeb.Controllers
             var brand = new Brand()
             {
                 BrandId = viewModel.BrandId,
-                BrandName=viewModel.BrandName,
-                SuppId=viewModel.SupplierId
+                BrandName = viewModel.BrandName,
+                SuppId = viewModel.SupplierId
             };
             _dbContext.Brand.Add(brand);
             _dbContext.SaveChanges();

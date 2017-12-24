@@ -11,68 +11,75 @@
             <div class="container body-content">
                 <h2>Clist</h2>
 
-                <table class="table">
-                    <tr>
-                        <th width="20%">
-                            Product
-                        </th>
-                        <th width="10%">
-                            Bill no.
-                        </th>
-                        <th width="40%">
-                            Customer Information
-                        </th>
 
-                        <th width="30%">
-                            Employee Information
-                        </th>
-                        <th>
-
-                        </th>
-                    </tr>
-
-                    @for (int i = 0; i < Model.Rows.Count; i++)
-                    {
-                        <tr>
-                            <td>
-
-                                @if (@Model.Rows[i][2].ToString() != null)
+                @if (Model != null)
                 {
-                                    <img src="@Model.Rows[i][0].ToString()" style="max-height: 100px" />
-                                }
+                    <table class="table">
+                        <tr>
+                            <th width="20%">
+                                Product
+                            </th>
+                            <th width="10%">
+                                Bill no.
+                            </th>
+                            <th width="40%">
+                                Customer Information
+                            </th>
 
-                            </td>
-                            <td>
-                                <div>
-                                    @Model.Rows[i][1].ToString()
-                                </div>
-                                <div>
-                                    @Model.Rows[i][2].ToString()
-                                </div>
-                            </td>
-                            <td>
-                                @Model.Rows[i][3].ToString()
-                                <br />
-                                <p>
-                                    @Model.Rows[i][4].ToString()
-                                </p>
-                                <br />
-                                @Model.Rows[i][5].ToString()
+                            <th width="30%">
+                                Employee Information
+                            </th>
+                            <th>
 
-                            </td>
-                            <td>
-                                @Model.Rows[i][6].ToString()
-                                <br />
-                                @Model.Rows[i][7].ToString()
-                            </td>
-                            <td>
-                                <button>@Html.ActionLink("Edit FeedBack", "Update", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
-                                <button>@Html.ActionLink("FeedBack", "Rating", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
-                            </td>
-
+                            </th>
                         </tr>
-                    }
-                </table>
+                        @for (int i = 0; i < Model.Rows.Count; i++)
+                        {
+                            <tr>
+                                <td>
+
+                                    @if (@Model.Rows[i][2].ToString() != null)
+                                    {
+                                        <img src="@Model.Rows[i][0].ToString()" style="max-height: 100px" />
+                                    }
+
+                                </td>
+                                <td>
+                                    <div>
+                                        @Model.Rows[i][1].ToString()
+                                    </div>
+                                    <div>
+                                        @Model.Rows[i][2].ToString()
+                                    </div>
+                                </td>
+                                <td>
+                                    @Model.Rows[i][3].ToString()
+                                    <br />
+                                    <p>
+                                        @Model.Rows[i][4].ToString()
+                                    </p>
+                                    <br />
+                                    @Model.Rows[i][5].ToString()
+
+                                </td>
+                                <td>
+                                    @Model.Rows[i][6].ToString()
+                                    <br />
+                                    @Model.Rows[i][7].ToString()
+                                </td>
+                                <td>
+                                    <button>@Html.ActionLink("Edit FeedBack", "Update", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
+                                    <button>@Html.ActionLink("FeedBack", "Rating", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                }
+                @if(Model==null)
+                {
+                    <h2>You have not made any Purchase yet.</h2>
+                }
             </div>
         </div>
     </div>

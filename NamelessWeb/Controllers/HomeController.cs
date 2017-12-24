@@ -13,7 +13,7 @@ namespace NamelessWeb.Controllers
 
         public HomeController()
         {
-            _DbContext=new ApplicationDbContext();
+            _DbContext = new ApplicationDbContext();
         }
 
         public ActionResult Index()
@@ -31,6 +31,6 @@ namespace NamelessWeb.Controllers
             return View();
         }
 
-        
+
     }
 }

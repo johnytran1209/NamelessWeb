@@ -88,13 +88,8 @@
                                 <li>@Html.ActionLink("Order List", "List", "Order")</li>
                                 <li>@Html.ActionLink("Customer List", "CustomerList", "Manage")</li>
                                 <li>@Html.ActionLink("Employee List", "EmployeeList", "Manage")</li>
-                                <li>
-                                    @Html.ActionLink("Export Bills", "Wlist", "Export")
-                                </li>
-                                @if (User.IsInRole("Admin"))
-                                {
-
-                                }
+                                <li>@Html.ActionLink("Export Bills", "Wlist", "Export")</li>
+                                <li>@Html.ActionLink("Bulletin Board", "Index", "Note")</li>
                             </ul>
                         </li>
                     }

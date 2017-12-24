@@ -3,50 +3,58 @@
     ViewBag.Title = "NewBrand";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <h2 >NewBrand</h2>
 
-<h2 style = "color:aliceblue">NewBrand</h2>
+                @using (Html.BeginForm("NewBrand", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
+                {
+                    @Html.AntiForgeryToken()
 
-@using (Html.BeginForm("NewBrand", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" })) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Brand</h4>
-        <hr />
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BrandId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-horizontal">
+                        <h4>Brand</h4>
+                        <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.BrandId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">  
-            @Html.Label("Supplier ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">                
-                @Html.DropDownListFor(m => m.SupplierId, new SelectList(Model.SuppIds, "SuppId", "SuppName"), new { @class = "form-control" })
-                <button>@Html.ActionLink("New Supplier", "NewSupplier", "NewTypes")  </button>
-                @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back", "Create", "Guitar") </button>
-                <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="form-group">
+                            @Html.Label("Supplier ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.SupplierId, new SelectList(Model.SuppIds, "SuppId", "SuppName"), new { @class = "form-control" })
+                                <button>@Html.ActionLink("New Supplier", "NewSupplier", "NewTypes")  </button>
+                                @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn" style="padding-right:20px;">@Html.ActionLink("Back", "Create", "Guitar") </button>
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
+</div>
+
 
 @section scripts
 {

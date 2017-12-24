@@ -7,7 +7,6 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.SqlClient;
 using System.Net;
 using Microsoft.AspNet.Identity;
 using NamelessWeb.Models.WebSystem;
@@ -16,7 +15,7 @@ namespace NamelessWeb.Controllers
 {
     public class NoteController : Controller
     {
-        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         DataTable dt2 = new DataTable();
         private ApplicationDbContext _DbContext = new ApplicationDbContext();
         // GET: Note
@@ -38,9 +37,6 @@ namespace NamelessWeb.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = _DbContext.Users.Find(userId);
-            
-            var content = _DbContext.Note.ToList();
-            int b = content.Count();
             //a.Open();
             //SqlCommand x = new SqlCommand("" + "select * from Notes", a);
             //SqlDataReader danhsachtam = x.ExecuteReader();
@@ -60,7 +56,6 @@ namespace NamelessWeb.Controllers
             //}
             var note = new Note
             {
-                NoteId = b,
                 NoteMess = models.NoteMess,
                 UserName = user.FullName,
                 Date = DateTime.Now

@@ -4,31 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h2 style = "color:aliceblue">New Side</h2>
-<body>
-@using (Html.BeginForm("NewSide", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "color:aliceblue" }))
-{
-    <div class="form-group">
-        <div style="left: auto" , class="form-group">
-            @Html.Label("Side Id:", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.SideId, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SideId, "", new { @class = "text-danger" })
-        </div>
-        <div style="left: auto" , class="form-group">
-            @Html.Label("Side:", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.SideName, new {@class = "form-control"})
-            @Html.ValidationMessageFor(model => model.SideName, "", new { @class = "text-danger" })
-        </div>
-        <div class="col-md-offset-2 col-md-10">
-            <button class="btn" style="padding-right:20px;">
-                @Html.ActionLink("Back", "Create", "Guitar")
-            </button>
-            <button type="submit" value="Save" class="btn btn-primary">Save</button>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <h2>New Side</h2>
+                <body>
+                    @using (Html.BeginForm("NewSide", "NewTypes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="form-group">
+                            <div style="left: auto" , class="form-group">
+                                @Html.Label("Side Id:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.TextBoxFor(m => m.SideId, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SideId, "", new { @class = "text-danger" })
+                            </div>
+                            <div style="left: auto" , class="form-group">
+                                @Html.Label("Side:", htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.TextBoxFor(m => m.SideName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SideName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn" style="padding-right:20px;">
+                                    @Html.ActionLink("Back", "Create", "Guitar")
+                                </button>
+                                <button type="submit" value="Save" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    }
+                </body>
+            </div>
         </div>
     </div>
-}
-</body>
+</div>
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval") ;

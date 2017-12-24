@@ -36,9 +36,9 @@ namespace NamelessWeb.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -204,7 +204,7 @@ namespace NamelessWeb.Controllers
             {
                 var user = _DbContext.Users.Single(c => c.Id == id);
                 return View(user);
-        }
+            }
             catch
             {
                 return RedirectToAction("EmployeeList", "Manage");
@@ -429,7 +429,7 @@ namespace NamelessWeb.Controllers
             var user = _DbContext.Users.Single(u => u.Id == id);
             var current = new EditViewModel
             {
-                Id=user.Id,
+                Id = user.Id,
                 Name = user.FullName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
@@ -437,7 +437,7 @@ namespace NamelessWeb.Controllers
                 Question = user.Question,
                 Answer = user.Answer
             };
-            return View("Edit",current);
+            return View("Edit", current);
         }
 
         [HttpPost, ActionName("Edit")]
@@ -561,6 +561,6 @@ namespace NamelessWeb.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

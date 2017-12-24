@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Net;
 using Microsoft.AspNet.Identity;
 using NamelessWeb.Models.Bills.Exports;
@@ -16,7 +16,7 @@ namespace NamelessWeb.Controllers
 {
     public class OrderController : Controller
     {
-        SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //SqlConnection a = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NamelessWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         DataTable dt2 = new DataTable();
         DataTable dt1 = new DataTable();
         private ApplicationDbContext _DbContext;
@@ -132,16 +132,16 @@ namespace NamelessWeb.Controllers
             }
             try
             {
-                a.Open();
+                //a.Open();
                 var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
                 var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
                 var brand = _DbContext.Brand.Single(c => c.BrandId == guitar.BrandId);
                 var insu = _DbContext.Warranty.Single(c => c.WarrId == guitar.WarrId);
                 var date = _DbContext.Reservation.Single(c => c.GuitarId == id);
                 var use = _DbContext.Users.Single(c => c.Id == date.UserId);
-                SqlCommand x = new SqlCommand("select U.FullName, u.Email,U.Address, u.PhoneNumber, r.DateReserve from Guitars G, AspNetUsers U, Reservations R where G.GuitarId = R.GuitarId and R.UserId = U.Id", a);
-                SqlDataReader b = x.ExecuteReader();
-                dt2.Load(b);
+                //SqlCommand x = new SqlCommand("select U.FullName, u.Email,U.Address, u.PhoneNumber, r.DateReserve from Guitars G, AspNetUsers U, Reservations R where G.GuitarId = R.GuitarId and R.UserId = U.Id", a);
+                //SqlDataReader b = x.ExecuteReader();
+                //dt2.Load(b);
                 var viewModel = new OrderViewModel
                 {
                     GuitarId = guitar.GuitarId,
@@ -156,7 +156,7 @@ namespace NamelessWeb.Controllers
                     Address = use.Address,
                     DateReserve = date.DateReserve
                 };
-                a.Close();
+                //a.Close();
                 return View("Delete", viewModel);
             }
             catch
@@ -195,7 +195,7 @@ namespace NamelessWeb.Controllers
                 {
                     return RedirectToAction("List", "Order");
                 }
-                a.Open();
+                //a.Open();
                 var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
                 var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
                 var brand = _DbContext.Brand.Single(c => c.BrandId == guitar.BrandId);
@@ -218,7 +218,7 @@ namespace NamelessWeb.Controllers
                     Address = use.Address,
                     DateReserve = rese.DateReserve
                 };
-                a.Close();
+                //a.Close();
                 return View("Proceed", viewModel);
             }
             catch

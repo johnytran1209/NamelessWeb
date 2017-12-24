@@ -39,8 +39,8 @@ namespace NamelessWeb.Controllers
                     Fings = _DbContext.GoFing.ToList(),
                     Insurances = _DbContext.Warranty.ToList(),
                     Heading = "Add new Guitar",
-                    GuitarId= -1,
-                    Id=-1,
+                    GuitarId = -1,
+                    Id = -1,
                 };
                 return View(viewModel);
             }
@@ -97,7 +97,7 @@ namespace NamelessWeb.Controllers
             {
                 viewModel.VideoLink = "";
             }
-            
+
             //int c = _DbContext.Guitars.ToList().Count();
             //int b = 0;
             //viewModel.GuitarId = b;
@@ -240,17 +240,17 @@ namespace NamelessWeb.Controllers
         {
             //try
             //{
-                //a.Open();
-                var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-                var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
-                var brand = _DbContext.Brand.Where(c => c.BrandId == guitar.BrandId).Single().BrandName;
-                var type = _DbContext.GuitarType.Where(c => c.TypeId == guitar.TypeId).Single().TypeName;
-                var insurance = _DbContext.Warranty.Where(c => c.WarrId == guitar.WarrId).Single().WarrLength;
-                var top = _DbContext.GoTop.Where(c => c.TopId == guitarspec.TopId).Single().TopName;
-                var side = _DbContext.GoSide.Where(c => c.SideId == guitarspec.SideId).Single().SideName;
-                var back = _DbContext.GoBack.Where(c => c.BackId == guitarspec.BackId).Single().BackName;
-                var neck = _DbContext.GoNeck.Where(c => c.NeckId == guitarspec.NeckId).Single().NeckName;
-                var fing = _DbContext.GoFing.Where(c => c.FingId == guitarspec.FingId).Single().FingName;
+            //a.Open();
+            var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
+            var guitarspec = _DbContext.GuitarSpecs.Single(c => c.GuitarId == id);
+            var brand = _DbContext.Brand.Where(c => c.BrandId == guitar.BrandId).Single().BrandName;
+            var type = _DbContext.GuitarType.Where(c => c.TypeId == guitar.TypeId).Single().TypeName;
+            var insurance = _DbContext.Warranty.Where(c => c.WarrId == guitar.WarrId).Single().WarrLength;
+            var top = _DbContext.GoTop.Where(c => c.TopId == guitarspec.TopId).Single().TopName;
+            var side = _DbContext.GoSide.Where(c => c.SideId == guitarspec.SideId).Single().SideName;
+            var back = _DbContext.GoBack.Where(c => c.BackId == guitarspec.BackId).Single().BackName;
+            var neck = _DbContext.GoNeck.Where(c => c.NeckId == guitarspec.NeckId).Single().NeckName;
+            var fing = _DbContext.GoFing.Where(c => c.FingId == guitarspec.FingId).Single().FingName;
             //SqlCommand x = new SqlCommand("" +
             //    "select G.BrandName, T.TypeName,GT.TopName,GS.SideName,GB.BackName,GN.NeckName,GF.FingName,W.WarrLength " +
             //    "from dbo.Brands G, dbo.GuitarTypes T, dbo.GoTops GT, dbo.GoSides GS, dbo.GoBacks GB, dbo.GoNecks GN, dbo.GoFings GF,dbo.Warranties W " +
@@ -261,14 +261,14 @@ namespace NamelessWeb.Controllers
             //string Try = list.Single(c => c.GuitarId == guitar.GuitarId).GuitarId.ToString();
             //var rating = _DbContext.GuitarRating.Single(c => c.GuitarId==guitar.GuitarId);
             var rating = _DbContext.GuitarRating.Select(c => c.GuitarId).ToList();
-            
-            if (guitar.Availability==2)
+
+            if (guitar.Availability == 2)
+            {
+                if (rating.Contains(guitar.GuitarId))
                 {
-                     if (rating.Contains(guitar.GuitarId))
-                     {
-                        var feed = _DbContext.GuitarRating.Single(c => c.GuitarId == id);
-                        var viewModel2 = new GuitarViewModel
-                        {
+                    var feed = _DbContext.GuitarRating.Single(c => c.GuitarId == id);
+                    var viewModel2 = new GuitarViewModel
+                    {
                         GuitarId = id,
                         GuitarModel = guitar.MDL,
                         BrandName = brand.ToString(),
@@ -294,10 +294,10 @@ namespace NamelessWeb.Controllers
                         customername = feed.CusName,
                         point = feed.Stars,
                         feedback = feed.FeedMes
-                        };
-                        //a.Close();
-                        return View("Details", viewModel2);
-                    }
+                    };
+                    //a.Close();
+                    return View("Details", viewModel2);
+                }
                 else
                 {
                     var viewModel2 = new GuitarViewModel
@@ -327,35 +327,35 @@ namespace NamelessWeb.Controllers
                     };
                     return View("Details", viewModel2);
                 }
-                    
-                
-                }
-                var viewModel = new GuitarViewModel
-                {
-                    GuitarId = id,
-                    GuitarModel = guitar.MDL,
-                    BrandName = brand.ToString(),
-                    TypeName = type.ToString(),
-                    Price = guitar.MSRP,
-                    Electricfied = guitar.ELE,
-                    InsuranceName = insurance.ToString(),
-                    ImageLink1 = guitar.ImageLink1,
-                    ImageLink2 = guitar.ImageLink2,
-                    ImageLink3 = guitar.ImageLink3,
-                    ImageLink4 = guitar.ImageLink4,
-                    ImageLink5 = guitar.ImageLink5,
-                    ImageLink6 = guitar.ImageLink6,
-                    VideoLink = guitar.Videolink,
-                    Availability = guitar.Availability,
-                    TopName = top.ToString(),
-                    SideName = side.ToString(),
-                    BackName = back.ToString(),
-                    NeckName = neck.ToString(),
-                    FingsName = fing.ToString(),
-                    Description = guitarspec.Descript,
-                    Id = guitarspec.GuitarId
-                };
-                return View("Details", viewModel);
+
+
+            }
+            var viewModel = new GuitarViewModel
+            {
+                GuitarId = id,
+                GuitarModel = guitar.MDL,
+                BrandName = brand.ToString(),
+                TypeName = type.ToString(),
+                Price = guitar.MSRP,
+                Electricfied = guitar.ELE,
+                InsuranceName = insurance.ToString(),
+                ImageLink1 = guitar.ImageLink1,
+                ImageLink2 = guitar.ImageLink2,
+                ImageLink3 = guitar.ImageLink3,
+                ImageLink4 = guitar.ImageLink4,
+                ImageLink5 = guitar.ImageLink5,
+                ImageLink6 = guitar.ImageLink6,
+                VideoLink = guitar.Videolink,
+                Availability = guitar.Availability,
+                TopName = top.ToString(),
+                SideName = side.ToString(),
+                BackName = back.ToString(),
+                NeckName = neck.ToString(),
+                FingsName = fing.ToString(),
+                Description = guitarspec.Descript,
+                Id = guitarspec.GuitarId
+            };
+            return View("Details", viewModel);
             //}
             //catch
             //{
@@ -378,22 +378,22 @@ namespace NamelessWeb.Controllers
                 GuitarId = viewModel.GuitarId,
                 UserId = User.Identity.GetUserId()
             };
-           
+
             var guit = _DbContext.Guitars.Single(c => c.GuitarId == viewModel.GuitarId);
             guit.Availability = 1;
             _DbContext.Reservation.Add(rese);
             _DbContext.SaveChanges();
-                    //a.Open();
-                    //string z = string.Format("insert into dbo.Reservations values('{0}','{1}',CURRENT_TIMESTAMP)",
-                    //    User.Identity.GetUserId(),
-                    //    viewModel.Id);
-                    //SqlCommand u = new SqlCommand(z, a);
-                    //string x = string.Format("update dbo.Guitars set Availability='1' where GuitarId='{0}'",viewModel.GuitarId);
-                    //SqlCommand y = new SqlCommand(x, a);
-                    //u.ExecuteNonQuery();
-                    //y.ExecuteNonQuery();
-                    //a.Close();
-                    return RedirectToAction("Index", "Home");
+            //a.Open();
+            //string z = string.Format("insert into dbo.Reservations values('{0}','{1}',CURRENT_TIMESTAMP)",
+            //    User.Identity.GetUserId(),
+            //    viewModel.Id);
+            //SqlCommand u = new SqlCommand(z, a);
+            //string x = string.Format("update dbo.Guitars set Availability='1' where GuitarId='{0}'",viewModel.GuitarId);
+            //SqlCommand y = new SqlCommand(x, a);
+            //u.ExecuteNonQuery();
+            //y.ExecuteNonQuery();
+            //a.Close();
+            return RedirectToAction("Index", "Home");
             //    }
             //    catch (Exception)
             //    {
@@ -435,7 +435,7 @@ namespace NamelessWeb.Controllers
                     ImageLink4 = guitar.ImageLink4,
                     ImageLink5 = guitar.ImageLink5,
                     ImageLink6 = guitar.ImageLink6,
-                    VideoLink=guitar.Videolink,
+                    VideoLink = guitar.Videolink,
                     Top = guitarspec.TopId.ToString(),
                     Side = guitarspec.SideId.ToString(),
                     Back = guitarspec.BackId.ToString(),
@@ -595,7 +595,7 @@ namespace NamelessWeb.Controllers
                     Description = guitarspec.Descript
 
                 };
-                a.Close();
+
                 return View("Delete", viewModel);
 
                 //string g = string.Format("delete from dbo.Guitars where GuitarId='" + id + "'");
@@ -632,7 +632,7 @@ namespace NamelessWeb.Controllers
             {
                 return RedirectToAction("List", "Guitar");
             }
-            
+
         }
 
         public ActionResult Search(FormCollection f, int id = 1)
@@ -642,6 +642,6 @@ namespace NamelessWeb.Controllers
 
             return View(content);
         }
-       
+
     }
 }
