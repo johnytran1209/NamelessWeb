@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NamelessWeb.Models.LichLamViecModel>
+﻿@model NamelessWeb.Models.DanhSachLichLamViec
 @{
     ViewBag.Title = "QuanLyLichLamViec";
 }
@@ -8,7 +8,7 @@
         <div class="container body-content">
         @using (Html.BeginForm("QuanLyLichLamViec", "QuanLyLichLamViec"))
         {
-            foreach(var item in Model)
+            foreach(var item in Model.danhSachLichlamViec)
             {
                 <h2>@Html.DisplayFor(m => item.userName)</h2>
                 @Html.HiddenFor(m=>item.idLich)

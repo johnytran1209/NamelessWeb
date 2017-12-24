@@ -411,6 +411,7 @@
     <Compile Include="Models\ClassApplicationDbContext.cs" />
     <Compile Include="Models\Company\Brand.cs" />
     <Compile Include="Models\Company\Supplier.cs" />
+    <Compile Include="Models\DanhSachLichLamViec.cs" />
     <Compile Include="Models\Guitar\Guitars.cs" />
     <Compile Include="Models\Guitar\GuitarSpecs.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
