@@ -12,12 +12,12 @@
 
             @using (Html.BeginForm(Model.action, "DangKyLichLamViec"))
             {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m=>m.idLich)
-            @Html.HiddenFor(m=>m.idUser)
-                //Buổi sáng
-                <h3>Morning</h3>
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m=>m.idLich)
+                @Html.HiddenFor(m=>m.idUser)               
                 <div class="form-horizontal">
+                    //Buổi sáng
+                    <h3>Morning</h3>
                     <div class="form-group">
                         <h4 class="control-label col-md-2">Monday</h4>
                         <div class="col-md-10">

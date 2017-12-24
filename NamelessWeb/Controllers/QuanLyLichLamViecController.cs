@@ -24,7 +24,7 @@ namespace NamelessWeb.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult QuanLyLichLamViec(IList<LichLamViecModel> danhSachLichLamViec) 
+        public ActionResult QuanLyLichLamViec(IEnumerable<LichLamViecModel> danhSachLichLamViec) 
         {
             for (int i = 0; i < danhSachLichLamViec.Count(); i++)
             {
