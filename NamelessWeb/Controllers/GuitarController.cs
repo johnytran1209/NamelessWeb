@@ -346,7 +346,6 @@ namespace NamelessWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Update(GuitarViewModel viewModel)
         {
-
             //if(!ModelState.IsValid)
             //{
             //  viewModel.  TypeIds = _DbContext.GuitarType.ToList();

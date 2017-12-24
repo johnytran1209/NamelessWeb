@@ -11,6 +11,7 @@ namespace NamelessWeb.Models
         [Key]
         public String idLich { get; set; }
         public String idUser { get; set; }
+        public String userName { get; set; }
         public bool sang2 { get; set; }
         public bool sang3 { get; set; }
         public bool sang4 { get; set; }

@@ -219,6 +219,7 @@
     <Compile Include="Controllers\NewTypesController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\QuanLyLichLamViecController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -391,6 +392,14 @@
     <Compile Include="Migrations\201712190831301_checkModelLichLamViec.Designer.cs">
       <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712211625056_updateChange.cs" />
+    <Compile Include="Migrations\201712211625056_updateChange.Designer.cs">
+      <DependentUpon>201712211625056_updateChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712220728049_updateLichlamViecModels_Username.cs" />
+    <Compile Include="Migrations\201712220728049_updateLichlamViecModels_Username.Designer.cs">
+      <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
@@ -550,6 +559,7 @@
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Guitar\Rating.cshtml" />
     <Content Include="Views\DangKyLichLamViec\DangKyLichLamViec.cshtml" />
+    <Content Include="Views\QuanLyLichLamViec\QuanLyLichLamViec.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -693,6 +703,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712190831301_checkModelLichLamViec.resx">
       <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712211625056_updateChange.resx">
+      <DependentUpon>201712211625056_updateChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712220728049_updateLichlamViecModels_Username.resx">
+      <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

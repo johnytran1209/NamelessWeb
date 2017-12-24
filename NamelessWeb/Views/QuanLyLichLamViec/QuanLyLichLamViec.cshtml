@@ -1,0 +1,123 @@
+﻿@model IEnumerable<NamelessWeb.Models.LichLamViecModel>
+@{
+    ViewBag.Title = "QuanLyLichLamViec";
+}
+<h2>QuanLyLichLamViec</h2>
+<div class="card">
+    <div class="container-fliud">
+        <div class="container body-content">
+        @using (Html.BeginForm("QuanLyLichLamViec", "QuanLyLichLamViec"))
+        {
+        foreach(var item in Model)
+        {
+        <h2>@Html.DisplayFor(m => item.userName)</h2>
+        @Html.HiddenFor(m=>item.idLich)
+        @Html.HiddenFor(m=>item.idUser)
+        <h3>Morning</h3>
+        <table class="table">
+            <th>
+                <h5>Monday</h5>
+            </th>
+            <th>
+                <h5>Tuesday</h5>
+            </th>
+            <th>
+                <h5>Wednesday</h5>
+            </th>
+            <th>
+                <h5>Thursday</h5>
+            </th>
+            <th>
+                <h5>Friday</h5>
+            </th>
+            <th>
+                <h5>Saturday</h5>
+            </th>
+            <th>
+                <h5>Sunday</h5>
+            </th>
+        </table>
+        <table class="table">
+            <table class="table">
+                <td>
+                    @Html.DisplayFor(m => item.sang2)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sang3)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sang4)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sang5)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sang6)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sang7)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.sangCN)
+                </td>
+            </table>
+        </table>
+        <h3>Afternoon</h3>
+        <table class="table">
+            <th>
+                <h5>Monday</h5>
+            </th>
+            <th>
+                <h5>Tuesday</h5>
+            </th>
+            <th>
+                <h5>Wednesday</h5>
+            </th>
+            <th>
+                <h5>Thursday</h5>
+            </th>
+            <th>
+                <h5>Friday</h5>
+            </th>
+            <th>
+                <h5>Saturday</h5>
+            </th>
+            <th>
+                <h5>Sunday</h5>
+            </th>
+            <table class="table">
+                <td>
+                    @Html.DisplayFor(m => item.chieu2)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieu3)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieu4)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieu5)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieu6)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieu7)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.chieuCN)
+                </td>
+            </table>
+            @Html.CheckBoxFor(m => item.confirmed, new { @class = "control-label col-md-1" })
+            <h4>Confirm</h4>
+        </table>
+        }
+        <button type="submit" value="Save" class="btn btn-primary">Save</button>
+        }
+        </div>
+    </div>
+</div>
+
+
+
+
