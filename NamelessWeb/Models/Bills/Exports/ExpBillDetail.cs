@@ -15,5 +15,6 @@ namespace NamelessWeb.Models.Bills.Exports
         public int GuitarId { get; set; }
         [Required]
         public float Cost { get; set; }
+        public int Feeded { get; set; }
     }
 }

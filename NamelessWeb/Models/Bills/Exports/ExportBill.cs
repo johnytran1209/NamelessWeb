@@ -22,5 +22,6 @@ namespace NamelessWeb.Models.Bills.Exports
         public string ExpCusId { get; set; }
         [Required]
         public string ExpDes { get; set; }
+        
     }
 }

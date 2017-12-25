@@ -11,8 +11,9 @@
         <div class="container-fliud">
             <div class="container body-content">
                 <h2>Saleslist</h2>
-
-                <table class="table">
+                @if(Model!=null)
+                {
+                    <table class="table">
                     <tr>
                         <th width="20%">
                             Product
@@ -74,6 +75,8 @@
                         </tr>
                     }
                 </table>
+                }
+                
             </div>
         </div>
     </div>

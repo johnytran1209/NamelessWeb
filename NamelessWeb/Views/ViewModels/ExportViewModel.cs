@@ -16,5 +16,6 @@ namespace NamelessWeb.Views.ViewModels
         public DateTime BillDate { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeephoneNo { get; set; }
+        public bool feeded { get; set; }
     }
 }

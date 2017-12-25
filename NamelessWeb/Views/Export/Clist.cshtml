@@ -68,8 +68,10 @@
                                     @Model.Rows[i][7].ToString()
                                 </td>
                                 <td>
-                                    <button>@Html.ActionLink("Edit FeedBack", "Update", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
-                                    <button>@Html.ActionLink("FeedBack", "Rating", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>
+                                    @if (Model.Rows[i][9].ToString() == "1")
+                                    {<button>@Html.ActionLink("Edit FeedBack", "Update", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>}
+                                    @if (Model.Rows[i][9].ToString() == "0")
+                                    {<button>@Html.ActionLink("FeedBack", "Rating", "Export", new { id = int.Parse((Model.Rows[i][8]).ToString()) }, null)</button>}
                                 </td>
 
                             </tr>

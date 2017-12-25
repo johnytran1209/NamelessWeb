@@ -1,6 +1,4 @@
 ﻿using NamelessWeb.Models;
-using NamelessWeb.Models.Guitar;
-using NamelessWeb.Models.WebSystem;
 using NamelessWeb.Views.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,7 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+//using System.Data.SqlClient;
 using Microsoft.AspNet.Identity;
+using NamelessWeb.Models.WebSystem;
 
 namespace NamelessWeb.Controllers
 {
@@ -21,6 +21,10 @@ namespace NamelessWeb.Controllers
         DataTable dt1 = new DataTable();
         private ApplicationDbContext _DbContext;
 
+        public ExportController()
+        {
+            _DbContext = new ApplicationDbContext();
+        }
         // GET: Export
         public ActionResult Index()
         {
@@ -38,6 +42,8 @@ namespace NamelessWeb.Controllers
                 DataType = Type.GetType("System.Int32"),
                 ColumnName = "ExpBillId"
             };
+            table.Columns.Add(column);
+
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
@@ -93,34 +99,38 @@ namespace NamelessWeb.Controllers
             };
             table.Columns.Add(column);
 
-            if (_DbContext.ExportBill.ToList().Count() != 0)
+            var explist = _DbContext.ExportBill.ToList();
+            if (explist != null)
             {
-                int l = _DbContext.ExportBill.ToList().Last().ExpBId;
-                int f = _DbContext.ExportBill.ToList().First().ExpBId;
+                int l = explist.Select(c => c.ExpBId).Last();
+                int f = explist.Select(c => c.ExpBId).First();
                 for (int i = f; i <= l; i++)
                 {
-                    row = table.NewRow();
-                    var exp = _DbContext.ExportBill.Single(c => c.ExpBId == i);
-                    row["ExpId"] = exp.ExpBId;
-                    var expdet = _DbContext.ExpBillDetail.Single(c => c.ExpBId == exp.ExpBId);
-                    var guit = _DbContext.Guitars.Single(c => c.GuitarId == expdet.GuitarId);
-                    row["ImageLink"] = guit.GuitarId;
-                    row["Product"] = expdet.Product;
-                    row["Cost"] = expdet.Cost;
-                    row["ExpCus"] = exp.ExpCus;
-                    row["ExpDes"] = exp.ExpDes;
-                    row["ExpDate"] = exp.ExpDate;
-                    row["ExpEmp"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).FullName;
-                    row["PhoneNumber"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).PhoneNumber;
-                    table.Rows.Add(row);
+                    {
+                        row = table.NewRow();
+                        var exp = _DbContext.ExportBill.Single(c => c.ExpBId == i);
+                        row["ExpBillId"] = exp.ExpBId;
+                        var expdet = _DbContext.ExpBillDetail.Single(c => c.ExpBId == exp.ExpBId);
+                        var guit = _DbContext.Guitars.Single(c => c.GuitarId == expdet.GuitarId);
+                        row["ImageLink"] = guit.ImageLink1;
+                        row["Product"] = expdet.Product;
+                        row["Cost"] = expdet.Cost;
+                        row["ExpCus"] = exp.ExpCus;
+                        row["ExpDes"] = exp.ExpDes;
+                        row["ExpDate"] = exp.ExpDate;
+                        row["ExpEmp"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).FullName;
+                        row["PhoneNumber"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).PhoneNumber;
+                        table.Rows.Add(row);
+                    }
                 }
+                //a.Open();
+                //SqlCommand x = new SqlCommand("" +
+                //    "select b.ExpBId,g.ImageLink1, d.Product, d.Cost, b.ExpCus, b.ExpDes, b.ExpDate, u.FullName,u.PhoneNumber from AspNetUsers U, ExportBills B, ExpBillDetails D, Guitars G where d.GuitarId = g.GuitarId and b.ExpBId = d.ExpBId and b.ExpEmpid = u.Id", a);
+                //SqlDataAdapter da = new SqlDataAdapter(x);
+                //da.Fill(dt2);
+                return View(table);
             }
-            //a.Open();
-            //SqlCommand x = new SqlCommand("" +
-            //    "select b.ExpBId,g.ImageLink1, d.Product, d.Cost, b.ExpCus, b.ExpDes, b.ExpDate, u.FullName,u.PhoneNumber from AspNetUsers U, ExportBills B, ExpBillDetails D, Guitars G where d.GuitarId = g.GuitarId and b.ExpBId = d.ExpBId and b.ExpEmpid = u.Id", a);
-            //SqlDataAdapter da = new SqlDataAdapter(x);
-            //da.Fill(dt2);
-            return View(table);
+            return View();
         }
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult WListEdit(int? id)
@@ -236,7 +246,14 @@ namespace NamelessWeb.Controllers
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "GuitarIdr"
+                ColumnName = "ExpGuitarId"
+            };
+            table.Columns.Add(column);
+            
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "ExpGuitarfeeded"
             };
             table.Columns.Add(column);
             //Imagelink,product,cost,expcus,expdes,expdate,fullname,phonenumber, guitarid
@@ -247,17 +264,17 @@ namespace NamelessWeb.Controllers
             var explist = _DbContext.ExportBill.ToList();
             if (explist.Select(c=>c.ExpCusId).Contains(User.Identity.GetUserId()))
             {
-                int l = _DbContext.ExportBill.Where(c=> c.ExpCusId==User.Identity.GetUserId()).ToList().Last().ExpBId;
-                int f = _DbContext.ExportBill.Where(c => c.ExpCusId == User.Identity.GetUserId()).ToList().First().ExpBId;
+                int l = explist.Select(c => c.ExpBId).Last();
+                int f = explist.Select(c => c.ExpBId).First();
                 for (int i = f; i <= l; i++)
                 {
                    
-                    var exp = _DbContext.ExportBill.Single(c => c.ExpCusId == User.Identity.GetUserId());
+                    var exp = _DbContext.ExportBill.Single(c => c.ExpBId==i);
                     var expdet = _DbContext.ExpBillDetail.Single(c => c.ExpBId == exp.ExpBId);
                     var guit = _DbContext.Guitars.Single(c => c.GuitarId == expdet.GuitarId);
 
                     row = table.NewRow();
-                    row["ImageLink"] = guit.GuitarId;
+                    row["ImageLink"] = guit.ImageLink1;
                     row["Product"] = expdet.Product;
                     row["Cost"] = expdet.Cost;
                     row["ExpCus"] = exp.ExpCus;
@@ -266,6 +283,7 @@ namespace NamelessWeb.Controllers
                     row["ExpEmp"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).FullName;
                     row["ExpPhoneNumber"] = _DbContext.Users.Single(c => c.Id == exp.ExpEmpId).PhoneNumber;
                     row["ExpGuitarId"] = guit.GuitarId;
+                    row["ExpGuitarfeeded"] = expdet.Feeded.ToString();
                     table.Rows.Add(row);
                 }
                 return View(table);
@@ -278,8 +296,9 @@ namespace NamelessWeb.Controllers
         {
             try
             {
+                string use = User.Identity.GetUserId();
                 var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-                var user = _DbContext.Users.Single(c => c.Id == User.Identity.GetUserId());
+                var user = _DbContext.Users.Single(c => c.Id == use);
                 //int b = id;
                 //string z = string.Format("select g.ImageLink1, g.MDL, g.GuitarId from Guitars g where g.GuitarId ='{0}'",b);
                 //SqlCommand x = new SqlCommand(z, a);
@@ -297,10 +316,27 @@ namespace NamelessWeb.Controllers
                 };
                 return View(viewModel);
             }
-            catch
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-                return RedirectToAction("Index", "Home");
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting  
+                        // the current instance as InnerException  
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
             }
+            //catch
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
         }
 
         [Authorize]
@@ -326,14 +362,40 @@ namespace NamelessWeb.Controllers
                 //    SqlCommand x = new SqlCommand(z, a);
                 //    x.ExecuteNonQuery();
                 //    a.Close();
-                var rate = new GuitarRating() { CusName = viewModel.username, Stars = viewModel.stars, GuitarId = viewModel.guitarid, FeedMes = viewModel.GuitarMess };
+                string use = User.Identity.GetUserId();
+            var user = _DbContext.Users.Single(c => c.Id == use);
+            int list = _DbContext.GuitarRating.ToList().Count();
+            var rate = new GuitarRating
+            {
+                    //FeedId = list,
+                    CusName = user.FullName,
+                    Stars = viewModel.stars,
+                    GuitarId = viewModel.guitarid,
+                    FeedMes = viewModel.GuitarMess,
+                    
+                };
+                var expdet = _DbContext.ExpBillDetail.Single(c => c.GuitarId == viewModel.guitarid);
+                expdet.Feeded = 1;
                 _DbContext.GuitarRating.Add(rate);
                 _DbContext.SaveChanges();
                 return RedirectToAction("Clist", "Export");
             }
-            catch
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-                return RedirectToAction("Clist", "Export");
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting  
+                        // the current instance as InnerException  
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
             }
         }
         [Authorize]
@@ -351,16 +413,17 @@ namespace NamelessWeb.Controllers
             //SqlCommand w = new SqlCommand(h, a);
             //SqlDataAdapter db = new SqlDataAdapter(w);
             //db.Fill(dt1);
+            
             var feed = _DbContext.GuitarRating.Single(c => c.GuitarId == id);
             var guitar = _DbContext.Guitars.Single(c => c.GuitarId == id);
-            var user = _DbContext.Users.Single(c => c.Id == User.Identity.GetUserId());
+            
             var viewModel = new GuitarRatingViewModel
             {
                 feedId = feed.FeedId,
                 guitarid = id,
                 GuitarMess = feed.FeedMes,
                 stars = feed.Stars,
-                username = user.FullName,
+                username = feed.CusName,
                 guitarimg = guitar.ImageLink1,
                 guitarmdl = guitar.MDL,
                 heading = "Update Feedback"
@@ -377,8 +440,9 @@ namespace NamelessWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(GuitarRatingViewModel viewModel)
         {
-            try
-            {
+            //try
+            //{
+            
                 var rate = _DbContext.GuitarRating.Single(c => c.FeedId == viewModel.feedId);
                 rate.FeedMes = viewModel.GuitarMess;
                 rate.Stars = viewModel.stars;
@@ -389,11 +453,11 @@ namespace NamelessWeb.Controllers
                 //    x.ExecuteNonQuery();
                 //    a.Close();
                 return RedirectToAction("Clist", "Export");
-            }
-            catch
-            {
-                return RedirectToAction("Clist", "Export");
-            }
+            //}
+            //catch
+            //{
+            //    return RedirectToAction("Clist", "Export");
+            //}
         }
 
     }

@@ -8,14 +8,18 @@ namespace NamelessWeb.Models.WebSystem
 {
     public class GuitarRating
     {
+        
         [Key]
         public int FeedId { get; set; }
+
         public int GuitarId { get; set; }
+        [Required]
         public string CusName { get; set; }
+        [Required]
         public int Stars { get; set; }
         [Required]
         [StringLength(200)]
-        [MinLength(50)]
         public string FeedMes { get; set; }
+
     }
 }
