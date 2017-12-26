@@ -20,7 +20,7 @@ namespace NamelessWeb.Controllers
         // GET: BangPhanCongCongViec
         public ActionResult BangPhanCongCongViec()
         {
-            DanhSachLichLamViec danhSachDangKyViewModel=new DanhSachLichLamViec();
+            List<BangPhanCongViewModel> danhSachBangPhanCong = new List<BangPhanCongViewModel>();
             var danhSachDangKy = dbContext.DangKyLichLamViec.ToList();
             for (int i = 0; i < danhSachDangKy.Count(); i++) {
                 var lichLamViec = new BangPhanCongViewModel()
@@ -48,18 +48,19 @@ namespace NamelessWeb.Controllers
                     thu5 = false,
                     thu6 = false,
                     thu7 = false,
-                    thuCN = false    
+                    thuCN = false
                 };
-                danhSachDangKyViewModel.danhSachLichlamViec.Add(lichLamViec);
-                
+                danhSachBangPhanCong.Add(lichLamViec);
             }
-            return View("BangPhanCongCongViec",danhSachDangKyViewModel);
+            
+            return View("BangPhanCongCongViec",danhSachBangPhanCong);
         }
         [HttpPost]
-        public ActionResult BangPhanCongCongViec(DanhSachLichLamViec danhSachLichLamViec) {
-            for (int i = 0; i < danhSachLichLamViec.danhSachLichlamViec.Count(); i++)
+        public ActionResult BangPhanCongCongViec(BangPhanCongViewModel[] danhSachBangPhanCong) {
+            
+            for (int i = 0; i < danhSachBangPhanCong.Count(); i++)
             {
-                BangPhanCongViewModel bangPhanCongViewModel = danhSachLichLamViec.danhSachLichlamViec.ElementAt(i);
+                BangPhanCongViewModel bangPhanCongViewModel = danhSachBangPhanCong[i];
                 var bangPhanCongCongViec = new BangPhanCongCongViec()
                 {
                     idBangPhanCong = bangPhanCongViewModel.idBangPhanCong,
@@ -115,11 +116,11 @@ namespace NamelessWeb.Controllers
                     bangPhanCongCongViec.sangCN = bangPhanCongViewModel.sang4;
                     bangPhanCongCongViec.chieuCN = bangPhanCongViewModel.chieu4;
                 }
-                if (dbContext.BangPhanCongCongViec.Count(c => c.idUser == bangPhanCongViewModel.idUser) < 0)
+                string temp = bangPhanCongCongViec.idUser;
+                if (dbContext.BangPhanCongCongViec.Count(c=>c.idUser == temp)<=0)
                 {
                     dbContext.BangPhanCongCongViec.Add(bangPhanCongCongViec);
                     dbContext.SaveChanges();
-                    return RedirectToAction("BangPhanCongCongViec", "BangPhanCongViec");
                 }
                 else
                 {
@@ -131,8 +132,7 @@ namespace NamelessWeb.Controllers
                         , bangPhanCongCongViec.chieu3, bangPhanCongCongViec.chieu4, bangPhanCongCongViec.chieu5, bangPhanCongCongViec.chieu6
                         , bangPhanCongCongViec.chieu5, bangPhanCongCongViec.chieuCN);
                     SqlCommand sqlCommand = new SqlCommand(stringSQL, connect);
-                    sqlCommand.ExecuteNonQuery();
-                    return RedirectToAction("BangPhanCongCongViec", "BangPhanCongCongViec");
+                    connect.Close();
                 }
             }
             return RedirectToAction("BangPhanCongCongViec", "BangPhanCongCongViec");

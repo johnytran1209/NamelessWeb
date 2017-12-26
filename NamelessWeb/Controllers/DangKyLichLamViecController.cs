@@ -62,6 +62,7 @@ namespace NamelessWeb.Controllers
             string stringSQL = string.Format("update dbo.LichLamViecModels set sang2='{0}',sang3='{1}',sang4='{2}',sang5='{3}',sang6='{4}',sang7='{5}',sangCN='{6}',chieu2='{7}',chieu3='{8}',chieu4='{9}',chieu5='{10}',chieu6='{11}',chieu7='{12}',chieuCN='{13}',userName='{14}' where idLich='{15}'", lichLamViec.sang2, lichLamViec.sang3, lichLamViec.sang4, lichLamViec.sang5, lichLamViec.sang6, lichLamViec.sang7, lichLamViec.sangCN, lichLamViec.chieu2, lichLamViec.chieu3, lichLamViec.chieu4, lichLamViec.chieu5, lichLamViec.chieu6, lichLamViec.chieu7, lichLamViec.chieuCN, lichLamViec.userName, lichLamViec.idLich);
             SqlCommand commandSQL = new SqlCommand(stringSQL, connect);
             commandSQL.ExecuteNonQuery();
+            connect.Close();
             return RedirectToAction("Index", "Home");
         }
 
