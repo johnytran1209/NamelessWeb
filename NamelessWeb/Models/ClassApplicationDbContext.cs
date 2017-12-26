@@ -29,6 +29,12 @@ namespace NamelessWeb.Models
         public DbSet<Guitar.GuitarTypes> GuitarType { get; set; }
         public DbSet<Guitar.Warranties> Warranty { get; set; } 
         public DbSet<Reservations> Reservation { get; set; }
+
+        // Bảng đăng ký lich làm việc 
+        public DbSet<LichLamViecModel> DangKyLichLamViec { get; set; }
+        // Bảng phân công công việc 
+        public DbSet<BangPhanCongCongViec> BangPhanCongCongViec { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

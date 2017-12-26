@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NamelessWeb</RootNamespace>
     <AssemblyName>NamelessWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,16 +64,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -114,6 +113,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -211,6 +211,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BangPhanCongCongViecController.cs" />
+    <Compile Include="Controllers\DangKyLichLamViecController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\GuitarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -218,6 +220,7 @@
     <Compile Include="Controllers\NewTypesController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -369,24 +372,46 @@
     <Compile Include="Migrations\201712141807254_gogo.Designer.cs">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712161611017_change id for guitar ratings.cs" />
-    <Compile Include="Migrations\201712161611017_change id for guitar ratings.Designer.cs">
-      <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
+    <Compile Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.cs" />
+    <Compile Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.Designer.cs">
+      <DependentUpon>201712171621080_UpdateBangDangKyLichLamViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712231052415_No to reserve.cs" />
-    <Compile Include="Migrations\201712231052415_No to reserve.Designer.cs">
-      <DependentUpon>201712231052415_No to reserve.cs</DependentUpon>
+    <Compile Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.cs" />
+    <Compile Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.Designer.cs">
+      <DependentUpon>201712171629176_UpdateEditBangDangKyLichLamViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712231320512_lock.cs" />
-    <Compile Include="Migrations\201712231320512_lock.Designer.cs">
-      <DependentUpon>201712231320512_lock.cs</DependentUpon>
+    <Compile Include="Migrations\201712181440371_updateModelLichLamViec.cs" />
+    <Compile Include="Migrations\201712181440371_updateModelLichLamViec.Designer.cs">
+      <DependentUpon>201712181440371_updateModelLichLamViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712231507029_lock no.cs" />
-    <Compile Include="Migrations\201712231507029_lock no.Designer.cs">
-      <DependentUpon>201712231507029_lock no.cs</DependentUpon>
+    <Compile Include="Migrations\201712181637225_updateModelLichLamViecEdit.cs" />
+    <Compile Include="Migrations\201712181637225_updateModelLichLamViecEdit.Designer.cs">
+      <DependentUpon>201712181637225_updateModelLichLamViecEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712190831301_checkModelLichLamViec.cs" />
+    <Compile Include="Migrations\201712190831301_checkModelLichLamViec.Designer.cs">
+      <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712211625056_updateChange.cs" />
+    <Compile Include="Migrations\201712211625056_updateChange.Designer.cs">
+      <DependentUpon>201712211625056_updateChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712220728049_updateLichlamViecModels_Username.cs" />
+    <Compile Include="Migrations\201712220728049_updateLichlamViecModels_Username.Designer.cs">
+      <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.cs" />
+    <Compile Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.Designer.cs">
+      <DependentUpon>201712251025188_UpdateBangPhanCongCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712251658548_updateDatabaseAdmin.cs" />
+    <Compile Include="Migrations\201712251658548_updateDatabaseAdmin.Designer.cs">
+      <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BangPhanCongCongViec.cs" />
+    <Compile Include="Models\BangPhanCongViewModel.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
     <Compile Include="Models\Bills\Exports\ExportBill.cs" />
     <Compile Include="Models\Bills\Imports\ImpBillDetail.cs" />
@@ -396,6 +421,7 @@
     <Compile Include="Models\ClassApplicationDbContext.cs" />
     <Compile Include="Models\Company\Brand.cs" />
     <Compile Include="Models\Company\Supplier.cs" />
+    <Compile Include="Models\DanhSachLichLamViec.cs" />
     <Compile Include="Models\Guitar\Guitars.cs" />
     <Compile Include="Models\Guitar\GuitarSpecs.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -406,8 +432,10 @@
     <Compile Include="Models\Guitar\Wood\GoNeck.cs" />
     <Compile Include="Models\Guitar\Wood\GoSide.cs" />
     <Compile Include="Models\Guitar\Wood\GoTop.cs" />
+    <Compile Include="Models\LichLamViecModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Reservations.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\WebSystem\GuitarRating.cs" />
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -467,9 +495,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -540,9 +566,11 @@
     <Content Include="Views\Guitar\Sold.cshtml" />
     <Content Include="Views\Guitar\Archive.cshtml" />
     <Content Include="Views\Export\Rating.cshtml" />
+    <Content Include="Views\Account\getemail.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
-    <Content Include="Views\Manage\Delete.cshtml" />
-    <Content Include="Views\Account\GetEmail.cshtml" />
+    <Content Include="Views\Guitar\Rating.cshtml" />
+    <Content Include="Views\DangKyLichLamViec\DangKyLichLamViec.cshtml" />
+    <Content Include="Views\BangPhanCongCongViec\BangPhanCongCongViec.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -672,17 +700,32 @@
     <EmbeddedResource Include="Migrations\201712141807254_gogo.resx">
       <DependentUpon>201712141807254_gogo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712161611017_change id for guitar ratings.resx">
-      <DependentUpon>201712161611017_change id for guitar ratings.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712171621080_UpdateBangDangKyLichLamViec.resx">
+      <DependentUpon>201712171621080_UpdateBangDangKyLichLamViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712231052415_No to reserve.resx">
-      <DependentUpon>201712231052415_No to reserve.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712171629176_UpdateEditBangDangKyLichLamViec.resx">
+      <DependentUpon>201712171629176_UpdateEditBangDangKyLichLamViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712231320512_lock.resx">
-      <DependentUpon>201712231320512_lock.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712181440371_updateModelLichLamViec.resx">
+      <DependentUpon>201712181440371_updateModelLichLamViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712231507029_lock no.resx">
-      <DependentUpon>201712231507029_lock no.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712181637225_updateModelLichLamViecEdit.resx">
+      <DependentUpon>201712181637225_updateModelLichLamViecEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712190831301_checkModelLichLamViec.resx">
+      <DependentUpon>201712190831301_checkModelLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712211625056_updateChange.resx">
+      <DependentUpon>201712211625056_updateChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712220728049_updateLichlamViecModels_Username.resx">
+      <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.resx">
+      <DependentUpon>201712251025188_UpdateBangPhanCongCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251658548_updateDatabaseAdmin.resx">
+      <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
