@@ -26,7 +26,6 @@ namespace NamelessWeb.Models
         public bool chieu6 { get; set; }
         public bool chieu7 { get; set; }
         public bool chieuCN { get; set; }
-        public bool confirmed { get; set; }
         public string heading { get; set; }
         public string action {
             get { return (idLich !=null) ? "CapNhatLichLamViec" : "DangKyLichLamViec"; }

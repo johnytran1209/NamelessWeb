@@ -7,10 +7,12 @@ namespace NamelessWeb.Models
 {
     public class DanhSachLichLamViec
     {
-        public List<LichLamViecModel> danhSachLichlamViec { get; set; }
+        ApplicationDbContext dbContext = new ApplicationDbContext();
+        public List<BangPhanCongViewModel> danhSachLichlamViec { get; set; }
 
         public DanhSachLichLamViec()
         {
+            
         }
     }
 }

@@ -38,7 +38,6 @@ namespace NamelessWeb.Controllers
             lichLamViec.idLich = userId + "_" + DateTime.Now.ToString();
             String userName = User.Identity.GetUserName();
             lichLamViec.userName = userName;
-            lichLamViec.confirmed = false;
             dbContext.DangKyLichLamViec.Add(lichLamViec);
             dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");

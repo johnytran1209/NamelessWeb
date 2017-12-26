@@ -211,6 +211,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BangPhanCongCongViecController.cs" />
     <Compile Include="Controllers\DangKyLichLamViecController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\GuitarController.cs" />
@@ -219,7 +220,6 @@
     <Compile Include="Controllers\NewTypesController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\QuanLyLichLamViecController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -400,8 +400,18 @@
     <Compile Include="Migrations\201712220728049_updateLichlamViecModels_Username.Designer.cs">
       <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.cs" />
+    <Compile Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.Designer.cs">
+      <DependentUpon>201712251025188_UpdateBangPhanCongCongViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712251658548_updateDatabaseAdmin.cs" />
+    <Compile Include="Migrations\201712251658548_updateDatabaseAdmin.Designer.cs">
+      <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BangPhanCongCongViec.cs" />
+    <Compile Include="Models\BangPhanCongViewModel.cs" />
     <Compile Include="Models\Bills\Exports\ExpBillDetail.cs" />
     <Compile Include="Models\Bills\Exports\ExportBill.cs" />
     <Compile Include="Models\Bills\Imports\ImpBillDetail.cs" />
@@ -560,7 +570,7 @@
     <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Guitar\Rating.cshtml" />
     <Content Include="Views\DangKyLichLamViec\DangKyLichLamViec.cshtml" />
-    <Content Include="Views\QuanLyLichLamViec\QuanLyLichLamViec.cshtml" />
+    <Content Include="Views\BangPhanCongCongViec\BangPhanCongCongViec.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -710,6 +720,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712220728049_updateLichlamViecModels_Username.resx">
       <DependentUpon>201712220728049_updateLichlamViecModels_Username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251025188_UpdateBangPhanCongCongViec.resx">
+      <DependentUpon>201712251025188_UpdateBangPhanCongCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251658548_updateDatabaseAdmin.resx">
+      <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

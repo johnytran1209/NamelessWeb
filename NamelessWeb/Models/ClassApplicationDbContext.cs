@@ -32,6 +32,9 @@ namespace NamelessWeb.Models
 
         // Bảng đăng ký lich làm việc 
         public DbSet<LichLamViecModel> DangKyLichLamViec { get; set; }
+        // Bảng phân công công việc 
+        public DbSet<BangPhanCongCongViec> BangPhanCongCongViec { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
