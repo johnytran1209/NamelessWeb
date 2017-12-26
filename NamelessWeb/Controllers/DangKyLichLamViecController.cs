@@ -29,6 +29,7 @@ namespace NamelessWeb.Controllers
             }
             return View(new LichLamViecModel { heading = "add schedule" });
         }
+
         [HttpPost]
         [Authorize]
         public ActionResult DangKyLichLamViec(LichLamViecModel lichLamViec)
@@ -43,6 +44,7 @@ namespace NamelessWeb.Controllers
             dbContext.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
         //Cập nhật lịch làm việc
         [Authorize]
         public ActionResult CapNhatLichLamViec()
@@ -52,6 +54,7 @@ namespace NamelessWeb.Controllers
             lichLamViec.heading = "edit schedule";
             return View("DangKyLichLamViec", lichLamViec);
         }
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]

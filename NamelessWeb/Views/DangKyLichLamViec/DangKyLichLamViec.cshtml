@@ -12,9 +12,9 @@
 
             @using (Html.BeginForm(Model.action, "DangKyLichLamViec"))
             {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m=>m.idLich)
-            @Html.HiddenFor(m=>m.idUser)
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m=>m.idLich)
+                @Html.HiddenFor(m=>m.idUser)
                 //Buổi sáng
                 <h3>Morning</h3>
                 <div class="form-horizontal">
@@ -156,9 +156,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" value="Save" class="btn btn-primary">Save</button>
                 </div>
-
+                <button type="submit" value="Save" class="btn btn-primary">Save</button>
             }
             </div>
         </div>

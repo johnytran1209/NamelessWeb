@@ -429,6 +429,7 @@
     <Compile Include="Models\WebSystem\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModels\DanhSachLichLamViecViewModel.cs" />
     <Compile Include="Views\ViewModels\ExportViewModel.cs" />
     <Compile Include="Views\ViewModels\GuitarRatingViewModel.cs" />
     <Compile Include="Views\ViewModels\GuitarViewModel.cs" />
