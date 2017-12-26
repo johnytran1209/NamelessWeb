@@ -408,6 +408,10 @@
     <Compile Include="Migrations\201712251658548_updateDatabaseAdmin.Designer.cs">
       <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712261041006_all.cs" />
+    <Compile Include="Migrations\201712261041006_all.Designer.cs">
+      <DependentUpon>201712261041006_all.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BangPhanCongCongViec.cs" />
@@ -726,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712251658548_updateDatabaseAdmin.resx">
       <DependentUpon>201712251658548_updateDatabaseAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712261041006_all.resx">
+      <DependentUpon>201712261041006_all.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
