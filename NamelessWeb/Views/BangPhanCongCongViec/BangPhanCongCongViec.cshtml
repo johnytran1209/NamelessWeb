@@ -1,0 +1,68 @@
+﻿@model NamelessWeb.Models.DanhSachLichLamViec
+@{
+    /**/
+
+    ViewBag.Title = "BangPhanCongCongViec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BangPhanCongCongViec</h2>
+@using (Html.BeginForm())
+{
+    foreach(var item in Model.danhSachLichlamViec)
+    {
+        <h2>@Html.DisplayFor(m =>item.userName)</h2>
+        @Html.HiddenFor(m => item.idBangPhanCong)
+        @Html.HiddenFor(m => item.idUser)
+        //Lịch sáng
+        <h3>Morning</h3>
+        <table class="table">
+            <th><h5>Monday</h5></th>
+            <th><h5>Tuesday</h5></th>
+            <th><h5>Wednesday</h5></th>
+            <th><h5>Thursday</h5></th>
+            <th><h5>Friday</h5></th>
+            <th><h5>Saturday</h5></th>
+            <th><h5>Sunday</h5></th>
+            <table class="table">
+                <td>@Html.DisplayFor(m => item.sang2)</td>
+                <td>@Html.DisplayFor(m => item.sang3)</td>
+                <td>@Html.DisplayFor(m => item.sang4)</td>
+                <td>@Html.DisplayFor(m => item.sang5)</td>
+                <td>@Html.DisplayFor(m => item.sang6)</td>
+                <td>@Html.DisplayFor(m => item.sang7)</td>
+                <td>@Html.DisplayFor(m => item.sangCN)</td>
+            </table>
+        </table>
+        //Lịch chiều
+        <h3>Afternoon</h3>
+        <table class="table">
+            <th><h5>Monday</h5></th>
+            <th><h5>Tuesday</h5></th>
+            <th><h5>Wednesday</h5></th>
+            <th><h5>Thursday</h5></th>
+            <th><h5>Friday</h5></th>
+            <th><h5>Saturday</h5></th>
+            <th><h5>Sunday</h5></th>
+            <table class="table">
+                <td>@Html.DisplayFor(m => item.chieu2)</td>
+                <td>@Html.DisplayFor(m => item.chieu3)</td>
+                <td>@Html.DisplayFor(m => item.chieu4)</td>
+                <td>@Html.DisplayFor(m => item.chieu5)</td>
+                <td>@Html.DisplayFor(m => item.chieu6)</td>
+                <td>@Html.DisplayFor(m => item.chieu7)</td>
+                <td>@Html.DisplayFor(m => item.chieuCN)</td>
+            </table>
+        </table>
+        <table class="table">
+            <td>@Html.CheckBoxFor(m => item.thu2)</td>
+            <td>@Html.CheckBoxFor(m => item.thu3)</td>
+            <td>@Html.CheckBoxFor(m => item.thu4)</td>
+            <td>@Html.CheckBoxFor(m => item.thu5)</td>
+            <td>@Html.CheckBoxFor(m => item.thu6)</td>
+            <td>@Html.CheckBoxFor(m => item.thu7)</td>
+            <td>@Html.CheckBoxFor(m => item.thuCN)</td>
+        </table>
+    }
+}
+
